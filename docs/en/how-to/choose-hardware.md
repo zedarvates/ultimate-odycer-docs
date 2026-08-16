@@ -1,7 +1,7 @@
 # Choose NPC hardware on a limited budget
 
-Use this guide to choose between an ESP32 board, a Raspberry Pi, and a mini PC.
-The best purchase may be no purchase at all.
+Use this guide to choose between an ESP32 board, a Raspberry Pi, a new N100 mini
+PC, and a refurbished business PC. The best purchase may be no purchase at all.
 
 ## 1. Define the dialogue level
 
@@ -9,7 +9,8 @@ The best purchase may be no purchase at all.
 |---|---|
 | Sounds, growls, patterns, and a closed vocabulary | An ESP32 you already own |
 | Short generated variations in a narrow domain | ESP32-S3 with PSRAM |
-| A shared local 1–3B dialogue model | x86 mini PC with 16 GB RAM |
+| A shared local 1–3B model at low acquisition cost | Refurbished x86 business PC with at least 16 GB RAM |
+| A small, new, quiet, low-power server | N100 mini PC after checking RAM and SSD |
 | Required GPIO, HAT, camera, or Linux sensors | Raspberry Pi 5 |
 
 A microSD card adds storage, not RAM or compute throughput.
@@ -22,26 +23,42 @@ The following values are `estimated`, dated August 2026, and are not quotations:
 |---|---:|---|
 | Existing classic ESP32 plus SD/audio | €5–15 extra | Not suitable for a multi-million-parameter LLM |
 | ESP32-S3 N16R8 plus SD/audio | €15–40 | Very constrained model and vocabulary |
-| Refurbished professional mini PC, 16/256 | €140–220 | Throughput must be measured per CPU and model |
+| Refurbished business Tiny/Micro/Mini PC, 16/256 | €140–220 | Condition, CPU generation, and power adapter must be checked |
+| Refurbished business SFF PC, 16/256 | €100–220 | Larger; measure wall power locally |
+| New N100 mini PC, 8/128 or 16/256 | Actual seller price plus upgrades | RAM may be soldered; cooling and SSD vary |
 | Complete Raspberry Pi 5 4 GB | €170–200 | Limited RAM and accessory cost |
 
-Include power supply, cooling, storage, cables, warranty, and locally measured
-electricity. A bare board is not a complete system.
+These ranges are budget scenarios, not a market observation. Record the dated
+price of the actual listing as `observed`. Include the power adapter, cooling,
+storage, cables, warranty, upgrades, and locally measured electricity. A bare
+board is not a complete system.
 
 ## 3. Apply the purchase rule
 
 Buy nothing when existing hardware already meets quality, latency, and throughput
 requirements. Buy only after a benchmark shows a blocking gap.
 
-For a home-lab mini PC, check for at least 16 GB RAM, a 256 GB SSD, documented
-cooling, AVX2-capable CPU, a clear operating-system offer, identifiable warranty,
-and network speed stated in Gb/s rather than ambiguous Wi-Fi wording.
+For a home-lab mini PC or refurbished business PC, check for at least 16 GB RAM,
+a 256 GB SSD, documented cooling, an AVX2-capable CPU, the included power
+adapter, no BIOS or enterprise asset lock, a clear operating-system offer,
+identifiable warranty, and network speed stated in Gb/s rather than ambiguous
+Wi-Fi wording.
+
+Common families include Lenovo ThinkCentre Tiny, Dell OptiPlex Micro, and HP
+EliteDesk/ProDesk Mini. Larger SFF systems may cost less and be easier to cool or
+expand. These are search families, not seller endorsements or performance proof.
+
+Follow [Buy a refurbished business PC](buy-refurbished-business-pc.md) before
+comparing a listing with a new N100 system.
 
 ## 4. Reject shortcuts
 
 - A model fitting in RAM does not prove usable latency.
 - “Dual network 2.5 GHz” does not prove two 2.5 Gb/s Ethernet ports.
 - Stored profiles do not prove active conversation capacity.
+- CPU TDP is neither whole-system wall power nor an LLM benchmark.
+- “Refurbished” does not guarantee a fresh CMOS battery, a healthy SSD, or an
+  unlocked BIOS.
 - An ESP32-S3 demonstration does not prove classic ESP32 compatibility.
 
 Measure the selected device with [Measure NPC capacity](measure-npc-capacity.md)

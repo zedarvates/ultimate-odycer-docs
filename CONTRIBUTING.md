@@ -1,4 +1,4 @@
-# Contributing to the local documentation candidate
+# Contributing to Ultimate Odycer Home Lab Docs
 
 Keep each page in one Diátaxis category: tutorial, how-to, reference, or
 explanation. Add or update the French and English pair in the same change.

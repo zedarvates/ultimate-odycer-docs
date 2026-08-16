@@ -10,7 +10,7 @@ authoritative server ── validates intent, rules, and consequences
     ↓
 bounded expression packet ── emotion, intensity, archetype, seed
     ↓
-mini PC or ESP32 ── produces short text, variation, or sound
+shared x86 PC or ESP32 ── produces short text, variation, or sound
     ↓
 output validation ── accepts or replaces with a deterministic pattern
     ↓
@@ -29,11 +29,16 @@ A classic ESP32 suits patterns, growls, sounds, and tiny classifiers. An
 ESP32-S3 with PSRAM can explore a tightly closed generative vocabulary. microSD
 stores sounds and profiles but does not replace RAM.
 
-## A mini PC shares dialogue
+## An x86 PC shares dialogue
 
-A 16 GB x86 mini PC can host one local model shared by multiple NPCs. Identities
-and histories stay separate while generations use a common queue. One computer
-per NPC would cost more without solving simultaneous conversation pressure.
+A new N100 mini PC, a refurbished business Tiny/Micro/Mini PC, or a 16 GB x86
+SFF system can host one local model shared by multiple NPCs. Refurbished systems
+often offer more upgradeable RAM and CPU for the acquisition cost; N100 systems
+may favour low power, silence, and a new warranty. These tendencies do not
+replace complete-cost comparison or a benchmark of the actual configuration.
+Identities and histories stay separate while generations use a common queue.
+One computer per NPC would cost more without solving simultaneous conversation
+pressure.
 
 ## Deterministic fallback protects the experience
 

@@ -9,7 +9,7 @@ from scripts.validate_docs import validate
 
 
 class PublicDocumentationTests(unittest.TestCase):
-    def test_public_candidate_passes_structural_validation(self) -> None:
+    def test_public_repository_passes_structural_validation(self) -> None:
         self.assertEqual(validate(), [])
 
     def test_scenario_capacity_is_deterministic(self) -> None:

@@ -1,6 +1,6 @@
 {
   "schema_version": "documentation-index-v1",
-  "status": "local-draft",
+  "status": "public",
   "authority": "documentation_only",
   "languages": ["fr", "en"],
   "licenses": {
@@ -43,6 +43,24 @@
       "audience": "budget-conscious maker",
       "goal": "choose NPC hardware without overbuying",
       "path": "docs/en/how-to/choose-hardware.md",
+      "mutating": false
+    },
+    {
+      "id": "buy-refurbished-business-pc-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "budget-conscious maker",
+      "goal": "inspect and compare a refurbished business PC for local NPC inference",
+      "path": "docs/fr/how-to/buy-refurbished-business-pc.md",
+      "mutating": false
+    },
+    {
+      "id": "buy-refurbished-business-pc-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "budget-conscious maker",
+      "goal": "inspect and compare a refurbished business PC for local NPC inference",
+      "path": "docs/en/how-to/buy-refurbished-business-pc.md",
       "mutating": false
     },
     {

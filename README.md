@@ -6,7 +6,7 @@ makers et hobbyistes qui construisent un home lab avec un budget limité.
 Bilingual, local-first documentation for independent developers, makers, and
 home-lab hobbyists working with limited budgets.
 
-**Statut / Status:** local publication candidate, not published.
+**Statut / Status:** public documentation repository.
 
 ## Français
 
@@ -14,6 +14,7 @@ Commencez par le [tutoriel du premier banc PNJ](docs/fr/tutorials/first-npc-benc
 
 - Tutoriel : [réaliser un premier banc PNJ](docs/fr/tutorials/first-npc-benchmark.md)
 - Guide : [choisir le matériel](docs/fr/how-to/choose-hardware.md)
+- Guide : [acheter un PC professionnel reconditionné](docs/fr/how-to/buy-refurbished-business-pc.md)
 - Guide : [mesurer la capacité PNJ](docs/fr/how-to/measure-npc-capacity.md)
 - Référence : [schéma des métriques](docs/fr/reference/metrics-schema.md)
 - Explication : [architecture hybride](docs/fr/explanation/hybrid-architecture.md)
@@ -24,6 +25,7 @@ Start with the [first NPC benchmark tutorial](docs/en/tutorials/first-npc-benchm
 
 - Tutorial: [run your first NPC benchmark](docs/en/tutorials/first-npc-benchmark.md)
 - How-to: [choose hardware](docs/en/how-to/choose-hardware.md)
+- How-to: [buy a refurbished business PC](docs/en/how-to/buy-refurbished-business-pc.md)
 - How-to: [measure NPC capacity](docs/en/how-to/measure-npc-capacity.md)
 - Reference: [metrics schema](docs/en/reference/metrics-schema.md)
 - Explanation: [hybrid architecture](docs/en/explanation/hybrid-architecture.md)
@@ -41,7 +43,7 @@ Start with the [first NPC benchmark tutorial](docs/en/tutorials/first-npc-benchm
 
 ## Repository boundaries
 
-This candidate contains documentation, synthetic examples, schemas, and a small
+This repository contains documentation, synthetic examples, schemas, and a small
 capacity calculator. It does not contain the proprietary Zig server, hosted
 infrastructure, production data, commercial components, credentials, or rights
 to operate any Ultimate Odycer service.

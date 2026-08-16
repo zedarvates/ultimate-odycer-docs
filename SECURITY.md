@@ -16,5 +16,7 @@ Use synthetic names and documentation-reserved network examples. Keep local
 inference listeners on loopback by default. A private-LAN listener requires
 authentication, origin validation, explicit firewall rules, and a rollback plan.
 
-No public security-reporting address is declared in this local draft. Add one
-only when the repository owner approves publication.
+No dedicated private security-reporting address is currently declared. Do not
+open a public issue containing a credential, private firmware, client data, or
+an unredacted vulnerability proof. Repository maintainers must configure a
+private reporting channel before accepting sensitive reports.
