@@ -10,5 +10,5 @@ trademark rights and no rights to proprietary servers, hosted infrastructure,
 commercial services, production data, private APIs, or billing systems.
 
 No third-party code, model weights, media, or documentation is intentionally
-included in this local candidate. Links identify external references; they do
+included in this documentation repository. Links identify external references; they do
 not incorporate the linked material into this repository.

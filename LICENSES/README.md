@@ -1,6 +1,6 @@
 # Licenses
 
-The local candidate applies the following license mapping:
+This repository applies the following license mapping:
 
 - documentation and original diagrams: `CC-BY-4.0`;
 - scripts, schemas, templates, and examples: `MIT`;
