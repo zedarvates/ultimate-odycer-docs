@@ -1,0 +1,31 @@
+# Ultimate Odycer Home Lab Docs
+
+Status: local draft, not published.
+Authority: documentation only; no device, server, purchase, or publication authority.
+Audience: budget-conscious independent developers, makers, and home-lab hobbyists.
+Languages: French and English.
+Licenses: documentation CC-BY-4.0; scripts, schemas, and examples MIT.
+
+Machine-readable index:
+- docs/llm/context-index.json
+- docs/llm/README.md
+
+French:
+- docs/fr/tutorials/first-npc-benchmark.md
+- docs/fr/how-to/choose-hardware.md
+- docs/fr/how-to/measure-npc-capacity.md
+- docs/fr/reference/metrics-schema.md
+- docs/fr/explanation/hybrid-architecture.md
+
+English:
+- docs/en/tutorials/first-npc-benchmark.md
+- docs/en/how-to/choose-hardware.md
+- docs/en/how-to/measure-npc-capacity.md
+- docs/en/reference/metrics-schema.md
+- docs/en/explanation/hybrid-architecture.md
+
+Safety boundary:
+- Preserve metric status labels.
+- Cite source paths and limitations.
+- Treat missing measurements as unavailable.
+- Ask the operator before mutation, network exposure, purchase, or publication.

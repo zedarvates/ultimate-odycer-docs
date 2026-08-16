@@ -1,0 +1,103 @@
+{
+  "schema_version": "documentation-index-v1",
+  "status": "local-draft",
+  "authority": "documentation_only",
+  "languages": ["fr", "en"],
+  "licenses": {
+    "documentation": "CC-BY-4.0",
+    "scripts_schemas_examples": "MIT"
+  },
+  "metric_statuses": ["observed", "estimated", "decision", "unavailable"],
+  "documents": [
+    {
+      "id": "first-npc-benchmark-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "home-lab beginner",
+      "goal": "calculate a first synthetic NPC capacity scenario",
+      "path": "docs/fr/tutorials/first-npc-benchmark.md",
+      "mutating": false
+    },
+    {
+      "id": "first-npc-benchmark-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "home-lab beginner",
+      "goal": "calculate a first synthetic NPC capacity scenario",
+      "path": "docs/en/tutorials/first-npc-benchmark.md",
+      "mutating": false
+    },
+    {
+      "id": "choose-hardware-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "budget-conscious maker",
+      "goal": "choose NPC hardware without overbuying",
+      "path": "docs/fr/how-to/choose-hardware.md",
+      "mutating": false
+    },
+    {
+      "id": "choose-hardware-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "budget-conscious maker",
+      "goal": "choose NPC hardware without overbuying",
+      "path": "docs/en/how-to/choose-hardware.md",
+      "mutating": false
+    },
+    {
+      "id": "measure-capacity-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "home-lab operator",
+      "goal": "convert observed latency into scheduling capacity",
+      "path": "docs/fr/how-to/measure-npc-capacity.md",
+      "mutating": false
+    },
+    {
+      "id": "measure-capacity-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "home-lab operator",
+      "goal": "convert observed latency into scheduling capacity",
+      "path": "docs/en/how-to/measure-npc-capacity.md",
+      "mutating": false
+    },
+    {
+      "id": "metrics-reference-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "developer or documentation agent",
+      "goal": "interpret NPC benchmark fields",
+      "path": "docs/fr/reference/metrics-schema.md",
+      "mutating": false
+    },
+    {
+      "id": "metrics-reference-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "developer or documentation agent",
+      "goal": "interpret NPC benchmark fields",
+      "path": "docs/en/reference/metrics-schema.md",
+      "mutating": false
+    },
+    {
+      "id": "hybrid-architecture-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand server, LLM, and ESP32 boundaries",
+      "path": "docs/fr/explanation/hybrid-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "hybrid-architecture-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand server, LLM, and ESP32 boundaries",
+      "path": "docs/en/explanation/hybrid-architecture.md",
+      "mutating": false
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "npc-benchmark-v1",
+  "status": "estimated",
+  "recorded_at": "2026-08-16T00:00:00Z",
+  "hardware": {
+    "device": "generic ESP32-S3 N16R8 scenario",
+    "cpu": "ESP32-S3",
+    "ram_bytes": 8388608,
+    "storage": "16 MiB addressable flash; microSD excluded",
+    "cooling": "passive scenario"
+  },
+  "software": {
+    "tool": "npc_capacity_estimator",
+    "version": "0.1.0",
+    "revision": "local-draft",
+    "model": "constrained-language-model scenario",
+    "quantization": "unavailable",
+    "runtime": "unavailable"
+  },
+  "workload": {
+    "reply_seconds": 1.7,
+    "npc_interval_seconds": 120,
+    "utilization": 0.5,
+    "streams": 1,
+    "context_tokens": 16,
+    "max_output_tokens": 12,
+    "stt": "excluded",
+    "tts": "excluded"
+  },
+  "measurements": {
+    "sample_count": "unavailable",
+    "p50_seconds": "unavailable",
+    "p95_seconds": "unavailable",
+    "error_count": "unavailable"
+  },
+  "capacity": {
+    "planned_replies_per_minute": 17.647,
+    "supported_active_npcs": 35,
+    "queue_policy": "serialize_per_stream"
+  },
+  "limitations": [
+    "This file is an estimated scheduling scenario, not an observed benchmark.",
+    "Audio, network latency, dialogue quality, and fallback rate are not measured.",
+    "Compatibility with a specific ESP32-S3 board or firmware is not proven."
+  ]
+}
