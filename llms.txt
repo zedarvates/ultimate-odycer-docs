@@ -17,6 +17,7 @@ French:
 - docs/fr/how-to/measure-npc-capacity.md
 - docs/fr/reference/metrics-schema.md
 - docs/fr/explanation/hybrid-architecture.md
+- docs/fr/explanation/design-philosophy.md
 
 English:
 - docs/en/tutorials/first-npc-benchmark.md
@@ -25,6 +26,7 @@ English:
 - docs/en/how-to/measure-npc-capacity.md
 - docs/en/reference/metrics-schema.md
 - docs/en/explanation/hybrid-architecture.md
+- docs/en/explanation/design-philosophy.md
 
 Safety boundary:
 - Preserve metric status labels.

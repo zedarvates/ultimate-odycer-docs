@@ -29,6 +29,7 @@ Start with the [first NPC benchmark tutorial](docs/en/tutorials/first-npc-benchm
 - How-to: [measure NPC capacity](docs/en/how-to/measure-npc-capacity.md)
 - Reference: [metrics schema](docs/en/reference/metrics-schema.md)
 - Explanation: [hybrid architecture](docs/en/explanation/hybrid-architecture.md)
+- Explanation: [our design philosophy](docs/en/explanation/design-philosophy.md)
 
 ## Français
 
@@ -40,6 +41,7 @@ Commencez par le [tutoriel du premier banc PNJ](docs/fr/tutorials/first-npc-benc
 - Guide : [mesurer la capacité PNJ](docs/fr/how-to/measure-npc-capacity.md)
 - Référence : [schéma des métriques](docs/fr/reference/metrics-schema.md)
 - Explication : [architecture hybride](docs/fr/explanation/hybrid-architecture.md)
+- Explication : [notre philosophie de conception](docs/fr/explanation/design-philosophy.md)
 
 ## Links
 
