@@ -46,6 +46,7 @@ Commencez par le [tutoriel du premier banc PNJ](docs/fr/tutorials/first-npc-benc
 ## Links
 
 - [Ultimate Odycer website](https://ultimateodycer.com)
+- [Discord](https://discord.gg/Mdcdjb6bU)
 - [JSON template registry](https://github.com/zedarvates/ultod-json-template-registry)
 
 ## License
