@@ -2,12 +2,20 @@
   "schema_version": "documentation-index-v1",
   "status": "public",
   "authority": "documentation_only",
-  "languages": ["fr", "en"],
+  "languages": [
+    "fr",
+    "en"
+  ],
   "licenses": {
     "documentation": "CC-BY-4.0",
     "scripts_schemas_examples": "MIT"
   },
-  "metric_statuses": ["observed", "estimated", "decision", "unavailable"],
+  "metric_statuses": [
+    "observed",
+    "estimated",
+    "decision",
+    "unavailable"
+  ],
   "documents": [
     {
       "id": "first-npc-benchmark-fr",
@@ -115,6 +123,204 @@
       "audience": "independent developer",
       "goal": "understand server, LLM, and ESP32 boundaries",
       "path": "docs/en/explanation/hybrid-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "start-project-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "independent developer",
+      "goal": "start from public repositories without claiming a playable client",
+      "path": "docs/fr/tutorials/start-an-ultimate-odycer-project.md",
+      "mutating": false
+    },
+    {
+      "id": "start-project-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "independent developer",
+      "goal": "start from public repositories without claiming a playable client",
+      "path": "docs/en/tutorials/start-an-ultimate-odycer-project.md",
+      "mutating": false
+    },
+    {
+      "id": "use-json-templates-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "content author",
+      "goal": "consume or version JSON templates without inventing compatibility",
+      "path": "docs/fr/how-to/use-json-templates.md",
+      "mutating": false
+    },
+    {
+      "id": "use-json-templates-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "content author",
+      "goal": "consume or version JSON templates without inventing compatibility",
+      "path": "docs/en/how-to/use-json-templates.md",
+      "mutating": false
+    },
+    {
+      "id": "author-world-content-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "content author",
+      "goal": "describe a world, biome, NPC, or item as public template data",
+      "path": "docs/fr/how-to/author-world-content.md",
+      "mutating": false
+    },
+    {
+      "id": "author-world-content-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "content author",
+      "goal": "describe a world, biome, NPC, or item as public template data",
+      "path": "docs/en/how-to/author-world-content.md",
+      "mutating": false
+    },
+    {
+      "id": "operate-home-lab-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "home-lab operator",
+      "goal": "operate a private lab without claiming production",
+      "path": "docs/fr/how-to/operate-a-home-lab.md",
+      "mutating": false
+    },
+    {
+      "id": "operate-home-lab-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "home-lab operator",
+      "goal": "operate a private lab without claiming production",
+      "path": "docs/en/how-to/operate-a-home-lab.md",
+      "mutating": false
+    },
+    {
+      "id": "network-contract-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "client or tool author",
+      "goal": "apply public network authority rules without unpublished opcodes",
+      "path": "docs/fr/reference/network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "network-contract-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "client or tool author",
+      "goal": "apply public network authority rules without unpublished opcodes",
+      "path": "docs/en/reference/network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "gameplay-systems-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "content author",
+      "goal": "map public gameplay systems to JSON template families",
+      "path": "docs/fr/reference/gameplay-systems.md",
+      "mutating": false
+    },
+    {
+      "id": "gameplay-systems-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "content author",
+      "goal": "map public gameplay systems to JSON template families",
+      "path": "docs/en/reference/gameplay-systems.md",
+      "mutating": false
+    },
+    {
+      "id": "ecosystem-overview-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand public repositories, maturity, and unpublished boundaries",
+      "path": "docs/fr/explanation/ecosystem-overview.md",
+      "mutating": false
+    },
+    {
+      "id": "ecosystem-overview-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand public repositories, maturity, and unpublished boundaries",
+      "path": "docs/en/explanation/ecosystem-overview.md",
+      "mutating": false
+    },
+    {
+      "id": "architecture-overview-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand authority, zones, shards, and public pipelines",
+      "path": "docs/fr/explanation/architecture-overview.md",
+      "mutating": false
+    },
+    {
+      "id": "architecture-overview-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand authority, zones, shards, and public pipelines",
+      "path": "docs/en/explanation/architecture-overview.md",
+      "mutating": false
+    },
+    {
+      "id": "server-architecture-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand the unpublished Zig server public boundary",
+      "path": "docs/fr/explanation/server-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "server-architecture-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "independent developer",
+      "goal": "understand the unpublished Zig server public boundary",
+      "path": "docs/en/explanation/server-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "client-architecture-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "client author",
+      "goal": "understand documentation-only client starters and presentation limits",
+      "path": "docs/fr/explanation/client-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "client-architecture-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "client author",
+      "goal": "understand documentation-only client starters and presentation limits",
+      "path": "docs/en/explanation/client-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "npc-agent-pipeline-fr",
+      "language": "fr",
+      "type": "explanation",
+      "audience": "home-lab operator",
+      "goal": "understand local-first NPC behaviour, LLM bounds, and fallbacks",
+      "path": "docs/fr/explanation/npc-agent-pipeline.md",
+      "mutating": false
+    },
+    {
+      "id": "npc-agent-pipeline-en",
+      "language": "en",
+      "type": "explanation",
+      "audience": "home-lab operator",
+      "goal": "understand local-first NPC behaviour, LLM bounds, and fallbacks",
+      "path": "docs/en/explanation/npc-agent-pipeline.md",
       "mutating": false
     }
   ]
