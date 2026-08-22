@@ -6,7 +6,7 @@
 
 **Ultimate Odycer Open Ecosystem** - Local-first, server-authoritative, production-ready game foundations.
 
-[Visit ultimateodycer.com](https://ultimateodycer.com) · [Star this repository](https://github.com/zedarvates/ultimate-odycer-docs/stargazers)
+[Visit ultimateodycer.com](https://ultimateodycer.com) · [YouTube](https://www.youtube.com/@ProUltimateServeur) · [Star this repository](https://github.com/zedarvates/ultimate-odycer-docs/stargazers)
 
 </div>
 
@@ -73,6 +73,7 @@ Commencez par la [vue d'ensemble de l'écosystème](docs/fr/explanation/ecosyste
 
 - [Ultimate Odycer website](https://ultimateodycer.com)
 - [Discord](https://discord.gg/Mdcdjb6bU)
+- [YouTube](https://www.youtube.com/@ProUltimateServeur)
 - [JSON template registry](https://github.com/zedarvates/ultod-json-template-registry)
 - [Godot VR client starter](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template)
 - [Godot Classic 3D client starter](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template)
