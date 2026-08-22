@@ -59,14 +59,37 @@ incorrect.
   pour la sécurité ;
 - les exemples de documentation n'utilisent que des noms synthétiques.
 
-JSON illustratif, pas un schéma publié :
+## Fixture de documentation versionné
+
+La source structurée est
+[`schemas/network-intent-v1.schema.json`](../../../schemas/network-intent-v1.schema.json).
+Un exemple synthétique se trouve dans
+[`examples/network/synthetic-talk-intent.json`](../../../examples/network/synthetic-talk-intent.json).
+
+Ce fixture est `estimated`. Il enregistre la famille, l'intention, des
+identifiants d'acteurs synthétiques, une séquence client et une clé
+d'idempotence. Ce n'est pas un paquet capturé ni un opcode publié.
+
+Les consommateurs doivent :
+
+- refuser une `schema_version` inconnue ;
+- refuser `hp`, `gold`, `damage`, `speed`, dons, opcodes, hôtes et ports ;
+- n'utiliser que des identifiants `*_demo_*` ;
+- traiter une forme JSON identique comme de la documentation, pas comme une
+  compatibilité serveur.
+
+Validez l'exemple avec les contrôles du dépôt. L'assistant dédié est
+`scripts/network_intent.py`.
+
+JSON illustratif, désormais appuyé par le fixture v1 :
 
 ```json
 {
-  "family": "interact",
+  "schema_version": "network-intent-v1",
+  "family": "talk",
   "intent": "talk",
   "actor_id": "player_demo_01",
-  "target_id": "npc_gatekeeper_01",
+  "target_id": "npc_demo_gatekeeper_01",
   "client_seq": 42
 }
 ```

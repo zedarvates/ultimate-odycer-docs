@@ -24,6 +24,8 @@ REQUIRED_PATHS = (
     "llms.txt",
     "schemas/npc-benchmark-v1.schema.json",
     "examples/benchmark-results/estimated-esp32-s3.json",
+    "schemas/network-intent-v1.schema.json",
+    "examples/network/synthetic-talk-intent.json",
     "docs/llm/README.md",
     "docs/llm/context-index.json",
 )
@@ -210,6 +212,26 @@ def manifest_errors() -> list[str]:
     return errors
 
 
+def network_example_errors() -> list[str]:
+    errors: list[str] = []
+    try:
+        from scripts.network_intent import NetworkIntentError, load_example
+    except ModuleNotFoundError:
+        from network_intent import NetworkIntentError, load_example
+
+
+    try:
+        example = load_example()
+    except NetworkIntentError as exc:
+        return [f"network example is invalid: {exc}"]
+    if example.get("status") != "estimated":
+        errors.append("network example must stay estimated until a protocol is published")
+    if example.get("family") != "talk" or example.get("intent") != "talk":
+        errors.append("network example must remain a synthetic talk intent")
+    if example.get("transport", {}).get("kind") != "documentation_fixture":
+        errors.append("network example must declare a documentation fixture")
+    return errors
+
 def license_errors() -> list[str]:
     errors: list[str] = []
     license_map = (ROOT / "LICENSE.md").read_text(encoding="utf-8")
@@ -248,6 +270,7 @@ def validate() -> list[str]:
     errors.extend(forbidden_content_errors())
     errors.extend(llm_index_errors())
     errors.extend(metric_example_errors())
+    errors.extend(network_example_errors())
     errors.extend(license_errors())
     errors.extend(manifest_errors())
     return sorted(set(errors))
