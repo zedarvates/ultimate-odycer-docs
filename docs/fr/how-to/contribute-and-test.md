@@ -30,6 +30,8 @@ starter client
   lire SCOPE, ROADMAP et compatibilité serveur ; pas de projet caché
 voie PNJ home lab
   capacité scénario ou mesurée, inférence en boucle locale, repli fail-closed
+fixture réseau
+  valider schemas/network-intent-v1.schema.json contre l'exemple talk synthétique
 suivi des retours
   issue publique avec reproduction synthétique seulement
 ```

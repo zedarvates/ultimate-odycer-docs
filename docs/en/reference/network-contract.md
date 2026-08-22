@@ -1,9 +1,9 @@
 # Network contract
 
-Status: public authority contract. Canonical message identifiers, binary
-layouts, and version numbers are `unavailable` until a protocol publication
-gate passes. This page is enough to design a client or tool without cloning
-the unpublished server.
+Status: public authority contract plus a versioned documentation fixture.
+Canonical message identifiers, binary layouts, and live version numbers remain
+`unavailable` until a protocol publication gate passes. This page is enough to
+design a client or tool without cloning the unpublished server.
 
 ## Tick and coherence model
 
@@ -54,14 +54,36 @@ Inventing a binary packet from this table would be incorrect.
 - unknown fields must be ignored for presentation and rejected for security;
 - documentation examples use synthetic names only.
 
-Illustrative JSON, not a published schema:
+## Versioned documentation fixture
+
+The structured source is
+[`schemas/network-intent-v1.schema.json`](../../../schemas/network-intent-v1.schema.json).
+A synthetic example lives at
+[`examples/network/synthetic-talk-intent.json`](../../../examples/network/synthetic-talk-intent.json).
+
+This fixture is `estimated`. It records family, intent, synthetic actor ids,
+a client sequence, and an idempotency key. It is not a captured packet and
+not a published opcode.
+
+Consumers must:
+
+- reject unknown `schema_version` values;
+- reject `hp`, `gold`, `damage`, `speed`, grants, opcodes, hosts, and ports;
+- use only `*_demo_*` identifiers;
+- treat a matching JSON shape as documentation, not server compatibility.
+
+Validate the example with the repository checks. A dedicated helper is
+`scripts/network_intent.py`.
+
+Illustrative JSON, now backed by the v1 fixture:
 
 ```json
 {
-  "family": "interact",
+  "schema_version": "network-intent-v1",
+  "family": "talk",
   "intent": "talk",
   "actor_id": "player_demo_01",
-  "target_id": "npc_gatekeeper_01",
+  "target_id": "npc_demo_gatekeeper_01",
   "client_seq": 42
 }
 ```

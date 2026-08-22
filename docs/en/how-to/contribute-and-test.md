@@ -28,6 +28,8 @@ client starter
   read SCOPE, ROADMAP, and server-compatibility; no hidden project
 home-lab NPC path
   synthetic or measured capacity, loopback inference, fail-closed fallback
+network fixture
+  validate schemas/network-intent-v1.schema.json against the synthetic talk example
 feedback tracker
   public issue with synthetic reproduction only
 ```
