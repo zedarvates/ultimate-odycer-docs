@@ -82,6 +82,7 @@ Clients never become authoritative. A local LLM never becomes a rules engine.
 | Author a world, biome, NPC, or item | [Author world content](../how-to/author-world-content.md) |
 | Size a home-lab NPC setup | [First NPC benchmark](../tutorials/first-npc-benchmark.md) |
 | Report a public issue | [ultimate-odycer-feedback](https://github.com/zedarvates/ultimate-odycer-feedback) |
+| Contribute or test the public pieces | [Contribute and test](../how-to/contribute-and-test.md) |
 
 Continue with the [architecture overview](architecture-overview.md) for diagrams
 and the [start a project tutorial](../tutorials/start-an-ultimate-odycer-project.md)
