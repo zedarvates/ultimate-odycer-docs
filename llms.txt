@@ -19,6 +19,7 @@ French:
 - docs/fr/how-to/use-json-templates.md
 - docs/fr/how-to/author-world-content.md
 - docs/fr/how-to/operate-a-home-lab.md
+- docs/fr/how-to/contribute-and-test.md
 - docs/fr/reference/metrics-schema.md
 - docs/fr/reference/network-contract.md
 - docs/fr/reference/gameplay-systems.md
@@ -39,6 +40,7 @@ English:
 - docs/en/how-to/use-json-templates.md
 - docs/en/how-to/author-world-content.md
 - docs/en/how-to/operate-a-home-lab.md
+- docs/en/how-to/contribute-and-test.md
 - docs/en/reference/metrics-schema.md
 - docs/en/reference/network-contract.md
 - docs/en/reference/gameplay-systems.md

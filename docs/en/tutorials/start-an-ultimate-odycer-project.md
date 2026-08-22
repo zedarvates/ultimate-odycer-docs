@@ -64,5 +64,6 @@ The tutorial is complete when you can point to the public repositories, name
 the unpublished server boundary, and refuse a compatibility claim that has
 no evidence.
 
-Next: [architecture overview](../explanation/architecture-overview.md) or
-[author world content](../how-to/author-world-content.md).
+Next: [architecture overview](../explanation/architecture-overview.md),
+[author world content](../how-to/author-world-content.md), or
+[contribute and test](../how-to/contribute-and-test.md).

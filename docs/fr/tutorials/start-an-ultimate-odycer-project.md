@@ -67,5 +67,6 @@ Le tutoriel est terminé lorsque vous pouvez montrer les dépôts publics,
 nommer la frontière serveur non publiée, et refuser une revendication de
 compatibilité sans preuve.
 
-Suite : [vue d'architecture](../explanation/architecture-overview.md) ou
-[créer du contenu](../how-to/author-world-content.md).
+Suite : [vue d'architecture](../explanation/architecture-overview.md),
+[créer du contenu](../how-to/author-world-content.md), ou
+[contribuer et tester](../how-to/contribute-and-test.md).

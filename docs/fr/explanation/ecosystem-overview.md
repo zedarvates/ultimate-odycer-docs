@@ -84,6 +84,7 @@ règles.
 | Créer un monde, un biome, un PNJ ou un objet | [Créer du contenu](../how-to/author-world-content.md) |
 | Dimensionner un home lab PNJ | [Premier banc PNJ](../tutorials/first-npc-benchmark.md) |
 | Signaler un problème public | [ultimate-odycer-feedback](https://github.com/zedarvates/ultimate-odycer-feedback) |
+| Contribuer ou tester les pièces publiques | [Contribuer et tester](../how-to/contribute-and-test.md) |
 
 Poursuivez avec la [vue d'architecture](architecture-overview.md) pour les
 diagrammes et le [tutoriel de démarrage](../tutorials/start-an-ultimate-odycer-project.md)

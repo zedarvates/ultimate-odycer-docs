@@ -322,6 +322,24 @@
       "goal": "understand local-first NPC behaviour, LLM bounds, and fallbacks",
       "path": "docs/en/explanation/npc-agent-pipeline.md",
       "mutating": false
+    },
+    {
+      "id": "contribute-and-test-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "independent developer",
+      "goal": "contribute to and test public repositories without inventing compatibility",
+      "path": "docs/fr/how-to/contribute-and-test.md",
+      "mutating": false
+    },
+    {
+      "id": "contribute-and-test-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "independent developer",
+      "goal": "contribute to and test public repositories without inventing compatibility",
+      "path": "docs/en/how-to/contribute-and-test.md",
+      "mutating": false
     }
   ]
 }
