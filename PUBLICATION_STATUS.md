@@ -24,5 +24,9 @@ Future changes must pass automated validation, secret scanning, manifest
 regeneration, and fresh-copy verification before publication.
 
 Passing repository validation proves only the structure and examples in these docs.
-It does not certify a production server, an ESP32 firmware, an LLM model, or the
-performance of any hardware.
+It does not certify a production server, an ESP32 firmware, an LLM model, a playable
+client, a public network protocol, or the performance of any hardware.
+
+Ecosystem architecture pages document public boundaries and contracts. They do not
+publish proprietary Zig server source, live endpoints, or certified client/server
+compatibility.

@@ -1,8 +1,8 @@
-# Ultimate Odycer Home Lab Docs
+# Ultimate Odycer Docs
 
 Status: public documentation repository.
 Authority: documentation only; no device, server, purchase, or publication authority.
-Audience: budget-conscious independent developers, makers, and home-lab hobbyists.
+Audience: independent developers, makers, and home-lab hobbyists.
 Languages: French and English.
 Licenses: documentation CC-BY-4.0; scripts, schemas, and examples MIT.
 
@@ -12,24 +12,47 @@ Machine-readable index:
 
 French:
 - docs/fr/tutorials/first-npc-benchmark.md
+- docs/fr/tutorials/start-an-ultimate-odycer-project.md
 - docs/fr/how-to/choose-hardware.md
 - docs/fr/how-to/buy-refurbished-business-pc.md
 - docs/fr/how-to/measure-npc-capacity.md
+- docs/fr/how-to/use-json-templates.md
+- docs/fr/how-to/author-world-content.md
+- docs/fr/how-to/operate-a-home-lab.md
 - docs/fr/reference/metrics-schema.md
+- docs/fr/reference/network-contract.md
+- docs/fr/reference/gameplay-systems.md
 - docs/fr/explanation/hybrid-architecture.md
 - docs/fr/explanation/design-philosophy.md
+- docs/fr/explanation/ecosystem-overview.md
+- docs/fr/explanation/architecture-overview.md
+- docs/fr/explanation/server-architecture.md
+- docs/fr/explanation/client-architecture.md
+- docs/fr/explanation/npc-agent-pipeline.md
 
 English:
 - docs/en/tutorials/first-npc-benchmark.md
+- docs/en/tutorials/start-an-ultimate-odycer-project.md
 - docs/en/how-to/choose-hardware.md
 - docs/en/how-to/buy-refurbished-business-pc.md
 - docs/en/how-to/measure-npc-capacity.md
+- docs/en/how-to/use-json-templates.md
+- docs/en/how-to/author-world-content.md
+- docs/en/how-to/operate-a-home-lab.md
 - docs/en/reference/metrics-schema.md
+- docs/en/reference/network-contract.md
+- docs/en/reference/gameplay-systems.md
 - docs/en/explanation/hybrid-architecture.md
 - docs/en/explanation/design-philosophy.md
+- docs/en/explanation/ecosystem-overview.md
+- docs/en/explanation/architecture-overview.md
+- docs/en/explanation/server-architecture.md
+- docs/en/explanation/client-architecture.md
+- docs/en/explanation/npc-agent-pipeline.md
 
 Safety boundary:
 - Preserve metric status labels.
 - Cite source paths and limitations.
 - Treat missing measurements as unavailable.
+- Do not invent unpublished protocol opcodes or production endpoints.
 - Ask the operator before mutation, network exposure, purchase, or publication.
