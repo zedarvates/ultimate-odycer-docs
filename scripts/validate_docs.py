@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 METRIC_STATUSES = {"observed", "estimated", "decision", "unavailable"}
 COMPONENT_STATUSES = {"available", "under_construction", "planned", "unavailable"}
 REQUIRED_PATHS = (
+    "requirements-docs.txt",
+    "mkdocs.yml",
     "README.md",
     "PUBLICATION_STATUS.md",
     "SECURITY.md",
@@ -29,6 +31,9 @@ REQUIRED_PATHS = (
     "examples/local-setup-catalog.json",
     "docs/llm/README.md",
     "docs/llm/context-index.json",
+    "docs/index.md",
+    "docs/assets/stylesheets/ultimate-odycer-docs.css",
+    "scripts/build_static_docs.py",
 )
 MARKDOWN_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 FORBIDDEN_PATTERNS = (
@@ -45,6 +50,7 @@ FORBIDDEN_PATTERNS = (
 )
 MANIFEST_EXCLUDED_PARTS = {
     ".git",
+    ".worktrees",
     "__pycache__",
     ".pytest_cache",
     ".venv",
@@ -68,6 +74,10 @@ def bilingual_errors() -> list[str]:
 def markdown_link_errors() -> list[str]:
     errors: list[str] = []
     for path in ROOT.rglob("*.md"):
+        if any(
+            part in MANIFEST_EXCLUDED_PARTS for part in path.relative_to(ROOT).parts
+        ):
+            continue
         text = path.read_text(encoding="utf-8")
         for raw_target in MARKDOWN_LINK.findall(text):
             target = raw_target.split("#", 1)[0]
@@ -92,7 +102,14 @@ def forbidden_content_errors() -> list[str]:
     errors: list[str] = []
     text_extensions = {".md", ".txt", ".json", ".py"}
     for path in ROOT.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in text_extensions:
+        if (
+            not path.is_file()
+            or path.suffix.lower() not in text_extensions
+            or any(
+                part in MANIFEST_EXCLUDED_PARTS
+                for part in path.relative_to(ROOT).parts
+            )
+        ):
             continue
         if path.resolve() == Path(__file__).resolve():
             continue
@@ -296,7 +313,9 @@ def manifest_errors() -> list[str]:
         for path in ROOT.rglob("*")
         if path.is_file()
         and path != manifest_path
-        and not any(part in MANIFEST_EXCLUDED_PARTS for part in path.parts)
+        and not any(
+            part in MANIFEST_EXCLUDED_PARTS for part in path.relative_to(ROOT).parts
+        )
     }
     missing = set(included) - set(declared)
     extra = set(declared) - set(included)

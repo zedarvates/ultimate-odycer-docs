@@ -8,7 +8,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "MANIFEST.sha256"
-EXCLUDED_PARTS = {".git", "__pycache__", ".pytest_cache", ".venv", "build", "dist"}
+EXCLUDED_PARTS = {
+    ".git",
+    ".worktrees",
+    "__pycache__",
+    ".pytest_cache",
+    ".venv",
+    "build",
+    "dist",
+}
 
 
 def included_files() -> list[Path]:
@@ -18,7 +26,9 @@ def included_files() -> list[Path]:
             for path in ROOT.rglob("*")
             if path.is_file()
             and path != MANIFEST
-            and not any(part in EXCLUDED_PARTS for part in path.parts)
+            and not any(
+                part in EXCLUDED_PARTS for part in path.relative_to(ROOT).parts
+            )
         ),
         key=lambda path: path.relative_to(ROOT).as_posix(),
     )
