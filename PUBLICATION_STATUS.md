@@ -20,9 +20,27 @@ production data, commercial components, credentials, or any running service.
 - Gitleaks 8.30.0 directory scan: passed after archive-checksum verification and
   a successful synthetic-canary detection test.
 
+## Local setup documentation snapshot
+
+- bilingual beginner journey, Windows path, Linux variant, PostgreSQL backup,
+  restore check, Godot connection, troubleshooting, advanced index, and LLM
+  prompts: source validation passed;
+- machine-readable engine, template, platform, topology, component, and
+  estimated hardware-profile catalog: contract validation passed;
+- deterministic offline HTML generation: passed with local runtime assets,
+  internal-link checks, root schema/example inclusion, and a SHA-256 build
+  manifest;
+- current public server release: `unavailable`;
+- Tools Suite and optional creation modules: `under_construction`.
+
+This snapshot does not prove that the HTML has been deployed to the Web portal
+or embedded in a server ZIP. Those are separate integration gates.
+
 Future changes must pass automated validation, secret scanning, manifest
 regeneration, and fresh-copy verification before publication.
 
-Passing repository validation proves only the structure and examples in these docs.
-It does not certify a production server, an ESP32 firmware, an LLM model, or the
-performance of any hardware.
+Passing repository validation proves only the structure, generated offline
+documentation, and examples in these docs. It does not certify a public or
+production server, a playable Godot client, PostgreSQL runtime behavior, a Tools
+Suite module, an ESP32 firmware, an LLM model, or the performance of any
+hardware.

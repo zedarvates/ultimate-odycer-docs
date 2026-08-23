@@ -21,8 +21,12 @@ Bilingual, local-first documentation for independent developers, makers, and hom
 
 ## English
 
-Start with the [first NPC benchmark tutorial](docs/en/tutorials/first-npc-benchmark.md).
+Start with [create your first local world](docs/en/tutorials/create-first-local-world.md).
 
+- Tutorial: [create your first local world](docs/en/tutorials/create-first-local-world.md)
+- Reference: [engine, template, and world matrix](docs/en/reference/engine-template-world-matrix.md)
+- How-to: [install the local server on Windows](docs/en/how-to/install-local-server-windows.md)
+- Reference: [safe LLM prompts for continuing setup](docs/en/reference/llm-local-setup-prompts.md)
 - Tutorial: [run your first NPC benchmark](docs/en/tutorials/first-npc-benchmark.md)
 - How-to: [choose hardware](docs/en/how-to/choose-hardware.md)
 - How-to: [buy a refurbished business PC](docs/en/how-to/buy-refurbished-business-pc.md)
@@ -33,8 +37,12 @@ Start with the [first NPC benchmark tutorial](docs/en/tutorials/first-npc-benchm
 
 ## Français
 
-Commencez par le [tutoriel du premier banc PNJ](docs/fr/tutorials/first-npc-benchmark.md).
+Commencez par [créer votre premier monde local](docs/fr/tutorials/create-first-local-world.md).
 
+- Tutoriel : [créer son premier monde local](docs/fr/tutorials/create-first-local-world.md)
+- Référence : [matrice des moteurs, templates et mondes](docs/fr/reference/engine-template-world-matrix.md)
+- Guide : [installer le serveur local sous Windows](docs/fr/how-to/install-local-server-windows.md)
+- Référence : [prompts LM sûrs pour poursuivre](docs/fr/reference/llm-local-setup-prompts.md)
 - Tutoriel : [réaliser un premier banc PNJ](docs/fr/tutorials/first-npc-benchmark.md)
 - Guide : [choisir le matériel](docs/fr/how-to/choose-hardware.md)
 - Guide : [acheter un PC professionnel reconditionné](docs/fr/how-to/buy-refurbished-business-pc.md)
@@ -43,9 +51,21 @@ Commencez par le [tutoriel du premier banc PNJ](docs/fr/tutorials/first-npc-benc
 - Explication : [architecture hybride](docs/fr/explanation/hybrid-architecture.md)
 - Explication : [notre philosophie de conception](docs/fr/explanation/design-philosophy.md)
 
+## Current component status
+
+- Public server archive: `unavailable`; check the [official releases page](https://www.ultimateodycer.com/releases/).
+- Godot, Three.js, and FoveaCore client templates: `under_construction`.
+- Open-city Godot crime RPG template: `planned`.
+- Tools Suite and optional creation modules: `under_construction`.
+
+The repository can generate a checksummed, self-contained HTML bundle. That
+build does not prove a server release, a playable client, a Web deployment, or
+inclusion in a downloadable ZIP.
+
 ## Links
 
 - [Ultimate Odycer website](https://ultimateodycer.com)
+- [Official server releases](https://www.ultimateodycer.com/releases/)
 - [Discord](https://discord.gg/Mdcdjb6bU)
 - [JSON template registry](https://github.com/zedarvates/ultod-json-template-registry)
 
