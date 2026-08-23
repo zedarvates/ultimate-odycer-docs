@@ -1,18 +1,18 @@
 # Architecture client
 
-Statut : `decision` pour les starters publics visés ; aucun client jouable
-n'est publié. Les dépôts Godot VR, Godot Classic 3D, Three.js 2.5D et
-FoveaCore contiennent aujourd'hui périmètre, feuille de route et portes de
-compatibilité, pas des projets de jeu.
+Statut : `decision` pour les starters de présentation publics. Les dépôts
+Godot VR, Godot Classic 3D, Three.js 2.5D et FoveaCore fournissent des shells
+de présentation originaux minimaux pour exploration locale, tandis que les
+sockets serveur live restent non validés.
 
 ## Coques clientes visées
 
 | Profil | Dépôt public | Contenu actuel |
 |---|---|---|
-| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | documentation seulement |
-| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | documentation seulement |
-| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | documentation seulement |
-| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | documentation seulement |
+| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | shell de présentation OpenXR minimal (Godot 4.3+) |
+| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | shell de présentation 3D bureau minimal (Godot 4.3+) |
+| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | application web isométrique minimale (Vite + TypeScript) |
+| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | shell de présentation FPS dual-mode minimal (Godot 4.3+) |
 
 Le code client Ultimate Odycer existant ne doit pas être importé sans audit
 d'extraction publique fichier par fichier.

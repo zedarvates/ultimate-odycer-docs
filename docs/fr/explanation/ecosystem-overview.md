@@ -33,10 +33,10 @@ Une preuve manquante est `unavailable`, pas un support impliqué.
 |---|---|---|---|
 | [ultimate-odycer-docs](https://github.com/zedarvates/ultimate-odycer-docs) | Hub de documentation publique | Public, bilingue, validé pour la structure | Documentation seulement |
 | [ultod-json-template-registry](https://github.com/zedarvates/ultod-json-template-registry) | Modèles et schémas JSON versionnés | Instantanés expérimentaux en `0.1.0` | Listes de compatibilité vides tant qu'elles ne sont pas prouvées |
-| [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | Futur starter Godot VR MMORPG | Fondation documentation seulement | Alignement serveur bloqué |
-| [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | Futur starter Godot Classic 3D | Fondation documentation seulement | Alignement serveur bloqué |
-| [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | Futur starter Three.js 2.5D | Fondation documentation seulement | Alignement serveur bloqué |
-| [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | Futur starter FoveaCore FPS-RPG | Fondation documentation seulement | Alignement serveur bloqué |
+| [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | Starter Godot VR MMORPG | Shell de présentation minimal (OpenXR) | Alignement serveur bloqué |
+| [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | Starter Godot Classic 3D | Shell de présentation minimal (Desktop 3D) | Alignement serveur bloqué |
+| [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | Starter Three.js 2.5D | Shell de présentation Web minimal (Isométrique) | Alignement serveur bloqué |
+| [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | Starter FoveaCore FPS-RPG | Shell de présentation minimal (FPS Dual-mode) | Alignement serveur bloqué |
 | [ultimate-odycer-feedback](https://github.com/zedarvates/ultimate-odycer-feedback) | Suivi public des bugs et idées | Issues publiques, sans code | Pas un composant runtime |
 
 Les composants privés ou non publiés, dont le serveur Zig canonique, les
