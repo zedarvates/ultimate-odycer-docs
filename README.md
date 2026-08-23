@@ -79,6 +79,7 @@ Commencez par la [vue d'ensemble de l'écosystème](docs/fr/explanation/ecosyste
 - [Godot Classic 3D client starter](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template)
 - [Three.js 2.5D client starter](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template)
 - [FoveaCore FPS-RPG client starter](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template)
+- [Three.js NetherCore ARPG client starter](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template)
 - [Public feedback tracker](https://github.com/zedarvates/ultimate-odycer-feedback)
 
 ## License
