@@ -37,6 +37,7 @@ Une preuve manquante est `unavailable`, pas un support impliqué.
 | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | Starter Godot Classic 3D | Shell de présentation minimal (Desktop 3D) | Alignement serveur bloqué |
 | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | Starter Three.js 2.5D | Shell de présentation Web minimal (Isométrique) | Alignement serveur bloqué |
 | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | Starter FoveaCore FPS-RPG | Shell de présentation minimal (FPS Dual-mode) | Alignement serveur bloqué |
+| [ultod-client-threejs-nethercore-arpg-template](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template) | Starter Three.js NetherCore ARPG | Shell de présentation minimal (ARPG / Hack 'n' Slash sombre) | Alignement serveur bloqué |
 | [ultimate-odycer-feedback](https://github.com/zedarvates/ultimate-odycer-feedback) | Suivi public des bugs et idées | Issues publiques, sans code | Pas un composant runtime |
 
 Les composants privés ou non publiés, dont le serveur Zig canonique, les

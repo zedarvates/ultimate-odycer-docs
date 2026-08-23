@@ -1,7 +1,7 @@
 # Architecture client
 
 Statut : `decision` pour les starters de présentation publics. Les dépôts
-Godot VR, Godot Classic 3D, Three.js 2.5D et FoveaCore fournissent des shells
+Godot VR, Godot Classic 3D, Three.js 2.5D, FoveaCore et NetherCore ARPG fournissent des shells
 de présentation originaux minimaux pour exploration locale, tandis que les
 sockets serveur live restent non validés.
 
@@ -13,6 +13,7 @@ sockets serveur live restent non validés.
 | Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | shell de présentation 3D bureau minimal (Godot 4.3+) |
 | Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | application web isométrique minimale (Vite + TypeScript) |
 | FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | shell de présentation FPS dual-mode minimal (Godot 4.3+) |
+| NetherCore ARPG (Three.js) | [ultod-client-threejs-nethercore-arpg-template](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template) | application web ARPG / Hack 'n' Slash sombre minimale (Vite + TypeScript) |
 
 Le code client Ultimate Odycer existant ne doit pas être importé sans audit
 d'extraction publique fichier par fichier.
