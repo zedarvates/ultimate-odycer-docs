@@ -11,6 +11,16 @@ Machine-readable index:
 - docs/llm/README.md
 
 French:
+- docs/fr/tutorials/create-first-local-world.md
+- docs/fr/reference/engine-template-world-matrix.md
+- docs/fr/how-to/install-local-server-windows.md
+- docs/fr/how-to/install-local-server-linux.md
+- docs/fr/how-to/backup-and-test-restore-postgresql.md
+- docs/fr/how-to/connect-godot-template.md
+- docs/fr/how-to/troubleshoot-local-setup.md
+- docs/fr/reference/local-setup-acceptance-checklist.md
+- docs/fr/reference/local-setup-advanced-index.md
+- docs/fr/reference/llm-local-setup-prompts.md
 - docs/fr/tutorials/first-npc-benchmark.md
 - docs/fr/how-to/choose-hardware.md
 - docs/fr/how-to/buy-refurbished-business-pc.md
@@ -20,6 +30,16 @@ French:
 - docs/fr/explanation/design-philosophy.md
 
 English:
+- docs/en/tutorials/create-first-local-world.md
+- docs/en/reference/engine-template-world-matrix.md
+- docs/en/how-to/install-local-server-windows.md
+- docs/en/how-to/install-local-server-linux.md
+- docs/en/how-to/backup-and-test-restore-postgresql.md
+- docs/en/how-to/connect-godot-template.md
+- docs/en/how-to/troubleshoot-local-setup.md
+- docs/en/reference/local-setup-acceptance-checklist.md
+- docs/en/reference/local-setup-advanced-index.md
+- docs/en/reference/llm-local-setup-prompts.md
 - docs/en/tutorials/first-npc-benchmark.md
 - docs/en/how-to/choose-hardware.md
 - docs/en/how-to/buy-refurbished-business-pc.md
@@ -32,4 +52,7 @@ Safety boundary:
 - Preserve metric status labels.
 - Cite source paths and limitations.
 - Treat missing measurements as unavailable.
+- Preserve component availability states from examples/local-setup-catalog.json.
+- Stop when the official releases page lists no verified archive.
+- Never request passwords, JWT secrets, private keys, database dumps, or player data.
 - Ask the operator before mutation, network exposure, purchase, or publication.

@@ -11,6 +11,15 @@ from scripts.validate_docs import validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
+LOCAL_SETUP_DOCUMENTS = (
+    "tutorials/create-first-local-world.md",
+    "reference/engine-template-world-matrix.md",
+    "how-to/install-local-server-windows.md",
+    "how-to/install-local-server-linux.md",
+    "how-to/backup-and-test-restore-postgresql.md",
+    "how-to/connect-godot-template.md",
+    "reference/local-setup-acceptance-checklist.md",
+)
 
 
 class PublicDocumentationTests(unittest.TestCase):
@@ -67,6 +76,12 @@ class PublicDocumentationTests(unittest.TestCase):
             "ultod-client-godot-open-city-crime-rpg-template",
             {item["repository"] for item in catalog["templates"]},
         )
+
+    def test_local_setup_has_required_bilingual_pairs(self) -> None:
+        for relative in LOCAL_SETUP_DOCUMENTS:
+            with self.subTest(relative=relative):
+                self.assertTrue((ROOT / "docs" / "fr" / relative).is_file())
+                self.assertTrue((ROOT / "docs" / "en" / relative).is_file())
 
 
 if __name__ == "__main__":
