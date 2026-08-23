@@ -33,10 +33,10 @@ Missing evidence is `unavailable`, not implied support.
 |---|---|---|---|
 | [ultimate-odycer-docs](https://github.com/zedarvates/ultimate-odycer-docs) | Public documentation hub | Public, bilingual, validated for structure | Documentation only |
 | [ultod-json-template-registry](https://github.com/zedarvates/ultod-json-template-registry) | Versioned JSON templates and schemas | Experimental snapshots at `0.1.0` | Compatibility lists are empty until proven |
-| [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | Future Godot VR MMORPG starter | Documentation-only foundation | Server alignment blocked |
-| [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | Future Godot Classic 3D starter | Documentation-only foundation | Server alignment blocked |
-| [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | Future Three.js 2.5D starter | Documentation-only foundation | Server alignment blocked |
-| [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | Future FoveaCore FPS-RPG starter | Documentation-only foundation | Server alignment blocked |
+| [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | Godot VR MMORPG starter | Minimal presentation shell (OpenXR) | Server alignment blocked |
+| [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | Godot Classic 3D starter | Minimal presentation shell (Desktop 3D) | Server alignment blocked |
+| [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | Three.js 2.5D starter | Minimal presentation web shell (Isometric) | Server alignment blocked |
+| [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | FoveaCore FPS-RPG starter | Minimal presentation shell (Dual-mode FPS) | Server alignment blocked |
 | [ultimate-odycer-feedback](https://github.com/zedarvates/ultimate-odycer-feedback) | Public bug and suggestion tracker | Public issues, no source | Not a runtime component |
 
 Private or unpublished components, including the canonical Zig server, existing

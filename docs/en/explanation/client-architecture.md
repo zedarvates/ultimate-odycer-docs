@@ -1,18 +1,18 @@
 # Client architecture
 
-Status: `decision` for intended public starters; no playable client is
-published. The Godot VR, Godot Classic 3D, Three.js 2.5D, and FoveaCore
-repositories currently contain scope, roadmap, and compatibility gates, not
-game projects.
+Status: `decision` for public presentation starters. The Godot VR, Godot
+Classic 3D, Three.js 2.5D, and FoveaCore repositories provide minimal original
+presentation shells for local inspection, while live server sockets remain not
+validated.
 
 ## Intended client shells
 
 | Profile | Public repository | Current contents |
 |---|---|---|
-| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | documentation only |
-| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | documentation only |
-| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | documentation only |
-| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | documentation only |
+| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | minimal OpenXR presentation shell (Godot 4.3+) |
+| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | minimal desktop 3D presentation shell (Godot 4.3+) |
+| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | minimal isometric presentation web app (Vite + TypeScript) |
+| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | minimal dual-mode first-person presentation shell (Godot 4.3+) |
 
 Existing Ultimate Odycer client code must not be imported without a
 file-level public extraction audit.
