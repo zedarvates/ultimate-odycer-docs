@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
+import json
 import unittest
+from pathlib import Path
 
 from scripts.npc_capacity_estimator import CapacityError, CapacityInput, estimate_capacity
 from scripts.validate_docs import validate
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class PublicDocumentationTests(unittest.TestCase):
@@ -37,6 +42,31 @@ class PublicDocumentationTests(unittest.TestCase):
                     utilization=1.1,
                 )
             )
+
+    def test_local_setup_catalog_contract(self) -> None:
+        catalog = json.loads(
+            (ROOT / "examples" / "local-setup-catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
+        self.assertEqual(
+            catalog["schema_version"],
+            "ultimate-odycer.local-setup-catalog.v1",
+        )
+        self.assertEqual(
+            catalog["release_page"],
+            "https://www.ultimateodycer.com/releases/",
+        )
+        self.assertEqual(catalog["current_server_release"], "unavailable")
+        self.assertEqual(
+            {item["id"] for item in catalog["platforms"]},
+            {"windows", "linux", "android", "macos"},
+        )
+        self.assertIn(
+            "ultod-client-godot-open-city-crime-rpg-template",
+            {item["repository"] for item in catalog["templates"]},
+        )
 
 
 if __name__ == "__main__":

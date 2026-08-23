@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 METRIC_STATUSES = {"observed", "estimated", "decision", "unavailable"}
+COMPONENT_STATUSES = {"available", "under_construction", "planned", "unavailable"}
 REQUIRED_PATHS = (
     "README.md",
     "PUBLICATION_STATUS.md",
@@ -23,7 +24,9 @@ REQUIRED_PATHS = (
     "MANIFEST.sha256",
     "llms.txt",
     "schemas/npc-benchmark-v1.schema.json",
+    "schemas/local-setup-catalog-v1.schema.json",
     "examples/benchmark-results/estimated-esp32-s3.json",
+    "examples/local-setup-catalog.json",
     "docs/llm/README.md",
     "docs/llm/context-index.json",
 )
@@ -128,6 +131,104 @@ def llm_index_errors() -> list[str]:
             target = ROOT / stripped.removeprefix("- ")
             if not target.is_file():
                 errors.append(f"llms.txt path is missing: {target.relative_to(ROOT)}")
+    return errors
+
+
+def local_setup_catalog_errors() -> list[str]:
+    errors: list[str] = []
+    catalog_path = ROOT / "examples" / "local-setup-catalog.json"
+    schema_path = ROOT / "schemas" / "local-setup-catalog-v1.schema.json"
+    try:
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return [f"invalid local setup catalog contract: {error}"]
+
+    if catalog.get("schema_version") != "ultimate-odycer.local-setup-catalog.v1":
+        errors.append("local setup catalog uses an unknown schema version")
+    if catalog.get("release_page") != "https://www.ultimateodycer.com/releases/":
+        errors.append("local setup catalog must use the official HTTPS release page")
+    if catalog.get("default_engine") != "godot":
+        errors.append("local setup catalog default engine must be Godot")
+    if catalog.get("primary_platform") != "windows":
+        errors.append("local setup catalog primary platform must be Windows")
+
+    current_release = catalog.get("current_server_release")
+    if current_release != "unavailable":
+        if not isinstance(current_release, dict):
+            errors.append("local setup current server release must be unavailable or an object")
+        else:
+            artifacts = current_release.get("artifacts")
+            if not current_release.get("version") or not isinstance(artifacts, list) or not artifacts:
+                errors.append("available local setup release requires a version and artifacts")
+            else:
+                for artifact in artifacts:
+                    if (
+                        not isinstance(artifact, dict)
+                        or not str(artifact.get("url", "")).startswith("https://")
+                        or re.fullmatch(r"[0-9a-f]{64}", str(artifact.get("sha256", "")))
+                        is None
+                    ):
+                        errors.append("local setup release artifact requires HTTPS and SHA-256")
+                        break
+
+    def unique_ids(items: object, label: str, key: str = "id") -> set[str]:
+        if not isinstance(items, list) or not items:
+            errors.append(f"local setup catalog requires {label}")
+            return set()
+        identifiers = [str(item.get(key, "")) for item in items if isinstance(item, dict)]
+        if len(identifiers) != len(items) or any(not identifier for identifier in identifiers):
+            errors.append(f"local setup catalog has invalid {label} identifiers")
+        if len(set(identifiers)) != len(identifiers):
+            errors.append(f"local setup catalog has duplicate {label} identifiers")
+        return set(identifiers)
+
+    platform_ids = unique_ids(catalog.get("platforms"), "platform")
+    if platform_ids != {"windows", "linux", "android", "macos"}:
+        errors.append("local setup platform catalog does not match the public contract")
+    engine_ids = unique_ids(catalog.get("engines"), "engine")
+    if engine_ids != {"godot", "threejs", "unity", "unreal", "foveacore"}:
+        errors.append("local setup engine catalog does not match the public contract")
+    template_ids = unique_ids(catalog.get("templates"), "template", "repository")
+    if "ultod-client-godot-open-city-crime-rpg-template" not in template_ids:
+        errors.append("local setup catalog is missing the open-city Godot template")
+    unique_ids(catalog.get("components"), "component")
+    hardware_ids = unique_ids(catalog.get("hardware_profiles"), "hardware profile")
+    if hardware_ids != {"dedicated_server", "shared_workstation", "creation_workstation"}:
+        errors.append("local setup hardware profiles do not match the public contract")
+
+    for group in ("platforms", "engines", "templates", "components"):
+        for item in catalog.get(group, []):
+            if not isinstance(item, dict) or item.get("status") not in COMPONENT_STATUSES:
+                errors.append(f"local setup catalog has invalid component status in {group}")
+                break
+    for profile in catalog.get("hardware_profiles", []):
+        if not isinstance(profile, dict) or profile.get("status") not in METRIC_STATUSES:
+            errors.append("local setup catalog has invalid hardware status")
+            break
+        for field in ("cpu_cores", "ram_gib", "free_ssd_gib"):
+            if not isinstance(profile.get(field), int) or profile[field] <= 0:
+                errors.append(f"local setup hardware profile has invalid {field}")
+                break
+
+    if set(catalog.get("topologies", [])) != {
+        "flat_map",
+        "planet",
+        "mega_planet",
+        "solar_system",
+    }:
+        errors.append("local setup topology catalog does not match the public contract")
+
+    try:
+        schema_statuses = set(schema["$defs"]["component_status"]["enum"])
+        schema_measurements = set(schema["$defs"]["measurement_status"]["enum"])
+    except (KeyError, TypeError):
+        errors.append("local setup schema is missing status vocabularies")
+    else:
+        if schema_statuses != COMPONENT_STATUSES:
+            errors.append("local setup schema component statuses are inconsistent")
+        if schema_measurements != METRIC_STATUSES:
+            errors.append("local setup schema measurement statuses are inconsistent")
     return errors
 
 
@@ -247,6 +348,7 @@ def validate() -> list[str]:
     errors.extend(markdown_link_errors())
     errors.extend(forbidden_content_errors())
     errors.extend(llm_index_errors())
+    errors.extend(local_setup_catalog_errors())
     errors.extend(metric_example_errors())
     errors.extend(license_errors())
     errors.extend(manifest_errors())
