@@ -296,6 +296,42 @@
       "goal": "continue local setup with safe reusable LLM prompts",
       "path": "docs/en/reference/llm-local-setup-prompts.md",
       "mutating": false
+    },
+    {
+      "id": "server-network-contract-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "client developer or documentation agent",
+      "goal": "read the canonical binary TCP protocol before claiming client compatibility",
+      "path": "docs/en/reference/server-network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "server-network-contract-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "client developer or documentation agent",
+      "goal": "read the canonical binary TCP protocol before claiming client compatibility",
+      "path": "docs/fr/reference/server-network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-threejs-template-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "web client developer",
+      "goal": "understand what a compliant browser client must implement and why none exists yet",
+      "path": "docs/en/how-to/connect-threejs-template.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-threejs-template-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "web client developer",
+      "goal": "understand what a compliant browser client must implement and why none exists yet",
+      "path": "docs/fr/how-to/connect-threejs-template.md",
+      "mutating": false
     }
   ]
 }

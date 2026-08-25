@@ -28,6 +28,8 @@ French:
 - docs/fr/reference/metrics-schema.md
 - docs/fr/explanation/hybrid-architecture.md
 - docs/fr/explanation/design-philosophy.md
+- docs/fr/reference/server-network-contract.md
+- docs/fr/how-to/connect-threejs-template.md
 
 English:
 - docs/en/tutorials/create-first-local-world.md
@@ -47,6 +49,8 @@ English:
 - docs/en/reference/metrics-schema.md
 - docs/en/explanation/hybrid-architecture.md
 - docs/en/explanation/design-philosophy.md
+- docs/en/reference/server-network-contract.md
+- docs/en/how-to/connect-threejs-template.md
 
 Safety boundary:
 - Preserve metric status labels.
