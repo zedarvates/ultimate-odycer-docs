@@ -11,6 +11,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 METRIC_STATUSES = {"observed", "estimated", "decision", "unavailable"}
 COMPONENT_STATUSES = {"available", "under_construction", "planned", "unavailable"}
+CREATIVE_MATURITY = {"executable_public", "prototype_local", "scaffolding_proxy", "planned", "available_external", "verification_required", "unavailable"}
+CREATIVE_EXECUTION = {"local", "cloud", "hybrid", "not_applicable"}
+CREATIVE_PRICING = {"free_open_source", "free", "free_noncommercial", "freemium", "one_time_purchase", "subscription", "credits", "revenue_limited", "project_budget_limited", "contact_sales", "mixed"}
+CREATIVE_COMMERCIAL = {"allowed", "conditional", "noncommercial_only", "plan_dependent", "asset_dependent", "model_dependent", "verification_required"}
+CREATIVE_INTEGRATION = {"direct", "conversion_required", "reference_only"}
 REQUIRED_PATHS = (
     "requirements-docs.txt",
     "mkdocs.yml",
@@ -27,8 +32,10 @@ REQUIRED_PATHS = (
     "llms.txt",
     "schemas/npc-benchmark-v1.schema.json",
     "schemas/local-setup-catalog-v1.schema.json",
+    "schemas/creative-tools-catalog-v1.schema.json",
     "examples/benchmark-results/estimated-esp32-s3.json",
     "examples/local-setup-catalog.json",
+    "examples/creative-tools-catalog.json",
     "docs/llm/README.md",
     "docs/llm/context-index.json",
     "docs/index.md",
@@ -249,6 +256,103 @@ def local_setup_catalog_errors() -> list[str]:
     return errors
 
 
+def creative_tools_catalog_errors() -> list[str]:
+    errors: list[str] = []
+    catalog_path = ROOT / "examples" / "creative-tools-catalog.json"
+    schema_path = ROOT / "schemas" / "creative-tools-catalog-v1.schema.json"
+    try:
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return [f"invalid creative tools catalog contract: {error}"]
+    if catalog.get("schema_version") != "ultimate-odycer.creative-tools-catalog.v1":
+        errors.append("creative tools catalog uses an unknown schema version")
+    if catalog.get("pricing_policy") != "model_only_no_exact_prices":
+        errors.append("creative tools catalog pricing policy is invalid")
+    if catalog.get("default_strategy") != "local_first_free_open_source":
+        errors.append("creative tools catalog default strategy is invalid")
+    if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", str(catalog.get("verified_on", ""))) is None:
+        errors.append("creative tools catalog verification date is invalid")
+    forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
+    if forbidden_price_fields & set(catalog):
+        errors.append("creative tools catalog contains exact price fields")
+    tools = catalog.get("tools")
+    if not isinstance(tools, list) or not tools:
+        return errors + ["creative tools catalog requires tools"]
+    tool_ids: list[str] = []
+    by_id: dict[str, dict[str, object]] = {}
+    for tool in tools:
+        if not isinstance(tool, dict):
+            errors.append("creative tools catalog has a non-object tool")
+            continue
+        tool_id = str(tool.get("id", ""))
+        if not tool_id:
+            errors.append("creative tools catalog has a missing tool id")
+            continue
+        tool_ids.append(tool_id)
+        by_id[tool_id] = tool
+        if forbidden_price_fields & set(tool):
+            errors.append(f"creative tool contains exact price fields: {tool_id}")
+        if tool.get("maturity") not in CREATIVE_MATURITY:
+            errors.append(f"creative tool has invalid maturity: {tool_id}")
+        if tool.get("execution") not in CREATIVE_EXECUTION:
+            errors.append(f"creative tool has invalid execution: {tool_id}")
+        pricing = tool.get("pricing_model")
+        if not isinstance(pricing, list) or not pricing or not set(pricing) <= CREATIVE_PRICING:
+            errors.append(f"creative tool has invalid pricing model: {tool_id}")
+        if tool.get("commercial_use") not in CREATIVE_COMMERCIAL:
+            errors.append(f"creative tool has invalid commercial use: {tool_id}")
+        if tool.get("integration") not in CREATIVE_INTEGRATION:
+            errors.append(f"creative tool has invalid integration: {tool_id}")
+        for field in ("official_url", "pricing_or_license_url"):
+            if not str(tool.get(field, "")).startswith("https://"):
+                errors.append(f"creative tool requires HTTPS {field}: {tool_id}")
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", str(tool.get("verified_on", ""))) is None:
+            errors.append(f"creative tool has invalid verification date: {tool_id}")
+        for field in ("domains", "inputs", "outputs", "platforms"):
+            value = tool.get(field)
+            if not isinstance(value, list) or not value or len(value) != len(set(value)):
+                errors.append(f"creative tool has invalid {field}: {tool_id}")
+    if len(tool_ids) != len(set(tool_ids)):
+        errors.append("creative tools catalog has duplicate tool ids")
+    for lite_id in ("creature-editor-lite", "city-editor-lite", "architecture-editor-lite"):
+        if by_id.get(lite_id, {}).get("maturity") != "executable_public":
+            errors.append(f"creative tools catalog Lite maturity drift: {lite_id}")
+    recommendations = catalog.get("recommendations")
+    if not isinstance(recommendations, dict) or not recommendations:
+        errors.append("creative tools catalog requires recommendations")
+    else:
+        known = set(tool_ids)
+        for domain, recommendation in recommendations.items():
+            if not isinstance(recommendation, dict):
+                errors.append(f"creative recommendation is invalid: {domain}")
+                continue
+            selected = recommendation.get("tools")
+            default = recommendation.get("default_tool")
+            if not isinstance(selected, list) or not 2 <= len(selected) <= 5 or len(selected) != len(set(selected)):
+                errors.append(f"creative recommendation tool count is invalid: {domain}")
+                continue
+            if not set(selected) <= known:
+                errors.append(f"creative recommendation references unknown tools: {domain}")
+            if default not in selected:
+                errors.append(f"creative recommendation default is invalid: {domain}")
+    try:
+        defs = schema["$defs"]
+        enum_contracts = {
+            "maturity": CREATIVE_MATURITY,
+            "execution": CREATIVE_EXECUTION,
+            "pricing_model": CREATIVE_PRICING,
+            "commercial_use": CREATIVE_COMMERCIAL,
+            "integration": CREATIVE_INTEGRATION,
+        }
+        for name, expected in enum_contracts.items():
+            if set(defs[name]["enum"]) != expected:
+                errors.append(f"creative tools schema {name} vocabulary is inconsistent")
+    except (KeyError, TypeError):
+        errors.append("creative tools schema is missing vocabularies")
+    return errors
+
+
 def metric_example_errors() -> list[str]:
     errors: list[str] = []
     schema = json.loads(
@@ -368,6 +472,7 @@ def validate() -> list[str]:
     errors.extend(forbidden_content_errors())
     errors.extend(llm_index_errors())
     errors.extend(local_setup_catalog_errors())
+    errors.extend(creative_tools_catalog_errors())
     errors.extend(metric_example_errors())
     errors.extend(license_errors())
     errors.extend(manifest_errors())

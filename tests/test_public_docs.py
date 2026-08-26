@@ -11,6 +11,7 @@ from scripts.validate_docs import validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CREATIVE_CATALOG = ROOT / "examples" / "creative-tools-catalog.json"
 LOCAL_SETUP_DOCUMENTS = (
     "tutorials/create-first-local-world.md",
     "reference/engine-template-world-matrix.md",
@@ -82,6 +83,26 @@ class PublicDocumentationTests(unittest.TestCase):
             with self.subTest(relative=relative):
                 self.assertTrue((ROOT / "docs" / "fr" / relative).is_file())
                 self.assertTrue((ROOT / "docs" / "en" / relative).is_file())
+
+    def test_creative_tools_catalog_contract(self) -> None:
+        catalog = json.loads(CREATIVE_CATALOG.read_text(encoding="utf-8"))
+        self.assertEqual(
+            catalog["schema_version"],
+            "ultimate-odycer.creative-tools-catalog.v1",
+        )
+        self.assertEqual(catalog["pricing_policy"], "model_only_no_exact_prices")
+        tools = {item["id"]: item for item in catalog["tools"]}
+        self.assertEqual(
+            tools["creature-editor-lite"]["maturity"], "executable_public"
+        )
+        self.assertEqual(tools["city-editor-lite"]["maturity"], "executable_public")
+        self.assertEqual(
+            tools["architecture-editor-lite"]["maturity"], "executable_public"
+        )
+        forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
+        self.assertTrue(forbidden_price_fields.isdisjoint(catalog))
+        for tool in tools.values():
+            self.assertTrue(forbidden_price_fields.isdisjoint(tool))
 
 
 if __name__ == "__main__":
