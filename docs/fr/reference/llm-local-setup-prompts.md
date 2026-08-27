@@ -98,6 +98,39 @@ limites. Préserve mon travail existant. Demande confirmation avant suppression,
 exposition réseau, achat, déploiement ou publication.
 ```
 
+## 9. Transformer un besoin créatif en carte Kanboard
+
+```text
+Lis le manuel de production créative et le catalogue public des outils.
+Transforme ce besoin en une carte Kanboard sans secret : {BESOIN_CREATIF}.
+Renseigne objectif observable, entrées autorisées, outil retenu et alternatives,
+formats et conversion, licence/provenance/confidentialité, critères
+d'acceptation, preuves attendues, prompt LM et blocage actuel. Vérifie le champ
+verified_on et les liens officiels. N'indique aucun prix exact, ne téléverse
+aucun fichier et ne crée ou modifie aucune tâche Kanboard automatiquement.
+```
+
+## 10. Router une carte avec Botte Secrète
+
+```text
+Analyse cette carte Kanboard sans secret : {CARTE_SANS_SECRET}.
+Propose un routage borné entre outil déterministe, LM local et service cloud.
+Privilégie le local et le gratuit/open source. Pour le cloud, exige une revue
+confidentialité, rétention, entraînement et droits des sorties. Retourne une
+proposition et les contrôles à exécuter ; ne lance aucun outil, ne modifie pas
+Kanboard et ne déplace pas la carte.
+```
+
+## 11. Vérifier les preuves avant Done
+
+```text
+Compare les critères d'acceptation de cette carte avec ses preuves :
+{CARTE_ET_PREUVES_SANS_SECRET}. Classe chaque critère passed, failed, blocked,
+partial ou unavailable. Refuse les aperçus proxy comme preuve runtime et
+préserve les échecs. Recommande Done uniquement si tous les critères obligatoires
+sont prouvés. Ne modifie pas Kanboard automatiquement.
+```
+
 ## Réponse attendue d'un bon LM
 
 Un bon accompagnement :
@@ -105,6 +138,10 @@ Un bon accompagnement :
 - cite le fichier ou la sortie utilisée ;
 - indique ce qui est observé, estimé, décidé ou indisponible ;
 - ne demande pas de secret ;
+- vérifie `verified_on`, le modèle tarifaire et le lien officiel sans recopier
+  de prix exact ;
+- n'envoie pas d'asset confidentiel vers le cloud ;
+- ne modifie pas automatiquement Kanboard ;
 - propose une étape réversible ;
 - attend le résultat avant la suivante ;
 - signale honnêtement un blocage.

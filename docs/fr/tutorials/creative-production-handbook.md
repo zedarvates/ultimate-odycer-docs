@@ -68,6 +68,9 @@ licence logicielle gratuite ne rend pas automatiquement les contenus gratuits.
 ComfyUI est le chemin local privilégié. Chaque modèle, LoRA, custom node et
 dataset garde sa propre licence. Pour le cloud, vérifiez upload, rétention,
 entraînement, propriété des sorties, consentement vocal et modèle tarifaire.
+Des suites spécialisées comme [Sorceress Games](https://sorceress.games/) offrent
+également un ensemble très poussé d'outils web (sprites, 3D, voxel, audio, code)
+dont l'intégration et l'interopérabilité avec Ultimate Odycer sont encouragées.
 
 **Carte Kanboard produite :** « Auditer le workflow IA avant génération ».
 

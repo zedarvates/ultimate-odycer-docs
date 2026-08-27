@@ -127,6 +127,33 @@ class PublicDocumentationTests(unittest.TestCase):
                 self.assertTrue((ROOT / "docs" / "fr" / relative).is_file())
                 self.assertTrue((ROOT / "docs" / "en" / relative).is_file())
 
+    def test_creative_handbook_is_indexed_for_humans_and_llms(self) -> None:
+        llms_text = (ROOT / "llms.txt").read_text(encoding="utf-8")
+        context = json.loads(
+            (ROOT / "docs" / "llm" / "context-index.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        indexed_paths = {item["path"] for item in context["documents"]}
+        required_paths = {
+            "docs/fr/tutorials/creative-production-handbook.md",
+            "docs/en/tutorials/creative-production-handbook.md",
+            "docs/fr/reference/creative-tools-catalog.md",
+            "docs/en/reference/creative-tools-catalog.md",
+        }
+        for path in required_paths:
+            with self.subTest(path=path):
+                self.assertIn(path, llms_text)
+                self.assertIn(path, indexed_paths)
+
+    def test_public_docs_reject_patch_artifacts_and_local_worktree_paths(self) -> None:
+        forbidden = ("*** Add File:", "*** Update File:", "*** Delete File:", ".worktrees/")
+        for path in (ROOT / "docs").rglob("*.md"):
+            text = path.read_text(encoding="utf-8")
+            for marker in forbidden:
+                with self.subTest(path=path.relative_to(ROOT), marker=marker):
+                    self.assertNotIn(marker, text)
+
 
 if __name__ == "__main__":
     unittest.main()

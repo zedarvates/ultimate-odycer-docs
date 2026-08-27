@@ -23,6 +23,10 @@ Bilingual, local-first documentation for independent developers, makers, and hom
 
 Start with [create your first local world](docs/en/tutorials/create-first-local-world.md).
 
+- Creative tutorial: [creative production handbook](docs/en/tutorials/creative-production-handbook.md)
+- Creative catalog: [tools, maturity, pricing models, and official links](docs/en/reference/creative-tools-catalog.md)
+- Map guide: [draw a map and prepare its conversion](docs/en/how-to/draw-and-convert-map.md)
+- Project organization: [Kanboard and Botte Secrète](docs/en/how-to/organize-project-kanboard-botte-secrete.md)
 - Tutorial: [create your first local world](docs/en/tutorials/create-first-local-world.md)
 - Reference: [engine, template, and world matrix](docs/en/reference/engine-template-world-matrix.md)
 - How-to: [install the local server on Windows](docs/en/how-to/install-local-server-windows.md)
@@ -39,6 +43,10 @@ Start with [create your first local world](docs/en/tutorials/create-first-local-
 
 Commencez par [créer votre premier monde local](docs/fr/tutorials/create-first-local-world.md).
 
+- Tutoriel créatif : [manuel de production créative](docs/fr/tutorials/creative-production-handbook.md)
+- Catalogue créatif : [outils, maturité, modèles tarifaires et liens officiels](docs/fr/reference/creative-tools-catalog.md)
+- Guide carte : [dessiner une carte et préparer sa conversion](docs/fr/how-to/draw-and-convert-map.md)
+- Organisation : [Kanboard et Botte Secrète](docs/fr/how-to/organize-project-kanboard-botte-secrete.md)
 - Tutoriel : [créer son premier monde local](docs/fr/tutorials/create-first-local-world.md)
 - Référence : [matrice des moteurs, templates et mondes](docs/fr/reference/engine-template-world-matrix.md)
 - Guide : [installer le serveur local sous Windows](docs/fr/how-to/install-local-server-windows.md)
@@ -56,7 +64,11 @@ Commencez par [créer votre premier monde local](docs/fr/tutorials/create-first-
 - Public server archive: `unavailable`; check the [official releases page](https://www.ultimateodycer.com/releases/).
 - Godot, Three.js, and FoveaCore client templates: `under_construction`.
 - Open-city Godot crime RPG template: `planned`.
-- Tools Suite and optional creation modules: `under_construction`.
+- Five Lite editors (Creature, City, Architecture, Dungeon, Avatar):
+  `executable_public` for their bounded public contracts and tests; previews
+  remain `[Scaffolding / Proxy]`.
+- Full Tools Suite editors, Asset Factory pipelines, and optional creation
+  modules: `under_construction` or `[Scaffolding / Proxy]` as documented.
 
 The repository can generate a checksummed, self-contained HTML bundle. That
 build does not prove a server release, a playable client, a Web deployment, or

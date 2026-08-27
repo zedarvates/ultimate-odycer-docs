@@ -76,6 +76,12 @@ Commencez par la structure la plus petite capable de prouver votre boucle de
 jeu. Le RPG urbain de l'exemple commence sur une `flat_map`, pas sur une planète
 entière.
 
+Vous pouvez ensuite [dessiner votre carte et préparer sa conversion](../how-to/draw-and-convert-map.md).
+Pour produire terrains, bâtiments, personnages, audio, UI et autres éléments,
+suivez le [manuel de production créative](creative-production-handbook.md).
+Un dessin et un `uo.map-intent/v1` restent des propositions : ils ne prouvent
+ni un import moteur ni une publication serveur.
+
 ## 5. Choisir le profil local
 
 Les chiffres suivants sont des valeurs de planification `estimated`, pas des
@@ -115,7 +121,8 @@ Lorsqu'une release existe, suivez dans l'ordre :
 2. [variante Linux](../how-to/install-local-server-linux.md), si nécessaire ;
 3. [sauvegarde et restauration de contrôle](../how-to/backup-and-test-restore-postgresql.md) ;
 4. [connexion du template Godot](../how-to/connect-godot-template.md) ;
-5. [liste finale d'acceptation](../reference/local-setup-acceptance-checklist.md).
+5. [liste finale d'acceptation](../reference/local-setup-acceptance-checklist.md) ;
+6. [organisation du projet avec Kanboard et Botte Secrète](../how-to/organize-project-kanboard-botte-secrete.md).
 
 ## 8. Choisir les modules optionnels
 

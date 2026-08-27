@@ -45,6 +45,14 @@ REQUIRED_PATHS = (
 MARKDOWN_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 FORBIDDEN_PATTERNS = (
     ("absolute Windows user path", re.compile(r"[A-Za-z]:\\Users\\", re.IGNORECASE)),
+    (
+        "patch artifact marker",
+        re.compile(r"^\*\*\* (?:Add|Update|Delete) File:", re.MULTILINE),
+    ),
+    (
+        "local worktree path",
+        re.compile(r"[A-Za-z]:[/\\].*?\.worktrees[/\\]", re.IGNORECASE),
+    ),
     ("serial port identifier", re.compile(r"\bCOM\d+\b", re.IGNORECASE)),
     (
         "private or loopback IPv4 address",

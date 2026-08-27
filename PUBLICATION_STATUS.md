@@ -31,10 +31,29 @@ production data, commercial components, credentials, or any running service.
   internal-link checks, root schema/example inclusion, and a SHA-256 build
   manifest;
 - current public server release: `unavailable`;
-- Tools Suite and optional creation modules: `under_construction`.
+- five Lite editor slices (Creature, City, Architecture, Dungeon, Avatar):
+  `executable_public` for bounded public contracts and tests; their previews
+  remain `[Scaffolding / Proxy]`;
+- full Tools Suite editors, Asset Factory pipelines, and optional creation
+  modules: `under_construction`, local prototypes, or
+  `[Scaffolding / Proxy]` as individually documented.
 
-This snapshot does not prove that the HTML has been deployed to the Web portal
-or embedded in a server ZIP. Those are separate integration gates.
+## Creative production documentation snapshot
+
+- bilingual handbook, map conversion workflow, Kanboard/Botte Secrète guide,
+  and domain reference pages: included in source validation;
+- machine-readable creative tool catalog and JSON Schema: fail-closed validation
+  enabled;
+- tool selection policy: local/free/open-source first, pricing model plus
+  official link, no exact price copied into the repository;
+- Sorceress Games: documented as a recommended independent companion service
+  and a welcome interoperability/partnership direction, not as an Ultimate
+  Odycer component;
+- Three.js 2.5D sprite and SFX generation pipeline: planned, not shipped.
+
+This snapshot does not prove a Kanboard instance, a Botte Secrète connector, a
+full Tools Suite release, a Web deployment, embedding in a server ZIP, any
+purchase, or certification of commercial rights. Those are separate gates.
 
 Future changes must pass automated validation, secret scanning, manifest
 regeneration, and fresh-copy verification before publication.

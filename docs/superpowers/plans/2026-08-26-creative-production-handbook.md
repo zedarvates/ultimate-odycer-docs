@@ -1,5 +1,10 @@
 # Creative Production Handbook Implementation Plan
 
+> Execution note (2026-08-27): this file preserves the original procedural
+> checklist. Current evidence and publication boundaries are recorded in
+> `PUBLICATION_STATUS.md`; unchecked boxes below are not component maturity or
+> runtime status.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Publish a bilingual, machine-indexed creative-production handbook that explains Ultimate Odycer Tools Suite capabilities, curated free and paid alternatives, map drawing and conversion, asset validation, and project organization with Kanboard and Botte Secrète.

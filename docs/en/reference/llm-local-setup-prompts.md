@@ -94,6 +94,37 @@ work. Ask for confirmation before deletion, network exposure, purchase,
 deployment, or publication.
 ```
 
+## 9. Convert a creative need into a Kanboard card
+
+```text
+Read the creative production handbook and the public creative tools catalog.
+Turn this need into a secret-free Kanboard card: {CREATIVE_NEED}. Fill in the
+observable objective, authorized inputs, selected tool and alternatives, formats
+and conversion, licensing/provenance/privacy, acceptance criteria, expected
+evidence, LLM prompt, and current blocker. Check verified_on and official links.
+Do not quote exact prices, upload files, or create or modify a Kanboard task.
+```
+
+## 10. Route a card through Botte Secrète
+
+```text
+Analyze this secret-free Kanboard card: {SECRET_FREE_CARD}. Propose a bounded
+route among deterministic tools, a local LLM, and cloud services. Prefer local
+and free/open-source tools. For cloud use, require review of privacy, retention,
+training terms, and output rights. Return only a proposal and checks to run; do
+not execute tools, mutate Kanboard, or move the card.
+```
+
+## 11. Review evidence before Done
+
+```text
+Compare this card's acceptance criteria with its evidence:
+{SECRET_FREE_CARD_AND_EVIDENCE}. Classify every criterion as passed, failed,
+blocked, partial, or unavailable. Reject proxy previews as runtime proof and
+preserve negative evidence. Recommend Done only when all mandatory criteria are
+proven. Do not mutate Kanboard automatically.
+```
+
 ## Expected behavior from a good LLM
 
 Good assistance:
@@ -101,6 +132,10 @@ Good assistance:
 - cites the file or output used;
 - marks what is observed, estimated, decided, or unavailable;
 - does not request secrets;
+- checks `verified_on`, the pricing model, and official link without quoting
+  exact prices;
+- does not upload confidential assets to cloud services;
+- does not mutate Kanboard automatically;
 - proposes a reversible step;
 - waits for the result before the next step;
 - reports a blocker honestly.

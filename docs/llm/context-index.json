@@ -332,6 +332,186 @@
       "goal": "understand what a compliant browser client must implement and why none exists yet",
       "path": "docs/fr/how-to/connect-threejs-template.md",
       "mutating": false
+    },
+    {
+      "id": "creative-production-handbook-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "creator assisted by an LLM",
+      "goal": "follow the creative workflow from brief to validated candidate asset",
+      "path": "docs/fr/tutorials/creative-production-handbook.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-production-handbook-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "creator assisted by an LLM",
+      "goal": "follow the creative workflow from brief to validated candidate asset",
+      "path": "docs/en/tutorials/creative-production-handbook.md",
+      "mutating": false
+    },
+    {
+      "id": "draw-and-convert-map-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "world creator or LLM assistant",
+      "goal": "draw a map and prepare a structured conversion proposal",
+      "path": "docs/fr/how-to/draw-and-convert-map.md",
+      "mutating": false
+    },
+    {
+      "id": "draw-and-convert-map-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "world creator or LLM assistant",
+      "goal": "draw a map and prepare a structured conversion proposal",
+      "path": "docs/en/how-to/draw-and-convert-map.md",
+      "mutating": false
+    },
+    {
+      "id": "organize-project-kanboard-botte-secrete-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "solo developer or project organizer",
+      "goal": "organize production with Kanboard and bounded Botte Secrete routing",
+      "path": "docs/fr/how-to/organize-project-kanboard-botte-secrete.md",
+      "mutating": false
+    },
+    {
+      "id": "organize-project-kanboard-botte-secrete-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "solo developer or project organizer",
+      "goal": "organize production with Kanboard and bounded Botte Secrete routing",
+      "path": "docs/en/how-to/organize-project-kanboard-botte-secrete.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-tools-catalog-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "creator, developer, or LLM assistant",
+      "goal": "interpret tool maturity, integration, pricing model, privacy, and rights",
+      "path": "docs/fr/reference/creative-tools-catalog.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-tools-catalog-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "creator, developer, or LLM assistant",
+      "goal": "interpret tool maturity, integration, pricing model, privacy, and rights",
+      "path": "docs/en/reference/creative-tools-catalog.md",
+      "mutating": false
+    },
+    {
+      "id": "world-map-and-structure-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "world builder",
+      "goal": "select tools and gates for maps, terrain, cities, architecture, and dungeons",
+      "path": "docs/fr/reference/world-map-and-structure-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "world-map-and-structure-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "world builder",
+      "goal": "select tools and gates for maps, terrain, cities, architecture, and dungeons",
+      "path": "docs/en/reference/world-map-and-structure-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "3d-assets-materials-photogrammetry-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "3D artist or technical artist",
+      "goal": "select 3D, material, scan, splat, and 2.5D conversion workflows",
+      "path": "docs/fr/reference/3d-assets-materials-and-photogrammetry-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "3d-assets-materials-photogrammetry-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "3D artist or technical artist",
+      "goal": "select 3D, material, scan, splat, and 2.5D conversion workflows",
+      "path": "docs/en/reference/3d-assets-materials-and-photogrammetry-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "character-creature-animation-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "character artist or animator",
+      "goal": "select character, creature, rigging, animation, and proof workflows",
+      "path": "docs/fr/reference/character-creature-and-animation-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "character-creature-animation-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "character artist or animator",
+      "goal": "select character, creature, rigging, animation, and proof workflows",
+      "path": "docs/en/reference/character-creature-and-animation-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "audio-2d-ui-vfx-video-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "sound designer, UI artist, or VFX artist",
+      "goal": "select audio, 2D, UI, VFX, and video tools and gates",
+      "path": "docs/fr/reference/audio-2d-ui-vfx-and-video-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "audio-2d-ui-vfx-video-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "sound designer, UI artist, or VFX artist",
+      "goal": "select audio, 2D, UI, VFX, and video tools and gates",
+      "path": "docs/en/reference/audio-2d-ui-vfx-and-video-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "local-and-cloud-ai-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "creator using AI or LLM assistant",
+      "goal": "select local and cloud AI tools and audit privacy, rights, and outputs",
+      "path": "docs/fr/reference/local-and-cloud-ai-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "local-and-cloud-ai-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "creator using AI or LLM assistant",
+      "goal": "select local and cloud AI tools and audit privacy, rights, and outputs",
+      "path": "docs/en/reference/local-and-cloud-ai-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "import-optimization-licensing-provenance-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "technical artist or asset pipeline operator",
+      "goal": "validate formats, optimization, licenses, provenance, and publication gates",
+      "path": "docs/fr/reference/import-optimization-licensing-and-provenance.md",
+      "mutating": false
+    },
+    {
+      "id": "import-optimization-licensing-provenance-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "technical artist or asset pipeline operator",
+      "goal": "validate formats, optimization, licenses, provenance, and publication gates",
+      "path": "docs/en/reference/import-optimization-licensing-and-provenance.md",
+      "mutating": false
     }
   ]
 }
