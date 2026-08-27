@@ -14,7 +14,7 @@
 
 - Local-first and free/open-source recommendations appear before cloud or paid alternatives.
 - Do not include exact prices; store only pricing models and official pricing/licence URLs.
-- Use current Tools Suite proof states: Creature, City, and Architecture Editor Lite are executable public slices whose previews remain `[Scaffolding / Proxy]`.
+- Use current Tools Suite proof states: Creature, City, Architecture, Dungeon, and Avatar Editor Lite are executable public slices whose previews remain `[Scaffolding / Proxy]`.
 - Tools create proposals; the Zig server remains authoritative for publication and gameplay state.
 - Cloud tools require explicit privacy, retention, training, ownership, and commercial-use warnings.
 - A software price never implies commercial rights; plug-ins, presets, models, voices, fonts, and marketplace assets retain separate licences.
@@ -74,6 +74,8 @@ def test_creative_tools_catalog_contract(self) -> None:
     self.assertEqual(tools["creature-editor-lite"]["maturity"], "executable_public")
     self.assertEqual(tools["city-editor-lite"]["maturity"], "executable_public")
     self.assertEqual(tools["architecture-editor-lite"]["maturity"], "executable_public")
+    self.assertEqual(tools["dungeon-editor-lite"]["maturity"], "executable_public")
+    self.assertEqual(tools["avatar-editor-lite"]["maturity"], "executable_public")
     forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
     self.assertTrue(forbidden_price_fields.isdisjoint(catalog))
     for tool in tools.values():

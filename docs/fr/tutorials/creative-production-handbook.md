@@ -41,7 +41,9 @@ puis comparez les [outils monde et structure](../reference/world-map-and-structu
 Le chemin gratuit recommandé combine Blender, Material Maker, Poly Haven et
 Meshroom. Asset Factory peut préparer des candidats et manifestes, mais ses
 preuves GLB ou de contrat splat ne prouvent pas automatiquement le rendu GPU,
-OpenXR ou l'adoption par le client canonique.
+OpenXR ou l'adoption par le client canonique. Pour un client 2.5D, un pipeline
+hybride peut rendre des modèles 3D en sprites multi-directionnels et atlas JSON.
+Dans le template Three.js actuel, ce générateur de sprites puis SFX reste prévu.
 
 **Carte Kanboard produite :** « Valider un asset représentatif avec provenance ».
 

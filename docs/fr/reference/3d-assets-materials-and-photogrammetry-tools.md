@@ -32,3 +32,11 @@ bakez les détails et contrôlez l'échelle avant export.
 - provenance et licence ; hash et manifeste ; revue visuelle ;
 - budgets polygones, textures, matériaux, collisions et LOD ;
 - import Godot isolé avant toute adoption runtime.
+
+## Variante 2.5D : 3D vers sprites
+
+Le flux proposé est `draft → rendu de contrôle → validation graphique → atlas
+sprite → test client → accepted`. Il exige caméra fixe, orientations déclarées,
+éclairage normalisé, fond transparent, ombre séparée, animations et atlas JSON.
+Ce pipeline reste prévu pour le template Three.js ; il n'est pas une capacité
+actuelle d'Asset Factory.

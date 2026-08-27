@@ -9,7 +9,7 @@
 | Terrain | QGIS + Blender | World Machine | Houdini |
 | Ville | City Editor Lite | City Editor `[Scaffolding / Proxy]` | QGIS/Blender avec conversion |
 | Architecture | Architecture Editor Lite | Blender | Maya/Houdini |
-| Donjon | dessin + Dungeon Editor proxy | Blender/Inkarnate | pipeline procédural spécialisé |
+| Donjon | Dungeon Editor Lite | Blender/Inkarnate | pipeline procédural spécialisé |
 
 ## QGIS
 
@@ -41,6 +41,8 @@ doivent passer les gates terrain et Godot.
 - City Editor Lite valide CityConfig Lite et tracés bornés, sans Zig/Godot ;
 - Architecture Editor Lite valide HouseBlueprint Lite, sans coûts, HP, assets,
   collision, HLOD, Godot, VR ou publication ;
+- Dungeon Editor Lite valide Dungeon Blueprint Lite, sans récompenses, loot,
+  espèces, meshes, props, loader Zig ou publication ;
 - Creature Editor Lite ne traite pas les cartes.
 
 ## Sorties et gates

@@ -27,3 +27,11 @@ attaques, spawn, économie et physique.
 VRM/FBX doivent suivre un chemin revu vers GLB/Godot. Vérifiez squelette,
 orientation, échelle, poids, morphs, matériaux, cheveux, animations, licences,
 LOD et performance. Un avatar visible n'est pas une preuve de réplication réseau.
+
+## Échelle de preuve multijoueur/VR
+
+Validez séparément : avatar local rendu, morph appliqué, bon `runtime_entity_id`,
+second avatar inchangé, deux processus clients, transport TLS authentifié,
+broadcast apparence/cosmétique, rebuild distant, puis tête/mains/gestes et casque
+physique. Un broker loopback synthétique prouve un contrat ciblé, pas le serveur
+Zig live, Internet, OpenXR matériel ou la production.

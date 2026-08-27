@@ -26,9 +26,9 @@ validée par le
 - `planned` : conception sans outil utilisable ;
 - `verification_required` : preuve actuelle insuffisante.
 
-Creature, City et Architecture Editor Lite sont `executable_public`, mais leurs
-aperçus restent `[Scaffolding / Proxy]`. Les éditeurs complets ne récupèrent pas
-ce statut par association.
+Creature, City, Architecture, Dungeon et Avatar Editor Lite sont
+`executable_public`, mais leurs aperçus restent `[Scaffolding / Proxy]`. Les
+éditeurs complets ne récupèrent pas ce statut par association.
 
 ## Choisir sans se tromper
 
