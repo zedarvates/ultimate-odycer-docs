@@ -91,13 +91,19 @@ class StaticDocumentationTests(unittest.TestCase):
             page = site / "en" / "how-to" / "guide.html"
             page.parent.mkdir(parents=True)
             page.write_text(
-                '<a href="../../../schemas/example.json">Schema</a>',
+                (
+                    '<a href="../../../schemas/example.json">Schema</a>'
+                    '<a href="../../../CONTRIBUTING.md">Contributing</a>'
+                ),
                 encoding="utf-8",
             )
             static_docs.rewrite_contract_links(site)
             self.assertEqual(
                 page.read_text(encoding="utf-8"),
-                '<a href="../../schemas/example.json">Schema</a>',
+                (
+                    '<a href="../../schemas/example.json">Schema</a>'
+                    '<a href="../../CONTRIBUTING.md">Contributing</a>'
+                ),
             )
 
 
