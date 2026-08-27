@@ -74,10 +74,15 @@ def contract_data_directories() -> tuple[Path, Path]:
     return (ROOT / "schemas", ROOT / "examples")
 
 
+def contract_root_files() -> tuple[Path, ...]:
+    return (ROOT / "CONTRIBUTING.md",)
+
+
 def rewrite_contract_links(site: Path) -> None:
     replacements = {
         'href="../../../schemas/': 'href="../../schemas/',
         'href="../../../examples/': 'href="../../examples/',
+        'href="../../../CONTRIBUTING.md"': 'href="../../CONTRIBUTING.md"',
     }
     for path in sorted(site.rglob("*.html")):
         text = path.read_text(encoding="utf-8")
@@ -275,6 +280,8 @@ def build_site(
         not_found_page.unlink()
     for source in contract_data_directories():
         shutil.copytree(source, output / source.name)
+    for source in contract_root_files():
+        shutil.copy2(source, output / source.name)
     rewrite_contract_links(output)
     shutil.copy2(ROOT / "llms.txt", output / "llms.txt")
     manifest = write_build_manifest(
