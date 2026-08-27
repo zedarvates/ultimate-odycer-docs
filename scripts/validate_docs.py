@@ -315,7 +315,13 @@ def creative_tools_catalog_errors() -> list[str]:
                 errors.append(f"creative tool has invalid {field}: {tool_id}")
     if len(tool_ids) != len(set(tool_ids)):
         errors.append("creative tools catalog has duplicate tool ids")
-    for lite_id in ("creature-editor-lite", "city-editor-lite", "architecture-editor-lite"):
+    for lite_id in (
+        "creature-editor-lite",
+        "city-editor-lite",
+        "architecture-editor-lite",
+        "dungeon-editor-lite",
+        "avatar-editor-lite",
+    ):
         if by_id.get(lite_id, {}).get("maturity") != "executable_public":
             errors.append(f"creative tools catalog Lite maturity drift: {lite_id}")
     recommendations = catalog.get("recommendations")

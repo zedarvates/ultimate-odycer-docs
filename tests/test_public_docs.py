@@ -21,6 +21,18 @@ LOCAL_SETUP_DOCUMENTS = (
     "how-to/connect-godot-template.md",
     "reference/local-setup-acceptance-checklist.md",
 )
+CREATIVE_DOCUMENTS = (
+    "tutorials/creative-production-handbook.md",
+    "how-to/draw-and-convert-map.md",
+    "how-to/organize-project-kanboard-botte-secrete.md",
+    "reference/creative-tools-catalog.md",
+    "reference/world-map-and-structure-tools.md",
+    "reference/3d-assets-materials-and-photogrammetry-tools.md",
+    "reference/character-creature-and-animation-tools.md",
+    "reference/audio-2d-ui-vfx-and-video-tools.md",
+    "reference/local-and-cloud-ai-tools.md",
+    "reference/import-optimization-licensing-and-provenance.md",
+)
 
 
 class PublicDocumentationTests(unittest.TestCase):
@@ -99,10 +111,21 @@ class PublicDocumentationTests(unittest.TestCase):
         self.assertEqual(
             tools["architecture-editor-lite"]["maturity"], "executable_public"
         )
+        self.assertEqual(tools["dungeon-editor-lite"]["maturity"], "executable_public")
+        self.assertEqual(tools["avatar-editor-lite"]["maturity"], "executable_public")
+        self.assertEqual(
+            tools["threejs-2-5d-template"]["maturity"], "executable_public"
+        )
         forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
         self.assertTrue(forbidden_price_fields.isdisjoint(catalog))
         for tool in tools.values():
             self.assertTrue(forbidden_price_fields.isdisjoint(tool))
+
+    def test_creative_handbook_has_required_bilingual_pairs(self) -> None:
+        for relative in CREATIVE_DOCUMENTS:
+            with self.subTest(relative=relative):
+                self.assertTrue((ROOT / "docs" / "fr" / relative).is_file())
+                self.assertTrue((ROOT / "docs" / "en" / relative).is_file())
 
 
 if __name__ == "__main__":
