@@ -20,6 +20,7 @@ LOCAL_SETUP_DOCUMENTS = (
     "how-to/install-local-server-linux.md",
     "how-to/backup-and-test-restore-postgresql.md",
     "how-to/connect-godot-template.md",
+    "reference/offline-documentation-and-server-archive.md",
     "reference/local-setup-acceptance-checklist.md",
 )
 CREATIVE_DOCUMENTS = (
@@ -96,6 +97,23 @@ class PublicDocumentationTests(unittest.TestCase):
             with self.subTest(relative=relative):
                 self.assertTrue((ROOT / "docs" / "fr" / relative).is_file())
                 self.assertTrue((ROOT / "docs" / "en" / relative).is_file())
+
+    def test_offline_documentation_archive_contract_is_bilingual(self) -> None:
+        relative = "reference/offline-documentation-and-server-archive.md"
+        required = {
+            "https://www.ultimateodycer.com/releases/",
+            "ultimate-odycer.docs-build.v1",
+            "VERSION",
+            "compatibility.server",
+            "RELEASE-MANIFEST.json",
+            "docs/index.html",
+            "docs/docs-build-manifest.json",
+            "unavailable",
+        }
+        for language in ("fr", "en"):
+            text = (ROOT / "docs" / language / relative).read_text(encoding="utf-8")
+            with self.subTest(language=language):
+                self.assertTrue(all(marker in text for marker in required))
 
     def test_synthetic_network_intent_is_accepted(self) -> None:
         example = load_example()

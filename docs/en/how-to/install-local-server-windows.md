@@ -70,6 +70,8 @@ docs/index.html
 ```
 
 An archive missing these files does not satisfy the contract described here.
+Then verify the
+[offline documentation and server archive contract](../reference/offline-documentation-and-server-archive.md).
 
 ## 5. Start PostgreSQL
 
