@@ -44,3 +44,7 @@ documentation, and examples in these docs. It does not certify a public or
 production server, a playable Godot client, PostgreSQL runtime behavior, a Tools
 Suite module, an ESP32 firmware, an LLM model, or the performance of any
 hardware.
+
+Ecosystem architecture pages document public boundaries and contracts. They do not
+publish proprietary Zig server source, live endpoints, or certified client/server
+compatibility.
