@@ -1,5 +1,10 @@
 # Creative Production Handbook Implementation Plan
 
+> Execution note (2026-08-27): this file preserves the original procedural
+> checklist. Current evidence and publication boundaries are recorded in
+> `PUBLICATION_STATUS.md`; unchecked boxes below are not component maturity or
+> runtime status.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Publish a bilingual, machine-indexed creative-production handbook that explains Ultimate Odycer Tools Suite capabilities, curated free and paid alternatives, map drawing and conversion, asset validation, and project organization with Kanboard and Botte Secrète.
@@ -14,7 +19,7 @@
 
 - Local-first and free/open-source recommendations appear before cloud or paid alternatives.
 - Do not include exact prices; store only pricing models and official pricing/licence URLs.
-- Use current Tools Suite proof states: Creature, City, and Architecture Editor Lite are executable public slices whose previews remain `[Scaffolding / Proxy]`.
+- Use current Tools Suite proof states: Creature, City, Architecture, Dungeon, and Avatar Editor Lite are executable public slices whose previews remain `[Scaffolding / Proxy]`.
 - Tools create proposals; the Zig server remains authoritative for publication and gameplay state.
 - Cloud tools require explicit privacy, retention, training, ownership, and commercial-use warnings.
 - A software price never implies commercial rights; plug-ins, presets, models, voices, fonts, and marketplace assets retain separate licences.
@@ -74,6 +79,8 @@ def test_creative_tools_catalog_contract(self) -> None:
     self.assertEqual(tools["creature-editor-lite"]["maturity"], "executable_public")
     self.assertEqual(tools["city-editor-lite"]["maturity"], "executable_public")
     self.assertEqual(tools["architecture-editor-lite"]["maturity"], "executable_public")
+    self.assertEqual(tools["dungeon-editor-lite"]["maturity"], "executable_public")
+    self.assertEqual(tools["avatar-editor-lite"]["maturity"], "executable_public")
     forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
     self.assertTrue(forbidden_price_fields.isdisjoint(catalog))
     for tool in tools.values():

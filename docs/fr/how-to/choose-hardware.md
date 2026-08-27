@@ -18,25 +18,24 @@ Choisissez le besoin le plus proche :
 
 Une microSD augmente le stockage, pas la RAM ni la puissance de calcul.
 
-## 2. Comparer le coût complet
+## 2. Comparer le modèle tarifaire et le système complet
 
-Les valeurs suivantes sont `estimated`, datées d'août 2026, et ne constituent
-pas des devis :
+Les prix exacts vieillissent rapidement et sont volontairement omis. Ouvrez la
+page officielle du produit, puis enregistrez le prix daté de l'annonce réellement
+comparée comme `observed`.
 
-| Option | Coût complet indicatif | Limite principale |
-|---|---:|---|
-| ESP32 classique déjà possédé avec module SD/audio | 5–15 € supplémentaires | Pas adapté à un LLM de plusieurs millions de paramètres |
-| ESP32-S3 N16R8 avec SD/audio | 15–40 € | Modèle et vocabulaire très contraints |
-| PC professionnel reconditionné Tiny/Micro/Mini, 16/256 | 140–220 € | État, génération du CPU et alimentation à contrôler |
-| PC professionnel reconditionné SFF, 16/256 | 100–220 € | Plus volumineux ; consommation à mesurer à la prise |
-| Mini-PC N100 neuf, 8/128 ou 16/256 | Prix réel du vendeur + mises à niveau | RAM parfois soudée, refroidissement et SSD variables |
-| Raspberry Pi 5 4 Go complet | 170–200 € | RAM limitée et coût des accessoires |
+| Option | Modèle tarifaire | Point de départ officiel | Limite principale |
+|---|---|---|---|
+| ESP32 classique déjà possédé avec module SD/audio | réemploi et achat unique d'accessoires | [Produits Espressif](https://www.espressif.com/en/products/socs) | Pas adapté à un LLM de plusieurs millions de paramètres |
+| ESP32-S3 N16R8 avec SD/audio | achat matériel unique | [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) | Modèle et vocabulaire très contraints |
+| PC professionnel reconditionné Tiny/Micro/Mini ou SFF | achat unique d'occasion | Page d'assistance du constructeur correspondant au numéro de série | État, génération du CPU, verrouillages et alimentation à contrôler |
+| Mini-PC N100 neuf | achat unique du système | [Intel Processor N100](https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html) | RAM parfois soudée, refroidissement et SSD variables selon le fabricant |
+| Raspberry Pi 5 complet | achat unique de la carte et des accessoires | [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) | RAM limitée et accessoires séparés |
 
-Ces fourchettes sont des scénarios budgétaires, pas une observation du marché.
-Enregistrez le prix daté de l'annonce retenue comme `observed`. Ajoutez toujours
-alimentation, refroidissement, stockage, câbles, garantie, éventuelles mises à
-niveau et consommation mesurée localement. Une carte nue n'est pas un système
-complet.
+Comparez le système complet : alimentation, refroidissement, stockage, câbles,
+garantie, mises à niveau, livraison, taxes et consommation mesurée localement.
+Une carte nue n'est pas un système complet et la page officielle d'un processeur
+n'est pas un devis vendeur.
 
 ## 3. Appliquer la règle d'achat
 

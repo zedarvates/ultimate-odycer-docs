@@ -73,6 +73,12 @@ choice in the project brief and do not invent the missing files.
 Start with the smallest structure that can prove your gameplay loop. The urban
 RPG example begins on a `flat_map`, not on an entire planet.
 
+You can then [draw your map and prepare its conversion](../how-to/draw-and-convert-map.md).
+For terrain, buildings, characters, audio, UI, and other content, follow the
+[creative production handbook](creative-production-handbook.md). A drawing and
+a `uo.map-intent/v1` remain proposals: they prove neither engine import nor
+server publication.
+
 ## 5. Choose the local profile
 
 The following figures are `estimated` planning values, not release-certified
@@ -112,7 +118,8 @@ When a release exists, follow this order:
 2. [Linux variant](../how-to/install-local-server-linux.md), if needed;
 3. [backup and restore check](../how-to/backup-and-test-restore-postgresql.md);
 4. [Godot template connection](../how-to/connect-godot-template.md);
-5. [final acceptance checklist](../reference/local-setup-acceptance-checklist.md).
+5. [final acceptance checklist](../reference/local-setup-acceptance-checklist.md);
+6. [project organization with Kanboard and Botte Secrète](../how-to/organize-project-kanboard-botte-secrete.md).
 
 ## 8. Choose optional modules
 

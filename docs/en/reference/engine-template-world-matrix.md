@@ -35,6 +35,21 @@ a playable client.
 | `mega_planet` | a very large planet | very high |
 | `solar_system` | travel between multiple bodies | highest |
 
+## Drawn inputs and conversion
+
+| Input | Processing | Output | Integration |
+|---|---|---|---|
+| Paper, PNG, JPEG, or SVG with legend | Human/LLM analysis preserving uncertainty | `uo.map-intent/v1` | `reference_only` then `conversion_required` |
+| GeoJSON or QGIS layers | Scale, projection, and attribution checks | versioned world proposal | `conversion_required` |
+| Blender blockout or GLB | Units, collision, LOD, and license review | 3D candidate | `conversion_required` |
+| CityConfig Lite | City Editor Lite | bounded city proposal | `direct` to the Lite contract, not runtime |
+| HouseBlueprint Lite | Architecture Editor Lite | building proposal | `direct` to the Lite contract, not runtime |
+| XenoGenome Lite | Creature Editor Lite | creature proposal | `direct` to the Lite contract, server stats unchanged |
+
+The listed Lite editors are `executable_public` for their public contracts and
+tests. Their previews remain `[Scaffolding / Proxy]` and prove neither Godot,
+Zig, VR, nor server publication.
+
 ## Recommendation rules
 
 1. Choose the gameplay loop before the world size.

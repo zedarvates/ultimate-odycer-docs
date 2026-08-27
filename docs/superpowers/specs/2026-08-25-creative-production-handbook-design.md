@@ -233,6 +233,8 @@ the private monorepo.
 | Creature Editor Lite | XenoGenome Lite JSON | Executable public slice; preview remains proxy |
 | City Editor Lite | CityConfig Lite proposals | Executable public survey slice; no Zig/Godot runtime proof |
 | Architecture Editor Lite | HouseBlueprint Lite proposals | Executable public drafting slice; no costs, HP, assets, collision, HLOD, Godot, VR, or publication proof |
+| Dungeon Editor Lite | DungeonBlueprint Lite proposals | Executable public survey slice; no rewards, loot, meshes, Zig loader, or publication proof |
+| Avatar Editor Lite | AvatarTemplate Lite proposals | Executable public contract slice; no GLB, Godot, VR, server, or production proof |
 | Architecture Editor | House and procedural blueprints | Local authoring/prototype; individual proofs remain bounded |
 | Dungeon Editor | Dungeon blueprints | Presentation or local prototype unless a release says otherwise |
 | Creature Editor | XenoGenome-compatible JSON | Full internal editor remains extraction-gated |

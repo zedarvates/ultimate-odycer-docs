@@ -35,6 +35,21 @@ client jouable.
 | `mega_planet` | planète de très grande taille | très élevé |
 | `solar_system` | voyages entre plusieurs corps | le plus élevé |
 
+## Entrées dessinées et conversion
+
+| Entrée | Traitement | Sortie | Intégration |
+|---|---|---|---|
+| Papier, PNG, JPEG ou SVG avec légende | Analyse humaine/LM avec incertitudes | `uo.map-intent/v1` | `reference_only` puis `conversion_required` |
+| GeoJSON ou couches QGIS | Contrôle d'échelle, projection et attribution | proposition de monde versionnée | `conversion_required` |
+| Blockout Blender ou GLB | Revue unités, collisions, LOD et licence | candidat 3D | `conversion_required` |
+| CityConfig Lite | City Editor Lite | proposition ville bornée | `direct` vers le contrat Lite, pas vers le runtime |
+| HouseBlueprint Lite | Architecture Editor Lite | proposition bâtiment | `direct` vers le contrat Lite, pas vers le runtime |
+| XenoGenome Lite | Creature Editor Lite | proposition créature | `direct` vers le contrat Lite, statistiques serveur inchangées |
+
+Les éditeurs Lite cités sont `executable_public` pour leurs contrats et tests
+publics. Leurs aperçus restent `[Scaffolding / Proxy]` et ne prouvent ni Godot,
+ni Zig, ni VR, ni publication serveur.
+
 ## Règles de recommandation
 
 1. Choisissez la boucle de jeu avant la taille du monde.
