@@ -1,0 +1,93 @@
+{
+  "schema_version": "ultimate-odycer.local-setup-catalog.v1",
+  "release_page": "https://www.ultimateodycer.com/releases/",
+  "current_server_release": "unavailable",
+  "default_engine": "godot",
+  "primary_platform": "windows",
+  "platforms": [
+    {"id": "windows", "role": "primary", "status": "available"},
+    {"id": "linux", "role": "variant", "status": "planned"},
+    {"id": "android", "role": "future-mobile", "status": "planned"},
+    {"id": "macos", "role": "unsupported", "status": "unavailable"}
+  ],
+  "engines": [
+    {"id": "godot", "role": "recommended", "status": "available"},
+    {"id": "threejs", "role": "alternative", "status": "available"},
+    {"id": "unity", "role": "alternative-without-validated-template", "status": "available"},
+    {"id": "unreal", "role": "alternative-without-validated-template", "status": "available"},
+    {"id": "foveacore", "role": "specialized", "status": "under_construction"}
+  ],
+  "templates": [
+    {
+      "repository": "ultod-client-godot-classic-3d-mmorpg-template",
+      "display_name": "Godot Classic 3D MMORPG",
+      "engine": "godot",
+      "experience": "classic_3d_mmorpg",
+      "status": "under_construction"
+    },
+    {
+      "repository": "ultod-client-godot-vr-mmorpg-template",
+      "display_name": "Godot VR MMORPG",
+      "engine": "godot",
+      "experience": "vr_mmorpg",
+      "status": "under_construction"
+    },
+    {
+      "repository": "ultod-client-threejs-2-5d-mmorpg-template",
+      "display_name": "Three.js 2.5D MMORPG",
+      "engine": "threejs",
+      "experience": "web_2_5d_mmorpg",
+      "status": "under_construction"
+    },
+    {
+      "repository": "ultod-client-foveacore-fps-rpg-template",
+      "display_name": "FoveaCore FPS-RPG Online",
+      "engine": "foveacore",
+      "experience": "fps_rpg_online",
+      "status": "under_construction"
+    },
+    {
+      "repository": "ultod-client-godot-open-city-crime-rpg-template",
+      "display_name": "Prêt à tout faire pour de l'argent",
+      "engine": "godot",
+      "experience": "open_city_crime_rpg",
+      "status": "planned"
+    }
+  ],
+  "topologies": ["flat_map", "planet", "mega_planet", "solar_system"],
+  "components": [
+    {"id": "server", "install_mode": "required", "status": "unavailable"},
+    {"id": "webadmin", "install_mode": "optional", "status": "under_construction"},
+    {"id": "tools-suite", "install_mode": "optional-modules", "status": "under_construction"},
+    {"id": "dungeon-editor", "install_mode": "optional-module", "status": "under_construction"},
+    {"id": "city-editor", "install_mode": "optional-module", "status": "under_construction"},
+    {"id": "architecture-editor", "install_mode": "optional-module", "status": "under_construction"},
+    {"id": "creature-editor", "install_mode": "optional-module", "status": "under_construction"},
+    {"id": "avatar-editor", "install_mode": "optional-module", "status": "under_construction"},
+    {"id": "asset-factory-comfyui", "install_mode": "optional-module", "status": "under_construction"}
+  ],
+  "hardware_profiles": [
+    {
+      "id": "dedicated_server",
+      "status": "estimated",
+      "cpu_cores": 4,
+      "ram_gib": 8,
+      "free_ssd_gib": 20
+    },
+    {
+      "id": "shared_workstation",
+      "status": "estimated",
+      "cpu_cores": 6,
+      "ram_gib": 16,
+      "free_ssd_gib": 40
+    },
+    {
+      "id": "creation_workstation",
+      "status": "estimated",
+      "cpu_cores": 8,
+      "ram_gib": 32,
+      "free_ssd_gib": 100,
+      "gpu_requirement": "unavailable"
+    }
+  ]
+}

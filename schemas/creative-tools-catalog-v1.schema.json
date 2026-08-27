@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ultimateodycer.com/schemas/creative-tools-catalog-v1.schema.json",
+  "title": "Ultimate Odycer creative tools catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "verified_on", "pricing_policy", "default_strategy", "tools", "recommendations"],
+  "properties": {
+    "schema_version": {"const": "ultimate-odycer.creative-tools-catalog.v1"},
+    "verified_on": {"type": "string", "pattern": "^20[0-9]{2}-[0-9]{2}-[0-9]{2}$"},
+    "pricing_policy": {"const": "model_only_no_exact_prices"},
+    "default_strategy": {"const": "local_first_free_open_source"},
+    "tools": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/tool"}
+    },
+    "recommendations": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/recommendation"}
+    }
+  },
+  "$defs": {
+    "maturity": {
+      "enum": ["executable_public", "prototype_local", "scaffolding_proxy", "planned", "available_external", "verification_required", "unavailable"]
+    },
+    "execution": {"enum": ["local", "cloud", "hybrid", "not_applicable"]},
+    "pricing_model": {
+      "enum": ["free_open_source", "free", "free_noncommercial", "freemium", "one_time_purchase", "subscription", "credits", "revenue_limited", "project_budget_limited", "contact_sales", "mixed"]
+    },
+    "commercial_use": {
+      "enum": ["allowed", "conditional", "noncommercial_only", "plan_dependent", "asset_dependent", "model_dependent", "verification_required"]
+    },
+    "integration": {"enum": ["direct", "conversion_required", "reference_only"]},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "provider", "ownership", "domains", "maturity", "execution", "pricing_model", "commercial_use", "commercial_use_note", "privacy", "ai_training_terms", "integration", "inputs", "outputs", "platforms", "official_url", "pricing_or_license_url", "verified_on", "notes"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
+        "name": {"type": "string", "minLength": 2, "maxLength": 100},
+        "provider": {"type": "string", "minLength": 2, "maxLength": 100},
+        "ownership": {"enum": ["ultimate_odycer", "external"]},
+        "domains": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_]{1,39}$"}},
+        "maturity": {"$ref": "#/$defs/maturity"},
+        "execution": {"$ref": "#/$defs/execution"},
+        "pricing_model": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/pricing_model"}},
+        "commercial_use": {"$ref": "#/$defs/commercial_use"},
+        "commercial_use_note": {"type": "string", "minLength": 2, "maxLength": 300},
+        "privacy": {"type": "string", "minLength": 2, "maxLength": 200},
+        "ai_training_terms": {"type": "string", "minLength": 2, "maxLength": 200},
+        "integration": {"$ref": "#/$defs/integration"},
+        "inputs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "outputs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "platforms": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "official_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "pricing_or_license_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "verified_on": {"type": "string", "pattern": "^20[0-9]{2}-[0-9]{2}-[0-9]{2}$"},
+        "notes": {"type": "string", "minLength": 2, "maxLength": 400}
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default_tool", "tools"],
+      "properties": {
+        "default_tool": {"type": "string"},
+        "tools": {"type": "array", "minItems": 2, "maxItems": 5, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    }
+  }
+}

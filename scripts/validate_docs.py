@@ -10,7 +10,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 METRIC_STATUSES = {"observed", "estimated", "decision", "unavailable"}
+COMPONENT_STATUSES = {"available", "under_construction", "planned", "unavailable"}
+CREATIVE_MATURITY = {"executable_public", "prototype_local", "scaffolding_proxy", "planned", "available_external", "verification_required", "unavailable"}
+CREATIVE_EXECUTION = {"local", "cloud", "hybrid", "not_applicable"}
+CREATIVE_PRICING = {"free_open_source", "free", "free_noncommercial", "freemium", "one_time_purchase", "subscription", "credits", "revenue_limited", "project_budget_limited", "contact_sales", "mixed"}
+CREATIVE_COMMERCIAL = {"allowed", "conditional", "noncommercial_only", "plan_dependent", "asset_dependent", "model_dependent", "verification_required"}
+CREATIVE_INTEGRATION = {"direct", "conversion_required", "reference_only"}
 REQUIRED_PATHS = (
+    "requirements-docs.txt",
+    "mkdocs.yml",
     "README.md",
     "PUBLICATION_STATUS.md",
     "SECURITY.md",
@@ -23,15 +31,30 @@ REQUIRED_PATHS = (
     "MANIFEST.sha256",
     "llms.txt",
     "schemas/npc-benchmark-v1.schema.json",
+    "schemas/local-setup-catalog-v1.schema.json",
+    "schemas/creative-tools-catalog-v1.schema.json",
     "examples/benchmark-results/estimated-esp32-s3.json",
+    "examples/local-setup-catalog.json",
     "schemas/network-intent-v1.schema.json",
     "examples/network/synthetic-talk-intent.json",
+    "examples/creative-tools-catalog.json",
     "docs/llm/README.md",
     "docs/llm/context-index.json",
+    "docs/index.md",
+    "docs/assets/stylesheets/ultimate-odycer-docs.css",
+    "scripts/build_static_docs.py",
 )
 MARKDOWN_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 FORBIDDEN_PATTERNS = (
     ("absolute Windows user path", re.compile(r"[A-Za-z]:\\Users\\", re.IGNORECASE)),
+    (
+        "patch artifact marker",
+        re.compile(r"^\*\*\* (?:Add|Update|Delete) File:", re.MULTILINE),
+    ),
+    (
+        "local worktree path",
+        re.compile(r"[A-Za-z]:[/\\].*?\.worktrees[/\\]", re.IGNORECASE),
+    ),
     ("serial port identifier", re.compile(r"\bCOM\d+\b", re.IGNORECASE)),
     (
         "private or loopback IPv4 address",
@@ -44,6 +67,7 @@ FORBIDDEN_PATTERNS = (
 )
 MANIFEST_EXCLUDED_PARTS = {
     ".git",
+    ".worktrees",
     "__pycache__",
     ".pytest_cache",
     ".venv",
@@ -67,6 +91,10 @@ def bilingual_errors() -> list[str]:
 def markdown_link_errors() -> list[str]:
     errors: list[str] = []
     for path in ROOT.rglob("*.md"):
+        if any(
+            part in MANIFEST_EXCLUDED_PARTS for part in path.relative_to(ROOT).parts
+        ):
+            continue
         text = path.read_text(encoding="utf-8")
         for raw_target in MARKDOWN_LINK.findall(text):
             target = raw_target.split("#", 1)[0]
@@ -91,7 +119,14 @@ def forbidden_content_errors() -> list[str]:
     errors: list[str] = []
     text_extensions = {".md", ".txt", ".json", ".py"}
     for path in ROOT.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in text_extensions:
+        if (
+            not path.is_file()
+            or path.suffix.lower() not in text_extensions
+            or any(
+                part in MANIFEST_EXCLUDED_PARTS
+                for part in path.relative_to(ROOT).parts
+            )
+        ):
             continue
         if path.resolve() == Path(__file__).resolve():
             continue
@@ -130,6 +165,207 @@ def llm_index_errors() -> list[str]:
             target = ROOT / stripped.removeprefix("- ")
             if not target.is_file():
                 errors.append(f"llms.txt path is missing: {target.relative_to(ROOT)}")
+    return errors
+
+
+def local_setup_catalog_errors() -> list[str]:
+    errors: list[str] = []
+    catalog_path = ROOT / "examples" / "local-setup-catalog.json"
+    schema_path = ROOT / "schemas" / "local-setup-catalog-v1.schema.json"
+    try:
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return [f"invalid local setup catalog contract: {error}"]
+
+    if catalog.get("schema_version") != "ultimate-odycer.local-setup-catalog.v1":
+        errors.append("local setup catalog uses an unknown schema version")
+    if catalog.get("release_page") != "https://www.ultimateodycer.com/releases/":
+        errors.append("local setup catalog must use the official HTTPS release page")
+    if catalog.get("default_engine") != "godot":
+        errors.append("local setup catalog default engine must be Godot")
+    if catalog.get("primary_platform") != "windows":
+        errors.append("local setup catalog primary platform must be Windows")
+
+    current_release = catalog.get("current_server_release")
+    if current_release != "unavailable":
+        if not isinstance(current_release, dict):
+            errors.append("local setup current server release must be unavailable or an object")
+        else:
+            artifacts = current_release.get("artifacts")
+            if not current_release.get("version") or not isinstance(artifacts, list) or not artifacts:
+                errors.append("available local setup release requires a version and artifacts")
+            else:
+                for artifact in artifacts:
+                    if (
+                        not isinstance(artifact, dict)
+                        or not str(artifact.get("url", "")).startswith("https://")
+                        or re.fullmatch(r"[0-9a-f]{64}", str(artifact.get("sha256", "")))
+                        is None
+                    ):
+                        errors.append("local setup release artifact requires HTTPS and SHA-256")
+                        break
+
+    def unique_ids(items: object, label: str, key: str = "id") -> set[str]:
+        if not isinstance(items, list) or not items:
+            errors.append(f"local setup catalog requires {label}")
+            return set()
+        identifiers = [str(item.get(key, "")) for item in items if isinstance(item, dict)]
+        if len(identifiers) != len(items) or any(not identifier for identifier in identifiers):
+            errors.append(f"local setup catalog has invalid {label} identifiers")
+        if len(set(identifiers)) != len(identifiers):
+            errors.append(f"local setup catalog has duplicate {label} identifiers")
+        return set(identifiers)
+
+    platform_ids = unique_ids(catalog.get("platforms"), "platform")
+    if platform_ids != {"windows", "linux", "android", "macos"}:
+        errors.append("local setup platform catalog does not match the public contract")
+    engine_ids = unique_ids(catalog.get("engines"), "engine")
+    if engine_ids != {"godot", "threejs", "unity", "unreal", "foveacore"}:
+        errors.append("local setup engine catalog does not match the public contract")
+    template_ids = unique_ids(catalog.get("templates"), "template", "repository")
+    if "ultod-client-godot-open-city-crime-rpg-template" not in template_ids:
+        errors.append("local setup catalog is missing the open-city Godot template")
+    unique_ids(catalog.get("components"), "component")
+    hardware_ids = unique_ids(catalog.get("hardware_profiles"), "hardware profile")
+    if hardware_ids != {"dedicated_server", "shared_workstation", "creation_workstation"}:
+        errors.append("local setup hardware profiles do not match the public contract")
+
+    for group in ("platforms", "engines", "templates", "components"):
+        for item in catalog.get(group, []):
+            if not isinstance(item, dict) or item.get("status") not in COMPONENT_STATUSES:
+                errors.append(f"local setup catalog has invalid component status in {group}")
+                break
+    for profile in catalog.get("hardware_profiles", []):
+        if not isinstance(profile, dict) or profile.get("status") not in METRIC_STATUSES:
+            errors.append("local setup catalog has invalid hardware status")
+            break
+        for field in ("cpu_cores", "ram_gib", "free_ssd_gib"):
+            if not isinstance(profile.get(field), int) or profile[field] <= 0:
+                errors.append(f"local setup hardware profile has invalid {field}")
+                break
+
+    if set(catalog.get("topologies", [])) != {
+        "flat_map",
+        "planet",
+        "mega_planet",
+        "solar_system",
+    }:
+        errors.append("local setup topology catalog does not match the public contract")
+
+    try:
+        schema_statuses = set(schema["$defs"]["component_status"]["enum"])
+        schema_measurements = set(schema["$defs"]["measurement_status"]["enum"])
+    except (KeyError, TypeError):
+        errors.append("local setup schema is missing status vocabularies")
+    else:
+        if schema_statuses != COMPONENT_STATUSES:
+            errors.append("local setup schema component statuses are inconsistent")
+        if schema_measurements != METRIC_STATUSES:
+            errors.append("local setup schema measurement statuses are inconsistent")
+    return errors
+
+
+def creative_tools_catalog_errors() -> list[str]:
+    errors: list[str] = []
+    catalog_path = ROOT / "examples" / "creative-tools-catalog.json"
+    schema_path = ROOT / "schemas" / "creative-tools-catalog-v1.schema.json"
+    try:
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return [f"invalid creative tools catalog contract: {error}"]
+    if catalog.get("schema_version") != "ultimate-odycer.creative-tools-catalog.v1":
+        errors.append("creative tools catalog uses an unknown schema version")
+    if catalog.get("pricing_policy") != "model_only_no_exact_prices":
+        errors.append("creative tools catalog pricing policy is invalid")
+    if catalog.get("default_strategy") != "local_first_free_open_source":
+        errors.append("creative tools catalog default strategy is invalid")
+    if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", str(catalog.get("verified_on", ""))) is None:
+        errors.append("creative tools catalog verification date is invalid")
+    forbidden_price_fields = {"price", "exact_price", "amount", "currency"}
+    if forbidden_price_fields & set(catalog):
+        errors.append("creative tools catalog contains exact price fields")
+    tools = catalog.get("tools")
+    if not isinstance(tools, list) or not tools:
+        return errors + ["creative tools catalog requires tools"]
+    tool_ids: list[str] = []
+    by_id: dict[str, dict[str, object]] = {}
+    for tool in tools:
+        if not isinstance(tool, dict):
+            errors.append("creative tools catalog has a non-object tool")
+            continue
+        tool_id = str(tool.get("id", ""))
+        if not tool_id:
+            errors.append("creative tools catalog has a missing tool id")
+            continue
+        tool_ids.append(tool_id)
+        by_id[tool_id] = tool
+        if forbidden_price_fields & set(tool):
+            errors.append(f"creative tool contains exact price fields: {tool_id}")
+        if tool.get("maturity") not in CREATIVE_MATURITY:
+            errors.append(f"creative tool has invalid maturity: {tool_id}")
+        if tool.get("execution") not in CREATIVE_EXECUTION:
+            errors.append(f"creative tool has invalid execution: {tool_id}")
+        pricing = tool.get("pricing_model")
+        if not isinstance(pricing, list) or not pricing or not set(pricing) <= CREATIVE_PRICING:
+            errors.append(f"creative tool has invalid pricing model: {tool_id}")
+        if tool.get("commercial_use") not in CREATIVE_COMMERCIAL:
+            errors.append(f"creative tool has invalid commercial use: {tool_id}")
+        if tool.get("integration") not in CREATIVE_INTEGRATION:
+            errors.append(f"creative tool has invalid integration: {tool_id}")
+        for field in ("official_url", "pricing_or_license_url"):
+            if not str(tool.get(field, "")).startswith("https://"):
+                errors.append(f"creative tool requires HTTPS {field}: {tool_id}")
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", str(tool.get("verified_on", ""))) is None:
+            errors.append(f"creative tool has invalid verification date: {tool_id}")
+        for field in ("domains", "inputs", "outputs", "platforms"):
+            value = tool.get(field)
+            if not isinstance(value, list) or not value or len(value) != len(set(value)):
+                errors.append(f"creative tool has invalid {field}: {tool_id}")
+    if len(tool_ids) != len(set(tool_ids)):
+        errors.append("creative tools catalog has duplicate tool ids")
+    for lite_id in (
+        "creature-editor-lite",
+        "city-editor-lite",
+        "architecture-editor-lite",
+        "dungeon-editor-lite",
+        "avatar-editor-lite",
+    ):
+        if by_id.get(lite_id, {}).get("maturity") != "executable_public":
+            errors.append(f"creative tools catalog Lite maturity drift: {lite_id}")
+    recommendations = catalog.get("recommendations")
+    if not isinstance(recommendations, dict) or not recommendations:
+        errors.append("creative tools catalog requires recommendations")
+    else:
+        known = set(tool_ids)
+        for domain, recommendation in recommendations.items():
+            if not isinstance(recommendation, dict):
+                errors.append(f"creative recommendation is invalid: {domain}")
+                continue
+            selected = recommendation.get("tools")
+            default = recommendation.get("default_tool")
+            if not isinstance(selected, list) or not 2 <= len(selected) <= 5 or len(selected) != len(set(selected)):
+                errors.append(f"creative recommendation tool count is invalid: {domain}")
+                continue
+            if not set(selected) <= known:
+                errors.append(f"creative recommendation references unknown tools: {domain}")
+            if default not in selected:
+                errors.append(f"creative recommendation default is invalid: {domain}")
+    try:
+        defs = schema["$defs"]
+        enum_contracts = {
+            "maturity": CREATIVE_MATURITY,
+            "execution": CREATIVE_EXECUTION,
+            "pricing_model": CREATIVE_PRICING,
+            "commercial_use": CREATIVE_COMMERCIAL,
+            "integration": CREATIVE_INTEGRATION,
+        }
+        for name, expected in enum_contracts.items():
+            if set(defs[name]["enum"]) != expected:
+                errors.append(f"creative tools schema {name} vocabulary is inconsistent")
+    except (KeyError, TypeError):
+        errors.append("creative tools schema is missing vocabularies")
     return errors
 
 
@@ -197,7 +433,9 @@ def manifest_errors() -> list[str]:
         for path in ROOT.rglob("*")
         if path.is_file()
         and path != manifest_path
-        and not any(part in MANIFEST_EXCLUDED_PARTS for part in path.parts)
+        and not any(
+            part in MANIFEST_EXCLUDED_PARTS for part in path.relative_to(ROOT).parts
+        )
     }
     missing = set(included) - set(declared)
     extra = set(declared) - set(included)
@@ -269,6 +507,8 @@ def validate() -> list[str]:
     errors.extend(markdown_link_errors())
     errors.extend(forbidden_content_errors())
     errors.extend(llm_index_errors())
+    errors.extend(local_setup_catalog_errors())
+    errors.extend(creative_tools_catalog_errors())
     errors.extend(metric_example_errors())
     errors.extend(network_example_errors())
     errors.extend(license_errors())

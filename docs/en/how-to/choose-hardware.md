@@ -15,23 +15,23 @@ PC, and a refurbished business PC. The best purchase may be no purchase at all.
 
 A microSD card adds storage, not RAM or compute throughput.
 
-## 2. Compare complete cost
+## 2. Compare the pricing model and complete system
 
-The following values are `estimated`, dated August 2026, and are not quotations:
+Exact prices age quickly and are intentionally omitted. Open the official
+product page, then record the dated price of the actual seller listing as
+`observed`.
 
-| Option | Indicative complete cost | Main limit |
-|---|---:|---|
-| Existing classic ESP32 plus SD/audio | €5–15 extra | Not suitable for a multi-million-parameter LLM |
-| ESP32-S3 N16R8 plus SD/audio | €15–40 | Very constrained model and vocabulary |
-| Refurbished business Tiny/Micro/Mini PC, 16/256 | €140–220 | Condition, CPU generation, and power adapter must be checked |
-| Refurbished business SFF PC, 16/256 | €100–220 | Larger; measure wall power locally |
-| New N100 mini PC, 8/128 or 16/256 | Actual seller price plus upgrades | RAM may be soldered; cooling and SSD vary |
-| Complete Raspberry Pi 5 4 GB | €170–200 | Limited RAM and accessory cost |
+| Option | Pricing model | Official starting point | Main limit |
+|---|---|---|---|
+| Existing classic ESP32 plus SD/audio | reuse plus one-time accessory purchase | [Espressif products](https://www.espressif.com/en/products/socs) | Not suitable for a multi-million-parameter LLM |
+| ESP32-S3 N16R8 plus SD/audio | one-time hardware purchase | [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) | Very constrained model and vocabulary |
+| Refurbished business Tiny/Micro/Mini or SFF PC | second-hand one-time purchase | Manufacturer support page for the exact service tag | Condition, CPU generation, firmware locks, and power adapter must be checked |
+| New N100 mini PC | one-time system purchase | [Intel Processor N100](https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html) | RAM may be soldered; cooling and SSD vary by system vendor |
+| Complete Raspberry Pi 5 | one-time board and accessory purchase | [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) | Limited RAM and separate accessory costs |
 
-These ranges are budget scenarios, not a market observation. Record the dated
-price of the actual listing as `observed`. Include the power adapter, cooling,
-storage, cables, warranty, upgrades, and locally measured electricity. A bare
-board is not a complete system.
+Compare the complete system: power adapter, cooling, storage, cables, warranty,
+upgrades, shipping, taxes, and locally measured electricity. A bare board is
+not a complete system and an official processor page is not a seller quote.
 
 ## 3. Apply the purchase rule
 

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ultimateodycer.com/schemas/local-setup-catalog-v1.schema.json",
+  "title": "Ultimate Odycer local setup catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_page",
+    "current_server_release",
+    "default_engine",
+    "primary_platform",
+    "platforms",
+    "engines",
+    "templates",
+    "topologies",
+    "components",
+    "hardware_profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ultimate-odycer.local-setup-catalog.v1"
+    },
+    "release_page": {
+      "const": "https://www.ultimateodycer.com/releases/"
+    },
+    "current_server_release": {
+      "oneOf": [
+        {"const": "unavailable"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "artifacts"],
+          "properties": {
+            "version": {"type": "string", "minLength": 1, "maxLength": 64},
+            "artifacts": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["platform", "url", "sha256"],
+                "properties": {
+                  "platform": {"type": "string"},
+                  "url": {"type": "string", "format": "uri"},
+                  "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "default_engine": {"const": "godot"},
+    "primary_platform": {"const": "windows"},
+    "platforms": {
+      "type": "array",
+      "minItems": 4,
+      "items": {"$ref": "#/$defs/status_item"}
+    },
+    "engines": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"$ref": "#/$defs/status_item"}
+    },
+    "templates": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["repository", "display_name", "engine", "experience", "status"],
+        "properties": {
+          "repository": {"type": "string", "minLength": 1},
+          "display_name": {"type": "string", "minLength": 1},
+          "engine": {"type": "string", "minLength": 1},
+          "experience": {"type": "string", "minLength": 1},
+          "status": {"$ref": "#/$defs/component_status"}
+        }
+      }
+    },
+    "topologies": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "enum": ["flat_map", "planet", "mega_planet", "solar_system"]
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/status_item"}
+    },
+    "hardware_profiles": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "cpu_cores", "ram_gib", "free_ssd_gib"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "status": {"$ref": "#/$defs/measurement_status"},
+          "cpu_cores": {"type": "integer", "minimum": 1},
+          "ram_gib": {"type": "integer", "minimum": 1},
+          "free_ssd_gib": {"type": "integer", "minimum": 1},
+          "gpu_requirement": {
+            "oneOf": [
+              {"const": "unavailable"},
+              {"type": "string", "minLength": 1}
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "component_status": {
+      "enum": ["available", "under_construction", "planned", "unavailable"]
+    },
+    "measurement_status": {
+      "enum": ["observed", "estimated", "decision", "unavailable"]
+    },
+    "status_item": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "status": {"$ref": "#/$defs/component_status"}
+      }
+    }
+  }
+}

@@ -126,6 +126,222 @@
       "mutating": false
     },
     {
+      "id": "first-local-world-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "technical beginner assisted by an LLM",
+      "goal": "prepare and validate a first local Ultimate Odycer world",
+      "path": "docs/fr/tutorials/create-first-local-world.md",
+      "mutating": false
+    },
+    {
+      "id": "first-local-world-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "technical beginner assisted by an LLM",
+      "goal": "prepare and validate a first local Ultimate Odycer world",
+      "path": "docs/en/tutorials/create-first-local-world.md",
+      "mutating": false
+    },
+    {
+      "id": "engine-template-world-matrix-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "creator or documentation assistant",
+      "goal": "compare engines, templates, and world topologies",
+      "path": "docs/fr/reference/engine-template-world-matrix.md",
+      "mutating": false
+    },
+    {
+      "id": "engine-template-world-matrix-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "creator or documentation assistant",
+      "goal": "compare engines, templates, and world topologies",
+      "path": "docs/en/reference/engine-template-world-matrix.md",
+      "mutating": false
+    },
+    {
+      "id": "install-local-server-windows-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "Windows technical beginner",
+      "goal": "install a verified local server release with PostgreSQL",
+      "path": "docs/fr/how-to/install-local-server-windows.md",
+      "mutating": false
+    },
+    {
+      "id": "install-local-server-windows-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "Windows technical beginner",
+      "goal": "install a verified local server release with PostgreSQL",
+      "path": "docs/en/how-to/install-local-server-windows.md",
+      "mutating": false
+    },
+    {
+      "id": "install-local-server-linux-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "Linux operator",
+      "goal": "apply the documented Linux differences to local setup",
+      "path": "docs/fr/how-to/install-local-server-linux.md",
+      "mutating": false
+    },
+    {
+      "id": "install-local-server-linux-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "Linux operator",
+      "goal": "apply the documented Linux differences to local setup",
+      "path": "docs/en/how-to/install-local-server-linux.md",
+      "mutating": false
+    },
+    {
+      "id": "backup-test-restore-postgresql-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "local server operator",
+      "goal": "back up PostgreSQL outside Docker and test restoration safely",
+      "path": "docs/fr/how-to/backup-and-test-restore-postgresql.md",
+      "mutating": false
+    },
+    {
+      "id": "backup-test-restore-postgresql-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "local server operator",
+      "goal": "back up PostgreSQL outside Docker and test restoration safely",
+      "path": "docs/en/how-to/backup-and-test-restore-postgresql.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-godot-template-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "Godot technical beginner",
+      "goal": "connect a compatible Godot template to local services",
+      "path": "docs/fr/how-to/connect-godot-template.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-godot-template-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "Godot technical beginner",
+      "goal": "connect a compatible Godot template to local services",
+      "path": "docs/en/how-to/connect-godot-template.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-troubleshooting-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "local setup operator",
+      "goal": "diagnose local setup failures without deleting data",
+      "path": "docs/fr/how-to/troubleshoot-local-setup.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-troubleshooting-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "local setup operator",
+      "goal": "diagnose local setup failures without deleting data",
+      "path": "docs/en/how-to/troubleshoot-local-setup.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-acceptance-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "local setup operator or reviewer",
+      "goal": "decide whether local setup has sufficient evidence",
+      "path": "docs/fr/reference/local-setup-acceptance-checklist.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-acceptance-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "local setup operator or reviewer",
+      "goal": "decide whether local setup has sufficient evidence",
+      "path": "docs/en/reference/local-setup-acceptance-checklist.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-advanced-index-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "advanced operator",
+      "goal": "jump to local setup commands and proof contracts",
+      "path": "docs/fr/reference/local-setup-advanced-index.md",
+      "mutating": false
+    },
+    {
+      "id": "local-setup-advanced-index-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "advanced operator",
+      "goal": "jump to local setup commands and proof contracts",
+      "path": "docs/en/reference/local-setup-advanced-index.md",
+      "mutating": false
+    },
+    {
+      "id": "llm-local-setup-prompts-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "technical beginner assisted by an LLM",
+      "goal": "continue local setup with safe reusable LLM prompts",
+      "path": "docs/fr/reference/llm-local-setup-prompts.md",
+      "mutating": false
+    },
+    {
+      "id": "llm-local-setup-prompts-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "technical beginner assisted by an LLM",
+      "goal": "continue local setup with safe reusable LLM prompts",
+      "path": "docs/en/reference/llm-local-setup-prompts.md",
+      "mutating": false
+    },
+    {
+      "id": "server-network-contract-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "client developer or documentation agent",
+      "goal": "read the canonical binary TCP protocol before claiming client compatibility",
+      "path": "docs/en/reference/server-network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "server-network-contract-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "client developer or documentation agent",
+      "goal": "read the canonical binary TCP protocol before claiming client compatibility",
+      "path": "docs/fr/reference/server-network-contract.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-threejs-template-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "web client developer",
+      "goal": "understand what a compliant browser client must implement and why none exists yet",
+      "path": "docs/en/how-to/connect-threejs-template.md",
+      "mutating": false
+    },
+    {
+      "id": "connect-threejs-template-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "web client developer",
+      "goal": "understand what a compliant browser client must implement and why none exists yet",
+      "path": "docs/fr/how-to/connect-threejs-template.md",
+      "mutating": false
+    },
+    {
       "id": "start-project-fr",
       "language": "fr",
       "type": "tutorial",
@@ -339,6 +555,186 @@
       "audience": "independent developer",
       "goal": "contribute to and test public repositories without inventing compatibility",
       "path": "docs/en/how-to/contribute-and-test.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-production-handbook-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "creator assisted by an LLM",
+      "goal": "follow the creative workflow from brief to validated candidate asset",
+      "path": "docs/fr/tutorials/creative-production-handbook.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-production-handbook-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "creator assisted by an LLM",
+      "goal": "follow the creative workflow from brief to validated candidate asset",
+      "path": "docs/en/tutorials/creative-production-handbook.md",
+      "mutating": false
+    },
+    {
+      "id": "draw-and-convert-map-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "world creator or LLM assistant",
+      "goal": "draw a map and prepare a structured conversion proposal",
+      "path": "docs/fr/how-to/draw-and-convert-map.md",
+      "mutating": false
+    },
+    {
+      "id": "draw-and-convert-map-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "world creator or LLM assistant",
+      "goal": "draw a map and prepare a structured conversion proposal",
+      "path": "docs/en/how-to/draw-and-convert-map.md",
+      "mutating": false
+    },
+    {
+      "id": "organize-project-kanboard-botte-secrete-fr",
+      "language": "fr",
+      "type": "how-to",
+      "audience": "solo developer or project organizer",
+      "goal": "organize production with Kanboard and bounded Botte Secrete routing",
+      "path": "docs/fr/how-to/organize-project-kanboard-botte-secrete.md",
+      "mutating": false
+    },
+    {
+      "id": "organize-project-kanboard-botte-secrete-en",
+      "language": "en",
+      "type": "how-to",
+      "audience": "solo developer or project organizer",
+      "goal": "organize production with Kanboard and bounded Botte Secrete routing",
+      "path": "docs/en/how-to/organize-project-kanboard-botte-secrete.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-tools-catalog-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "creator, developer, or LLM assistant",
+      "goal": "interpret tool maturity, integration, pricing model, privacy, and rights",
+      "path": "docs/fr/reference/creative-tools-catalog.md",
+      "mutating": false
+    },
+    {
+      "id": "creative-tools-catalog-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "creator, developer, or LLM assistant",
+      "goal": "interpret tool maturity, integration, pricing model, privacy, and rights",
+      "path": "docs/en/reference/creative-tools-catalog.md",
+      "mutating": false
+    },
+    {
+      "id": "world-map-and-structure-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "world builder",
+      "goal": "select tools and gates for maps, terrain, cities, architecture, and dungeons",
+      "path": "docs/fr/reference/world-map-and-structure-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "world-map-and-structure-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "world builder",
+      "goal": "select tools and gates for maps, terrain, cities, architecture, and dungeons",
+      "path": "docs/en/reference/world-map-and-structure-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "3d-assets-materials-photogrammetry-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "3D artist or technical artist",
+      "goal": "select 3D, material, scan, splat, and 2.5D conversion workflows",
+      "path": "docs/fr/reference/3d-assets-materials-and-photogrammetry-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "3d-assets-materials-photogrammetry-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "3D artist or technical artist",
+      "goal": "select 3D, material, scan, splat, and 2.5D conversion workflows",
+      "path": "docs/en/reference/3d-assets-materials-and-photogrammetry-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "character-creature-animation-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "character artist or animator",
+      "goal": "select character, creature, rigging, animation, and proof workflows",
+      "path": "docs/fr/reference/character-creature-and-animation-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "character-creature-animation-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "character artist or animator",
+      "goal": "select character, creature, rigging, animation, and proof workflows",
+      "path": "docs/en/reference/character-creature-and-animation-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "audio-2d-ui-vfx-video-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "sound designer, UI artist, or VFX artist",
+      "goal": "select audio, 2D, UI, VFX, and video tools and gates",
+      "path": "docs/fr/reference/audio-2d-ui-vfx-and-video-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "audio-2d-ui-vfx-video-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "sound designer, UI artist, or VFX artist",
+      "goal": "select audio, 2D, UI, VFX, and video tools and gates",
+      "path": "docs/en/reference/audio-2d-ui-vfx-and-video-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "local-and-cloud-ai-tools-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "creator using AI or LLM assistant",
+      "goal": "select local and cloud AI tools and audit privacy, rights, and outputs",
+      "path": "docs/fr/reference/local-and-cloud-ai-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "local-and-cloud-ai-tools-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "creator using AI or LLM assistant",
+      "goal": "select local and cloud AI tools and audit privacy, rights, and outputs",
+      "path": "docs/en/reference/local-and-cloud-ai-tools.md",
+      "mutating": false
+    },
+    {
+      "id": "import-optimization-licensing-provenance-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "technical artist or asset pipeline operator",
+      "goal": "validate formats, optimization, licenses, provenance, and publication gates",
+      "path": "docs/fr/reference/import-optimization-licensing-and-provenance.md",
+      "mutating": false
+    },
+    {
+      "id": "import-optimization-licensing-provenance-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "technical artist or asset pipeline operator",
+      "goal": "validate formats, optimization, licenses, provenance, and publication gates",
+      "path": "docs/en/reference/import-optimization-licensing-and-provenance.md",
       "mutating": false
     }
   ]
