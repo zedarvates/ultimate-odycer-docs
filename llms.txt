@@ -75,6 +75,7 @@ scripts, schemas, and examples use MIT.
 - [Sauvegarder et tester PostgreSQL](docs/fr/how-to/backup-and-test-restore-postgresql.md): sauvegardes hors volume Docker
 - [Connecter Godot](docs/fr/how-to/connect-godot-template.md): preuve locale bornée
 - [Dépanner la mise en route](docs/fr/how-to/troubleshoot-local-setup.md): diagnostic non destructif
+- [Contrat documentation et archive serveur](docs/fr/reference/offline-documentation-and-server-archive.md): distinguer et vérifier les sorties
 - [Prompts LM sûrs](docs/fr/reference/llm-local-setup-prompts.md): prompts réutilisables sans secret
 - [Checklist d'acceptation](docs/fr/reference/local-setup-acceptance-checklist.md): preuve de fin de parcours
 - [Index avancé](docs/fr/reference/local-setup-advanced-index.md): raccourcis pour opérateurs avancés
@@ -88,6 +89,7 @@ scripts, schemas, and examples use MIT.
 - [Back up and test PostgreSQL](docs/en/how-to/backup-and-test-restore-postgresql.md): backups outside Docker volumes
 - [Connect Godot](docs/en/how-to/connect-godot-template.md): bounded local proof
 - [Troubleshoot local setup](docs/en/how-to/troubleshoot-local-setup.md): non-destructive diagnosis
+- [Documentation and server archive contract](docs/en/reference/offline-documentation-and-server-archive.md): distinguish and verify outputs
 - [Safe LLM prompts](docs/en/reference/llm-local-setup-prompts.md): reusable secret-free prompts
 - [Acceptance checklist](docs/en/reference/local-setup-acceptance-checklist.md): end-of-journey proof
 - [Advanced index](docs/en/reference/local-setup-advanced-index.md): shortcuts for advanced operators

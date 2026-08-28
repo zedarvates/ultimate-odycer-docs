@@ -261,6 +261,24 @@
       "mutating": false
     },
     {
+      "id": "offline-documentation-server-archive-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "technical beginner assisted by an LLM or release reviewer",
+      "goal": "distinguish and verify Web, offline documentation, and server archive outputs",
+      "path": "docs/fr/reference/offline-documentation-and-server-archive.md",
+      "mutating": false
+    },
+    {
+      "id": "offline-documentation-server-archive-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "technical beginner assisted by an LLM or release reviewer",
+      "goal": "distinguish and verify Web, offline documentation, and server archive outputs",
+      "path": "docs/en/reference/offline-documentation-and-server-archive.md",
+      "mutating": false
+    },
+    {
       "id": "local-setup-acceptance-en",
       "language": "en",
       "type": "reference",

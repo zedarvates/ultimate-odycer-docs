@@ -74,6 +74,8 @@ docs/index.html
 ```
 
 Une archive sans ces fichiers ne correspond pas au contrat décrit ici.
+Vérifiez ensuite le
+[contrat de la documentation hors ligne et de l'archive serveur](../reference/offline-documentation-and-server-archive.md).
 
 ## 5. Démarrer PostgreSQL
 

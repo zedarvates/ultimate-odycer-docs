@@ -8,6 +8,7 @@ explique ses préconditions et son interprétation.
 | Choisir moteur et monde | Lire la matrice | [Matrice](engine-template-world-matrix.md) |
 | Vérifier WSL et Docker | `wsl --version`, `docker version`, `docker compose version` | [Windows](../how-to/install-local-server-windows.md) |
 | Vérifier l'archive | `Get-FileHash -Algorithm SHA256` | [Windows](../how-to/install-local-server-windows.md) |
+| Vérifier la documentation embarquée | Comparer `VERSION` et `compatibility.server` | [Contrat documentaire](offline-documentation-and-server-archive.md) |
 | État PostgreSQL | `docker compose ... ps` | [Windows](../how-to/install-local-server-windows.md) |
 | Journaux PostgreSQL | `docker compose ... logs postgres` | [Dépannage](../how-to/troubleshoot-local-setup.md) |
 | Santé serveur | `Invoke-RestMethod http://localhost:8082/api/health` | [Windows](../how-to/install-local-server-windows.md) |

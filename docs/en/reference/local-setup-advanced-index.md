@@ -8,6 +8,7 @@ prerequisites and interpretation.
 | Choose engine and world | Read the matrix | [Matrix](engine-template-world-matrix.md) |
 | Check WSL and Docker | `wsl --version`, `docker version`, `docker compose version` | [Windows](../how-to/install-local-server-windows.md) |
 | Verify archive | `Get-FileHash -Algorithm SHA256` | [Windows](../how-to/install-local-server-windows.md) |
+| Verify embedded documentation | Compare `VERSION` and `compatibility.server` | [Documentation contract](offline-documentation-and-server-archive.md) |
 | PostgreSQL state | `docker compose ... ps` | [Windows](../how-to/install-local-server-windows.md) |
 | PostgreSQL logs | `docker compose ... logs postgres` | [Troubleshooting](../how-to/troubleshoot-local-setup.md) |
 | Server health | `Invoke-RestMethod http://localhost:8082/api/health` | [Windows](../how-to/install-local-server-windows.md) |
