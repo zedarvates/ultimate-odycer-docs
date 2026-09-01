@@ -23,7 +23,7 @@ e77b5062a38be0755a23a7254efbbabd1ef86002cdf286666631c38e90d6ed67  docs/en/explan
 cdcd4d577edb30f4fc4af1574e045f0a4a5c99dd7b8f76d2c6922687f75c0c44  docs/en/how-to/backup-and-test-restore-postgresql.md
 d34cd30ca520d5e9081956ec7f57441f0554de8ed207d4d17e31de67b2226fb0  docs/en/how-to/buy-refurbished-business-pc.md
 49802bc85578124c3574f41c46dde8a284203a619a6661f3ce6f9c65450495b9  docs/en/how-to/choose-hardware.md
-51ea2eaec5e0cff8932d7fb697af66398f47d65f5154d30dcc2047db97c97fc9  docs/en/how-to/connect-godot-template.md
+90059043c64400c2b5f0ea56ec9eff1976ab175142ececd1e0639e0156469926  docs/en/how-to/connect-godot-template.md
 53f3f550d8188b1c93040bf09f9c8001793bf7cd7fb034dbb844500cdd323f18  docs/en/how-to/connect-threejs-template.md
 15cc9481ad02b00328b5bb371eba5597d16e1997214a37e8d53828e497d6205a  docs/en/how-to/contribute-and-test.md
 a9497b4de25721dbdb42b1afe2d30dc6bf3718a7ad5701e8e2eaf3ae46dbcff6  docs/en/how-to/draw-and-convert-map.md
@@ -65,7 +65,7 @@ ddea1875c906e7a69ccfedd5cc255ad548a4c84377bf6b27ec22bebd6b738e1a  docs/fr/explan
 a477c1bb4933bed61d7d46b39fe1bf34d8e0f9ff5648c7b73e50dd29fb04e0fb  docs/fr/how-to/backup-and-test-restore-postgresql.md
 4f149f827bb606481d00cc8d959073672a7c8899c54a1fd08ac642564d454497  docs/fr/how-to/buy-refurbished-business-pc.md
 cb023891df7f2b3d03c4828a73798dbc07cbe8dc8705748d0fcb8e5c4f26d3a9  docs/fr/how-to/choose-hardware.md
-6e3bd16429643bdb532b90021c54f9ec5d3a35afcc8f656110b3a53e08b34fd9  docs/fr/how-to/connect-godot-template.md
+671a3beaa800ed36025a5781f7ec6088e759e1a8cad6c57dc940b59c263e3b5d  docs/fr/how-to/connect-godot-template.md
 492c6d6e71638131815b8fc1eb685f261ab994baaef8e39b48f01816b7e80228  docs/fr/how-to/connect-threejs-template.md
 bc8787ae2f1c325df86ca31cdc6458986e2a7fa13bf914eb8b5d3c8bf32b1322  docs/fr/how-to/contribute-and-test.md
 5955c783232cf797ae28ae18d3e96c93dc57b7df4c3a30c56d58a9b548770668  docs/fr/how-to/draw-and-convert-map.md
