@@ -51,10 +51,11 @@
   },
   "server_network_contract": {
     "document": "docs/en/reference/server-network-contract.md",
-    "classification": "DECISION_DOCUMENTED_COMPATIBILITY_NOT_VALIDATED",
-    "current_text_describes_raw_binary_tcp": true,
+    "classification": "UNPINNED_IMPLEMENTATION_SNAPSHOT_COMPATIBILITY_NOT_VALIDATED",
+    "historically_documented_transport": "RAW_BINARY_TCP",
+    "current_transport_verified": false,
     "may_be_called_verified_canonical_protocol": false,
-    "promotion_requirement": "Tie claims to exact canonical Zig SHA/tree/toolchain baseline and reproducible tests."
+    "promotion_requirement": "Tie every published transport/protocol claim to an exact canonical Zig SHA/tree/toolchain baseline and reproducible tests."
   },
   "licensing": {
     "public_repositories": "retain_explicit_public_license",
