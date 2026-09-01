@@ -1,56 +1,43 @@
-# Connecting the Three.js 2.5D template to a local server
+# Connect the Three.js 2.5D template to a local server
 
-Status: **how-to for future work; no browser compatibility exists today**.
+Status: **synthetic fixture validated; live Zig compatibility not proven**.
 
-This page extends the general [server network contract](../reference/server-network-contract.md)
-with what it means specifically for a web client. It does not turn the
-documentation template into a playable client.
+The Three.js client now has a fail-closed `NetworkClient` and a green synthetic proof gate. This evidence remains `SYNTHETIC_FIXTURE_ONLY`.
 
-## Why the template cannot connect today
+## Transport reality
 
-- The canonical login and game services speak raw binary TCP. Browsers can
-  only open WebSocket or HTTP connections, so direct connection is impossible.
-- The Three.js template scope requires documented server-authoritative
-  contracts before any networking code. That evidence now partially exists in
-  the contract reference, but the transport gap remains.
-- WebAdmin WebSocket traffic is administrative telemetry, not a game channel;
-  reusing it for gameplay would violate server authority boundaries.
+Current server documentation describes login/game as **raw binary TCP**. That description still needs to be tied to an exact Zig baseline before it can be called a verified canonical contract.
 
-## Two acceptable paths forward
+A browser must therefore not assume that a player WebSocket endpoint exists. Only two paths are acceptable before real E2E proof:
 
-1. A documented bridge/gateway process: a small local proxy that terminates
-   WebSocket from the browser and speaks the binary TCP protocol to the
-   server. It must be published with its own security review, framing rules,
-   and loopback fixture.
-2. An official WebSocket endpoint added to the canonical server behind its
-   existing handshake, version negotiation, and JWT admission rules, with the
-   same authority guarantees.
+1. a documented and audited WebSocket ↔ TCP bridge/gateway;
+2. a separately implemented and proven official WebSocket endpoint.
 
-A third path, reimplementing protocol logic inside an unreviewed web page, is
-rejected by both projects publication rules.
+The WebAdmin WebSocket is not a gameplay channel.
 
-## What a compliant web client must implement once a path exists
+## What is already proven
 
-- Frame encoding and decoding exactly as specified in the contract reference,
-  including big-endian integers and length-prefixed envelopes.
-- The session flow: handshake with JWT token, character list/select, world
-  spawn select with nonce, then position updates at a bounded rate.
-- Binary replication batch parsing (opcode 80) with interpolation between
-  batches and no client-side authority.
-- TLS expectations matching the server configuration; plain connections fail
-  when TLS is required.
-- Reconnection through the one-shot session resume token when provided.
+The synthetic fixture covers, among other things:
 
-## Local test discipline
+- connection lifecycle;
+- synthetic handshake/auth;
+- bounded movement;
+- invalid and oversized frames;
+- NaN/Infinity/overflow handling;
+- fail-closed state;
+- synthetic authoritative position updates.
 
-When a bridge or endpoint lands, validate on loopback first:
+This does not prove Zig TCP, a bridge, a player endpoint, or production authentication.
 
-1. Start the local server stack from the [Windows install guide](install-local-server-windows.md).
-2. Confirm the login service answers a handshake on its configured port.
-3. Complete account creation, login, character create/select, and one world
-   spawn through the web client.
-4. Record versions of server, gateway, and browser runtime in a compatibility
-   matrix entry, then update the templates SERVER-COMPATIBILITY decision.
+## Next proof
 
-Until step 3 has been performed with named artifacts, this page remains a plan,
-not a capability statement.
+Before `REAL_SERVER_E2E`, capture:
+
+- exact `zig-server-v2` SHA/tree/toolchain;
+- transport contract actually present at that revision;
+- exact bridge/endpoint if browser-based;
+- exact Three.js client revision.
+
+The minimal live scenario is: auth → realm/handoff → spawn → movement intent → authoritative update → second client observes → disconnect/reconnect, plus negative tests.
+
+Never copy documented opcodes/framing into the public client as if they were verified until the P0 Zig baseline is pinned.
