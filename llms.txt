@@ -60,6 +60,7 @@ French equivalents are under `docs/fr/`.
 
 ## Creative production
 
+English:
 - [Creative production handbook](docs/en/tutorials/creative-production-handbook.md)
 - [Creative tools catalog](docs/en/reference/creative-tools-catalog.md)
 - [World/map/structure tools](docs/en/reference/world-map-and-structure-tools.md)
@@ -69,6 +70,10 @@ French equivalents are under `docs/fr/`.
 - [Local/cloud AI tools](docs/en/reference/local-and-cloud-ai-tools.md)
 - [Import/optimization/licensing/provenance](docs/en/reference/import-optimization-licensing-and-provenance.md)
 
-French equivalents are under `docs/fr/`.
+Français :
+- [Manuel de production créative](docs/fr/tutorials/creative-production-handbook.md)
+- [Catalogue des outils créatifs](docs/fr/reference/creative-tools-catalog.md)
+
+Additional French equivalents are under `docs/fr/`.
 
 Documentation uses the repository's documented license terms; scripts, schemas and examples retain their explicit licenses.
