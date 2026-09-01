@@ -1,0 +1,64 @@
+{
+  "schema_version": "ultimate-odycer-proof-state-v1",
+  "status": "current_overlay",
+  "authority": "documentation_only",
+  "precedence": "For maturity and compatibility claims, this overlay overrides stale descriptive goals in context-index.json. Executable receipts and exact-revision evidence override this overlay.",
+  "global_rules": {
+    "synthetic_fixture_is_real_server_e2e": false,
+    "document_date_is_proof": false,
+    "http_2xx_is_authorization_proof": false,
+    "source_string_match_is_handler_proof": false,
+    "private_repo_access_is_license_grant": false
+  },
+  "components": {
+    "threejs_2_5d": {
+      "presentation": "IMPLEMENTED",
+      "synthetic_network": "PROVEN_SYNTHETIC",
+      "proof_level": "SYNTHETIC_FIXTURE_ONLY",
+      "canonical_zig_live": "NOT_PROVEN",
+      "browser_player_websocket": "UNAVAILABLE_UNLESS_SEPARATELY_PROVEN"
+    },
+    "godot_classic": {
+      "presentation": "PARTIAL",
+      "intent_contract": "IMPLEMENTED_SOCKET_FREE",
+      "transport_adapter": "IMPLEMENTED_ABSTRACT_SOCKET_FREE",
+      "godot_4_7_2": "NOT_PROVEN",
+      "canonical_zig_live": "NOT_PROVEN"
+    },
+    "godot_vr": {
+      "presentation": "PARTIAL",
+      "intent_contract": "IMPLEMENTED_SOCKET_FREE",
+      "transport_adapter": "IMPLEMENTED_ABSTRACT_SOCKET_FREE",
+      "historical_network": "LEGACY_QUARANTINED",
+      "godot_4_7_2": "NOT_PROVEN",
+      "openxr_runtime": "NOT_PROVEN",
+      "headset_runtime": "NOT_PROVEN",
+      "canonical_zig_live": "NOT_PROVEN"
+    },
+    "canonical_zig_server": {
+      "visibility": "PRIVATE_PROPRIETARY_COMMERCIAL",
+      "exact_current_baseline": "NOT_CAPTURED_BY_CURRENT_P0_GATE",
+      "source_of_truth_target": true
+    },
+    "webadmin": {
+      "visibility": "PRIVATE_PROPRIETARY_COMMERCIAL",
+      "status": "P0_FAIL_CLOSED_AUDIT",
+      "sensitive_mutations": "QUARANTINED_UNTIL_ZIG_AUTH_RBAC_REAUTH_TRANSACTION_AUDIT_PROOF"
+    },
+    "unity": {
+      "status": "LEGACY_NOT_ACTIVE_TARGET"
+    }
+  },
+  "server_network_contract": {
+    "document": "docs/en/reference/server-network-contract.md",
+    "classification": "DECISION_DOCUMENTED_COMPATIBILITY_NOT_VALIDATED",
+    "current_text_describes_raw_binary_tcp": true,
+    "may_be_called_verified_canonical_protocol": false,
+    "promotion_requirement": "Tie claims to exact canonical Zig SHA/tree/toolchain baseline and reproducible tests."
+  },
+  "licensing": {
+    "public_repositories": "retain_explicit_public_license",
+    "private_server_gameplay_production_config": "proprietary_commercial_all_rights_reserved_unless_explicitly_stated_otherwise",
+    "private_to_public_copy": "requires_explicit_authorization_and_file_level_provenance_license_review"
+  }
+}
