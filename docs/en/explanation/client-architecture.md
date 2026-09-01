@@ -1,87 +1,100 @@
 # Client architecture
 
-Status: `decision` for public presentation starters. The Godot VR, Godot
-Classic 3D, Three.js 2.5D, FoveaCore, and NetherCore ARPG repositories provide minimal original
-presentation shells for local inspection, while live server sockets remain not
-validated.
+Status: `decision` for authority boundaries and `evidence-tracked` for public starter maturity. Live sockets to the canonical Zig server remain **unproven** until an exact server baseline and real E2E evidence are recorded.
 
-## Intended client shells
+## Current client state
 
-| Profile | Public repository | Current contents |
+| Profile | Public repository | Current verifiable state |
 |---|---|---|
-| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | minimal OpenXR presentation shell (Godot 4.3+) |
-| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | minimal desktop 3D presentation shell (Godot 4.3+) |
-| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | minimal isometric presentation web app (Vite + TypeScript) |
-| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | minimal dual-mode first-person presentation shell (Godot 4.3+) |
-| NetherCore ARPG (Three.js) | [ultod-client-threejs-nethercore-arpg-template](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template) | minimal dark ARPG / Hack 'n' Slash web app (Vite + TypeScript) |
+| Godot VR MMORPG | `ultod-client-godot-vr-mmorpg-template` | OpenXR shell; historical Godot 4.3 project metadata; 4.7.2 target not yet proven; historical networking `LEGACY_QUARANTINED`; transport-independent intent contract + abstract transport adapter present on the P0 PR |
+| Godot Classic 3D | `ultod-client-godot-classic-3d-mmorpg-template` | desktop 3D shell; historical Godot 4.3 project metadata; 4.7.2 target not yet proven; transport-independent intent contract + abstract transport adapter present on the P0 PR |
+| Three.js 2.5D | `ultod-client-threejs-2-5d-mmorpg-template` | Vite/TypeScript app; fail-closed `NetworkClient`; synthetic transport fixture/tests validated; proof level `SYNTHETIC_FIXTURE_ONLY`, real Zig compatibility `NOT_PROVEN` |
+| FoveaCore FPS-RPG | `ultod-client-foveacore-fps-rpg-template` | specialized foundation under construction; do not infer Zig compatibility |
+| NetherCore ARPG (Three.js) | `ultod-client-threejs-nethercore-arpg-template` | Web ARPG presentation; do not inherit compatibility claims from the Three.js 2.5D client |
 
-Existing Ultimate Odycer client code must not be imported without a
-file-level public extraction audit.
+Unity is **LEGACY** and is no longer an active Ultimate Odycer development target.
 
-## Target project structure
+Existing proprietary Ultimate Odycer client/server implementation must not be imported into public starters without file-level provenance and license review.
 
-A future original starter SHOULD look like this, without copying proprietary
-scenes or assets:
+## Current public network structure
+
+The Godot P0 starters now separate:
 
 ```text
-client-starter/
-  project files for the chosen engine
-  scenes/
-    bootstrap           engine, platform, and quality checks
-    login               credentials never stored in the scene
-    realm-handoff       joins a server-assigned space
-    player              local presentation of an authoritative entity
-    npc                 presentation and interaction prompts only
-    zone                streamed geometry and interest objects
-    ui                  HUD, menus, VR panels
-  input/
-    desktop or OpenXR abstractions
-  net/
-    protocol client, once a public contract exists
-  content/
-    pinned JSON registry snapshots
+input / OpenXR / desktop
+        |
+        v
+net/intent_contract.gd
+  bounded client validation
+  families: session / move / interact / talk
+        |
+        v
+net/transport_adapter.gd
+  abstract lifecycle: disconnected / connecting / authenticating / online
+  no socket, endpoint, opcode, or private Zig framing
+        |
+        v
+future real transport adapter
+  BLOCKED until exact Zig baseline + real E2E proof
 ```
 
-Missing folders in the public repositories mean the starter is not published,
-not that a hidden project is implied.
+The public intent layer rejects client-authority fields such as damage, currency, inventory, permissions, arbitrary teleport, and server position. Client-side defense never replaces Zig validation.
+
+Three.js already has a testable synthetic transport. That does not mean a browser can directly connect to the current Zig game transport.
 
 ## Presentation versus authority
 
 ```text
-OpenXR / desktop input
+OpenXR / desktop / Web input
         |
         v
 local pose, comfort locomotion, prediction
-        |  discarded if the server rejects it
+        |  discarded/reconciled if server rejects it
         v
-intent: move, interact, talk, use, craft
+bounded client intent
         v
 authoritative server
         v
-state diff, animation hints, NPC expression
+state diff / accepted or rejected event
         v
-scene streaming, LOD, audio, haptics
+presentation, interpolation, LOD, audio, haptics
 ```
 
-Local physics and collisions may keep a headset comfortable. They must not
-award loot, apply damage, change inventory, or accept a speed hack. VR
-comfort settings are client-side; world rules are not.
+The client never decides damage, gold, inventory, rewards, permissions, or persistent world state.
+
+## Proof levels that must not be conflated
+
+- `DOCUMENTED` / `DECLARED`: documentation or metadata only;
+- `SYNTHETIC_FIXTURE_ONLY`: controlled local fixture, no canonical Zig server;
+- `ENGINE_LOAD_PROVEN`: named engine loads the project; does not prove networking;
+- `OPENXR_INIT_PROVEN`: named OpenXR runtime initializes; does not prove headset or networking;
+- `HEADSET_RUNTIME_PROVEN`: named headset/controllers execute the scenario; does not prove server interoperability;
+- `REAL_SERVER_E2E`: exact client/server revisions with reproducible scenario;
+- `FAKE-GREEN`: a green test used to claim more than the system it actually exercises.
 
 ## Connection path
 
-Until a public protocol version is approved, a client can only:
+Public documentation currently contains two layers that agents must distinguish:
 
-1. document the intended login and realm-handoff sequence;
-2. consume pinned JSON templates for labels and synthetic fixtures;
-3. run local, non-networked presentation experiments;
-4. refuse production endpoints, credentials, and protocol dumps.
+1. `network-intent-v1` is a public synthetic, transport-independent contract;
+2. `server-network-contract.md` documents a server transport state derived from implementation decisions, but **is not client compatibility proof** and must be revalidated against the exact Zig baseline before promotion.
 
-A synthetic loopback fixture is the first allowed network proof. Isolated
-desktop execution does not prove VR interoperability.
+In particular, the Three.js browser client must not assume that a player WebSocket endpoint exists. The currently documented game transport is raw binary TCP; a browser therefore needs a bridge/gateway or a separate official endpoint, both still requiring proof.
+
+## Agent rule
+
+Before modifying a client:
+
+1. read this page;
+2. read `../reference/network-contract.md`;
+3. read `../reference/server-network-contract.md` while preserving its non-validated status;
+4. read the engine/template matrix;
+5. read the proof-level and compatibility-manifest files in the target client repository;
+6. never promote `zig_compatibility`, Godot 4.7.2, OpenXR, or headset status to `PROVEN` without the matching executable receipt.
 
 ## Related pages
 
 - [Ecosystem overview](ecosystem-overview.md)
-- [Network contract](../reference/network-contract.md)
-- [Use JSON templates](../how-to/use-json-templates.md)
-- [Start a project](../tutorials/start-an-ultimate-odycer-project.md)
+- [Public network contract](../reference/network-contract.md)
+- [Documented server network contract](../reference/server-network-contract.md)
+- [Engine, template, and world matrix](../reference/engine-template-world-matrix.md)
