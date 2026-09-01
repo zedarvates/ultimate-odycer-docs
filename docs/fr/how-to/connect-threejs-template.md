@@ -1,63 +1,43 @@
 # Connecter le template Three.js 2.5D à un serveur local
 
-Statut : **guide pour travail futur ; aucune compatibilité navigateur existe
-aujourd'hui**.
+Statut : **fixture synthétique validée ; compatibilité Zig live non prouvée**.
 
-Cette page étend la [référence générale du contrat réseau](../reference/server-network-contract.md)
-avec ce quelle signifie spécifiquement pour un client web. Elle ne transforme
-pas le template documentaire en client jouable.
+Le client Three.js possède maintenant un `NetworkClient` fail-closed et un gate synthétique vert. Cette preuve reste `SYNTHETIC_FIXTURE_ONLY`.
 
-## Pourquoi le template ne peut pas se connecter aujourdhui
+## Réalité du transport
 
-- Les services canoniques de login et de jeu parlent TCP binaire brut. Les
-  navigateurs ne savent ouvrir que des connexions WebSocket ou HTTP ; une
-  connexion directe est donc impossible.
-- Le périmètre du template Three.js exige des contrats serveur-autoritaires
-  documentés avant tout code réseau. Cette preuve existe désormais partiellement
-  dans la référence du contrat, mais lécart de transport demeure.
-- Le trafic WebSocket du WebAdmin est de la télémétrie administrative, pas un
-  canal de jeu ; le réutiliser pour le gameplay violerait les frontières
-d'autorité du serveur.
+La documentation serveur actuelle décrit login/jeu en **TCP binaire brut**. Cette description doit encore être rattachée à une baseline Zig exacte avant d'être appelée contrat canonique vérifié.
 
-## Deux chemins acceptables
+Un navigateur ne doit donc pas supposer l'existence d'un WebSocket joueur. Deux chemins seulement sont acceptables avant un vrai E2E :
 
-1. Un pont/passerelle documenté : un petit proxy local qui termine le
-   WebSocket côté navigateur et parle le protocole TCP binaire au serveur. Il
-   doit être publié avec sa propre revue de sécurité, ses règles de cadrage et
-   sa fixture loopback.
-2. Un point de terminaison WebSocket officiel ajouté au serveur canonique
-   derrière son handshake existant, sa négociation de version et ses règles
-   d'admission JWT, avec les mêmes garanties d'autorité.
+1. pont/passerelle WebSocket ↔ TCP documenté et audité ;
+2. endpoint WebSocket officiel distinct, ajouté et prouvé côté serveur.
 
-Un troisième chemin, réimplémenter la logique protocole dans une page web non
-revue, est rejeté par les règles de publication des deux projets.
+Le WebSocket WebAdmin n'est pas un canal gameplay.
 
-## Ce qu'un client web conforme devra implémenter
+## Ce qui est déjà prouvé
 
-- Encodage et décodage de trames exactement comme spécifié dans la référence
-  du contrat, y compris entiers gros-boutiste et enveloppes préfixées par leur
-  longueur.
-- Le flux de session : handshake avec jeton JWT, liste/sélection de personnage,
-  sélection de spawn avec nonce, puis mises à jour de position à cadence bornée.
-- Analyse des lots binaires de réplication (opcode 80) avec interpolation entre
-  lots et aucune autorité côté client.
-- Attentes TLS alignées sur la configuration du serveur ; les connexions en
-  clair échouent quand TLS est requis.
-- Reconnexion via le jeton de reprise de session à usage unique lorsqu'il est
-  fourni.
+La fixture synthétique valide notamment :
 
-## Discipline de test local
+- lifecycle de connexion ;
+- handshake/auth synthétiques ;
+- mouvement borné ;
+- trames invalides et surdimensionnées ;
+- NaN/Infinity/overflow ;
+- état fail-closed ;
+- réception de positions autoritaires synthétiques.
 
-Quand un pont ou un point de terminaison arrivera, validez dabord en loopback :
+Cela ne prouve ni TCP Zig, ni bridge, ni endpoint joueur, ni auth production.
 
-1. Démarrez la pile serveur locale depuis le [guide Windows](install-local-server-windows.md).
-2. Confirmez que le service de login répond à un handshake sur son port
-   configuré.
-3. Réalisez création de compte, login, création/sélection de personnage et un
-   spawn monde via le client web.
-4. Enregistrez les versions du serveur, de la passerelle et du runtime
-   navigateur dans une entrée de matrice de compatibilité, puis mettez à jour
-   la décision SERVER-COMPATIBILITY du template.
+## Prochaine preuve
 
-Tant que l'étape 3 n'a pas été réalisée avec des artefacts nommés, cette page
-reste un plan, pas une déclaration de capacité.
+Avant `REAL_SERVER_E2E`, capturer :
+
+- SHA/tree/toolchain exacts de `zig-server-v2` ;
+- contrat de transport réellement présent à cette révision ;
+- bridge/endpoint exact si navigateur ;
+- révision Three.js exacte.
+
+Le scénario live minimal sera : auth → realm/handoff → spawn → movement intent → update autoritaire → second client observe → disconnect/reconnect, avec tests négatifs.
+
+Ne copiez jamais les opcodes/framing documentés dans le client public comme s'ils étaient vérifiés tant que la baseline Zig P0 n'est pas épinglée.
