@@ -16,13 +16,13 @@ For maturity/compatibility claims, `current-proof-state.json` overrides stale de
 English:
 - [Client architecture](docs/en/explanation/client-architecture.md)
 - [Public network-intent contract](docs/en/reference/network-contract.md)
-- [Server network contract — decision-documented, compatibility not validated](docs/en/reference/server-network-contract.md)
+- [Server network contract — unpinned implementation snapshot, compatibility not validated](docs/en/reference/server-network-contract.md)
 - [Engine/template/world matrix](docs/en/reference/engine-template-world-matrix.md)
 
 Français :
 - [Architecture client](docs/fr/explanation/client-architecture.md)
 - [Contrat public network-intent](docs/fr/reference/network-contract.md)
-- [Contrat réseau serveur — documenté, compatibilité non validée](docs/fr/reference/server-network-contract.md)
+- [Contrat réseau serveur — snapshot non épinglé, compatibilité non validée](docs/fr/reference/server-network-contract.md)
 - [Matrice moteurs/templates/mondes](docs/fr/reference/engine-template-world-matrix.md)
 
 ## Critical rules for coding agents
@@ -31,7 +31,7 @@ Français :
 - `SYNTHETIC_FIXTURE_ONLY` is not `REAL_SERVER_E2E`.
 - Godot engine load, OpenXR init, headset runtime, and Zig interoperability are separate proof gates.
 - Three.js synthetic transport is validated only as synthetic; canonical Zig live remains `NOT_PROVEN`.
-- The current server-network document describes raw binary TCP but may not be called a verified canonical protocol until tied to an exact Zig SHA/tree/toolchain baseline.
+- The server-network document preserves a historical raw-binary-TCP transport clue only; current transport is **not verified** until tied to an exact Zig SHA/tree/toolchain baseline and reproducible tests.
 - Historical Godot VR networking is `LEGACY_QUARANTINED`; do not reuse it without provenance, license and security review.
 - A type declaration, UI component, HTTP 2xx, endpoint string match, mock fixture, or green synthetic test is never enough to claim production behavior.
 - Private server/game implementation and production configuration are proprietary/commercial, all rights reserved unless explicitly licensed otherwise. Public repositories retain their explicit public licenses.
