@@ -8,7 +8,8 @@
     "document_date_is_proof": false,
     "http_2xx_is_authorization_proof": false,
     "source_string_match_is_handler_proof": false,
-    "private_repo_access_is_license_grant": false
+    "private_repo_access_is_license_grant": false,
+    "ci_structure_gate_is_runtime_execution": false
   },
   "components": {
     "threejs_2_5d": {
@@ -22,6 +23,9 @@
       "presentation": "PARTIAL",
       "intent_contract": "IMPLEMENTED_SOCKET_FREE",
       "transport_adapter": "IMPLEMENTED_ABSTRACT_SOCKET_FREE",
+      "synthetic_transport": "PREPARED_CI_GUARDED",
+      "synthetic_transport_runtime": "NOT_YET_EXECUTED",
+      "synthetic_transport_max_proof_level": "SYNTHETIC_FIXTURE_ONLY",
       "godot_4_7_2": "NOT_PROVEN",
       "canonical_zig_live": "NOT_PROVEN"
     },
@@ -29,6 +33,10 @@
       "presentation": "PARTIAL",
       "intent_contract": "IMPLEMENTED_SOCKET_FREE",
       "transport_adapter": "IMPLEMENTED_ABSTRACT_SOCKET_FREE",
+      "synthetic_transport": "PREPARED_CI_GUARDED",
+      "synthetic_transport_runtime": "NOT_YET_EXECUTED",
+      "synthetic_transport_max_proof_level": "SYNTHETIC_FIXTURE_ONLY",
+      "synthetic_transport_xr_mode": "off",
       "historical_network": "LEGACY_QUARANTINED",
       "godot_4_7_2": "NOT_PROVEN",
       "openxr_runtime": "NOT_PROVEN",
