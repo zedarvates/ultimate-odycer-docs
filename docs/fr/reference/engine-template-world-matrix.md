@@ -1,107 +1,102 @@
 # Matrice des moteurs, templates et formes de monde
 
-Cette référence aide un humain ou un LM à recommander un point de départ sans
-transformer une préférence en promesse de compatibilité.
+Cette référence aide un humain ou un LM à recommander un point de départ sans transformer une préférence en promesse de compatibilité.
 
 ## Moteurs
 
 | Moteur | Place dans le parcours | Limite actuelle |
 |---|---|---|
-| Godot | Chemin recommandé principal pour client 3D/VR | Shells publics présents ; interopérabilité Zig réelle encore à prouver via les gates P0 |
-| Three.js | Client Web léger et banc de protocole de référence | Shell public + fixture locale disponibles ; connexion au Zig canonique exact encore à prouver |
-| Unity | Legacy uniquement | Ancienne architecture abandonnée pour le développement actif Ultimate Odycer |
-| Unreal Engine | Alternative externe | Aucun template Ultimate Odycer validé |
-| FoveaCore | Chemin spécialisé FPS/RPG | Fondation en construction |
+| Godot | chemin principal 3D/VR | cible 4.7.2 ; chargement moteur réel encore à prouver ; réseau Zig live non prouvé |
+| Three.js | client Web léger + banc de protocole | fixture synthétique réellement validée ; navigateur ↔ Zig canonique live non prouvé |
+| Unity | `LEGACY` uniquement | architecture abandonnée pour le développement actif |
+| FoveaCore | chemin FPS/RPG spécialisé | fondation en construction |
+| Unreal Engine | alternative externe | aucun template Ultimate Odycer validé |
 
 ## Échelle de maturité
 
 | État | Signification |
 |---|---|
-| `PROVEN` | preuve reproductible contre une révision serveur/client nommée |
-| `IMPLEMENTED` | implémenté mais pas encore entièrement prouvé |
+| `PROVEN` | preuve reproductible contre des révisions nommées |
+| `IMPLEMENTED` | implémenté mais pas entièrement prouvé |
 | `PARTIAL` | implémentation incomplète |
-| `MOCK` | simulation ou données factices |
-| `SCAFFOLD` | structure/coque seulement |
-| `DECLARED` | documentation ou données déclaratives uniquement |
-| `LEGACY` | ancienne architecture conservée seulement pour historique/récupération ciblée |
-| `BLOCKED` | preuve requise inaccessible ou dépendance non résolue |
-| `WAITING` | travail identifié, condition précédente non satisfaite |
-| `FAKE-GREEN` | test vert qui ne couvre pas le système réel annoncé |
+| `MOCK` | simulation/données factices |
+| `SCAFFOLD` | structure ou coque seulement |
+| `DECLARED` | documentation/métadonnées uniquement |
+| `LEGACY` | ancienne architecture, réutilisation ciblée seulement |
+| `BLOCKED` | preuve requise inaccessible |
+| `WAITING` | travail identifié derrière un prérequis |
+| `FAKE-GREEN` | test vert qui ne couvre pas le système annoncé |
 
-## Matrice client / serveur actuelle
+## Matrice client / serveur — état P0 courant
 
-| Dépôt / composant | Présentation locale | Fixture synthétique | Zig canonique live | Sécurité négative | Statut global |
+| Composant | Présentation | Contrat d'intention | Transport abstrait/synthétique | Zig canonique live | Statut |
 |---|---:|---:|---:|---:|---|
-| `ultod-client-threejs-2-5d-mmorpg-template` | oui | oui | `WAITING` sur baseline exacte + preuve E2E | `WAITING` | `IMPLEMENTED/PARTIAL` |
-| `ultod-client-godot-classic-3d-mmorpg-template` | oui | `WAITING` | `BLOCKED/WAITING` | `WAITING` | `SCAFFOLD/PARTIAL` |
-| `ultod-client-godot-vr-mmorpg-template` | oui | `WAITING` | `BLOCKED` ; ancien contrat VR = `LEGACY` | `WAITING` | `SCAFFOLD/PARTIAL` |
-| serveur Zig canonique privé | non public | preuves partielles documentées | source de vérité cible | à auditer | `BLOCKED` pour preuve publique directe tant que SHA exact non récupéré |
+| Three.js 2.5D | oui | oui | **fixture synthétique + NetworkClient validés** | `NOT_PROVEN` | `IMPLEMENTED/PARTIAL` |
+| Godot Classic | oui | oui, sans socket | adaptateur abstrait sans socket ; fixture synthétique suivante | `NOT_PROVEN` | `PARTIAL` |
+| Godot VR | oui | oui, sans socket | adaptateur abstrait sans socket ; ancien réseau `LEGACY_QUARANTINED` | `NOT_PROVEN` | `PARTIAL` |
+| serveur Zig privé | n/a public | source d'autorité cible | transport documenté mais baseline exacte à recapturer | source de vérité cible | `BLOCKED` pour promotion de preuve |
+| WebAdmin privé | oui | n/a | HTTP/WS admin séparé du canal joueur | audit P0 fail-closed en cours | `PARTIAL / evidence-tracked` |
 
-Programme P0 suivi dans `zedarvates/ultimate-odycer-feedback` :
+### Godot 4.7.2 / VR
 
-- `#5` — figer la révision Zig canonique, framing, version negotiation et matrice de compatibilité ;
-- `#6` — prouver le round-trip Zig ↔ Three.js réel ;
-- `#7` — rejouer la même fixture dans Godot Classic et Godot VR ;
-- `#8` — sécurité parano, fuzzing, anti-replay et anti-duplication ;
-- `#9` — persistance crash-safe, snapshot et restauration ;
-- `#10` — simulation sociale déterministe et AI LOD après fermeture des fondations P0 ;
-- `#11` — frontière de licence privé commercial ↔ public open source.
+Les PR P0 Godot contiennent des validateurs locaux qui peuvent produire des reçus JSON dans `.evidence/` :
 
-Aucun statut `PROVEN` ne doit être attribué sans révisions exactes et preuve reproductible. Une fixture synthétique seule ne prouve pas la compatibilité avec le serveur canonique.
+- Classic : import + bootstrap headless avec **Godot 4.7.2-stable** ;
+- VR : même preuve avec `--xr-mode off` ; ce reçu laisse explicitement `openxr_runtime_proven=false`, `headset_runtime_proven=false` et `network_compatibility_proven=false`.
 
-## Templates prévus ou en construction
+Tant que ces commandes n'ont pas été exécutées avec le binaire exact, `project.godot` reste historiquement déclaré 4.3 et la cible 4.7.2 reste `NOT_PROVEN`.
 
-| Dépôt | Nom affiché | Expérience | Statut |
-|---|---|---|---|
-| `ultod-client-godot-classic-3d-mmorpg-template` | Godot Classic 3D MMORPG | MMORPG 3D classique | `partial / P0 interoperability waiting` |
-| `ultod-client-godot-vr-mmorpg-template` | Godot VR MMORPG | MMORPG en réalité virtuelle | `partial / Zig alignment blocked` |
-| `ultod-client-threejs-2-5d-mmorpg-template` | Three.js 2.5D MMORPG | MMORPG Web isométrique | `implemented presentation / canonical E2E waiting` |
-| `ultod-client-foveacore-fps-rpg-template` | FoveaCore FPS-RPG Online | FPS/RPG en ligne | `under_construction` |
-| `ultod-client-godot-open-city-crime-rpg-template` | Prêt à tout faire pour de l'argent | RPG urbain multijoueur ouvert | `planned` |
+### Three.js
 
-Un dépôt documentaire ou une coque de présentation ne constitue pas un client MMO compatible tant que le chemin réseau autoritaire n'est pas prouvé.
+Le gate synthétique actuel valide le client construit, les contrôles de transport et les fixtures négatives. Son niveau reste `SYNTHETIC_FIXTURE_ONLY`. Il ne prouve pas un round-trip avec `zig-server-v2`.
 
-## Frontière de licence
+### Transport serveur
 
-Les templates publics ne doivent contenir que du code original explicitement publié sous leur licence publique et des dépendances compatibles. Le serveur canonique privé, le gameplay propriétaire, la configuration de production, les assets/lore privés et les composants commerciaux restent propriétaires/commerciaux, tous droits réservés sauf licence explicite contraire. L'accès à un dépôt privé ne vaut pas autorisation de copier son implémentation dans un dépôt public. Toute extraction privé → public exige revue de provenance et de licence fichier par fichier ; préférer des adaptateurs réécrits contre les contrats publics et fixtures synthétiques approuvés.
+`server-network-contract.md` décrit actuellement le jeu/login comme **TCP binaire brut**. Un navigateur ne doit donc pas supposer un WebSocket joueur : Three.js exige un pont/passerelle documenté ou un endpoint officiel séparé avant toute preuve live. Cette description doit elle-même être rattachée à une baseline Zig exacte avant d'être promue comme contrat canonique vérifié.
+
+## Programme P0
+
+Tracker public `ultimate-odycer-feedback` :
+
+- `#5` baseline Zig exacte et version/protocole ;
+- `#6` Zig ↔ Three.js réel ;
+- `#7` même preuve dans Godot Classic/VR ;
+- `#8` fuzzing, anti-replay, anti-duplication ;
+- `#9` crash-safe persistence/snapshot/restore ;
+- `#10` simulation sociale déterministe + AI LOD ;
+- `#11` frontière licence public/open-source ↔ privé/commercial.
+
+WebAdmin privé suit en plus ses propres gates de provenance Zig, contrats read-only et mutations quarantainées.
+
+## Règle pour agents
+
+Avant toute modification client/réseau :
+
+1. ne jamais utiliser la date d'un document comme preuve technique ;
+2. lire les `proof levels` et `compatibility manifest` du dépôt concerné ;
+3. traiter les données synthétiques comme synthétiques ;
+4. ne pas copier l'ancien réseau VR ;
+5. ne pas inventer de WebSocket joueur pour Three.js ;
+6. ne pas promouvoir Godot 4.7.2, OpenXR, casque ou Zig sans reçu exécutable ;
+7. préserver la frontière de licence : public = licence publique explicite ; serveur/gameplay/configuration privée = propriétaire/commercial, tous droits réservés sauf mention contraire.
+
+## Templates
+
+| Dépôt | Expérience | Statut actuel |
+|---|---|---|
+| `ultod-client-godot-classic-3d-mmorpg-template` | MMORPG 3D classique | `PARTIAL / engine+network proof pending` |
+| `ultod-client-godot-vr-mmorpg-template` | MMORPG VR | `PARTIAL / legacy network quarantined` |
+| `ultod-client-threejs-2-5d-mmorpg-template` | MMORPG Web 2.5D | `IMPLEMENTED presentation / SYNTHETIC_FIXTURE_ONLY` |
+| `ultod-client-foveacore-fps-rpg-template` | FPS/RPG | `under_construction` |
+| `ultod-client-threejs-nethercore-arpg-template` | ARPG Web | présentation distincte ; aucune compatibilité héritée |
 
 ## Formes de monde
 
 | Topologie | Choisissez-la pour | Coût de départ |
 |---|---|---|
-| `flat_map` | villes, régions, arènes, donjons, jeux urbains | le plus faible |
+| `flat_map` | villes, régions, arènes, donjons | faible |
 | `planet` | exploration continue d'une planète | élevé |
-| `mega_planet` | planète de très grande taille | très élevé |
-| `solar_system` | voyages entre plusieurs corps | le plus élevé |
+| `mega_planet` | planète très vaste | très élevé |
+| `solar_system` | plusieurs corps et voyages | maximal |
 
-## Entrées dessinées et conversion
-
-| Entrée | Traitement | Sortie | Intégration |
-|---|---|---|---|
-| Papier, PNG, JPEG ou SVG avec légende | Analyse humaine/LM avec incertitudes | `uo.map-intent/v1` | `reference_only` puis `conversion_required` |
-| GeoJSON ou couches QGIS | Contrôle d'échelle, projection et attribution | proposition de monde versionnée | `conversion_required` |
-| Blockout Blender ou GLB | Revue unités, collisions, LOD et licence | candidat 3D | `conversion_required` |
-| CityConfig Lite | City Editor Lite | proposition ville bornée | `direct` vers le contrat Lite, pas vers le runtime |
-| HouseBlueprint Lite | Architecture Editor Lite | proposition bâtiment | `direct` vers le contrat Lite, pas vers le runtime |
-| XenoGenome Lite | Creature Editor Lite | proposition créature | `direct` vers le contrat Lite, statistiques serveur inchangées |
-
-Les éditeurs Lite cités sont `executable_public` pour leurs contrats et tests
-publics. Leurs aperçus restent `[Scaffolding / Proxy]` et ne prouvent ni Godot,
-ni Zig, ni VR, ni publication serveur.
-
-## Règles de recommandation
-
-1. Choisissez la boucle de jeu avant la taille du monde.
-2. Utilisez Godot en l'absence de contrainte contraire.
-3. Utilisez Three.js comme client Web léger et banc de protocole rapide lorsque cela réduit le temps de validation.
-4. Commencez par `flat_map` pour un jeu urbain, une arène ou un donjon.
-5. Ne choisissez `planet` que si la continuité sphérique apporte une fonction indispensable au premier prototype.
-6. Traitez `mega_planet` et `solar_system` comme des étapes avancées qui exigent des preuves de streaming, partitionnement, persistance et capacité.
-7. Un LM recommande ; l'utilisateur décide et conserve la décision dans sa fiche de projet.
-
-## Choix intrinsèques, pas automatiques
-
-Un GTA-like conduit généralement à une carte plate, mais ce n'est pas une loi.
-Un jeu spatial peut commencer sur une station représentée par une carte plate
-avant d'ajouter un système solaire. Le guide doit expliquer le compromis plutôt
-que choisir une architecture spectaculaire par défaut.
+Les choix de monde ne modifient pas les gates de preuve réseau, persistance ou sécurité.
