@@ -1,107 +1,104 @@
 # Engine, template, and world-shape matrix
 
-This reference helps a human or LLM recommend a starting point without turning
-a preference into a compatibility promise.
+This reference helps a human or LLM choose a starting point without turning a preference into a compatibility promise.
 
 ## Engines
 
-| Engine | Role in the journey | Current limitation |
+| Engine | Role | Current limitation |
 |---|---|---|
-| Godot | Primary recommended path for 3D/VR clients | Public shells exist; real canonical Zig interoperability still needs P0 proof |
-| Three.js | Lightweight Web client and reference protocol test bench | Public shell + local fixture exist; exact canonical Zig connection still needs proof |
-| Unity | Legacy only | Previous Ultimate Odycer architecture; no longer an active development target |
-| Unreal Engine | External alternative | No validated Ultimate Odycer template |
-| FoveaCore | Specialized FPS/RPG path | Foundation under construction |
+| Godot | primary 3D/VR path | 4.7.2 target; engine execution pending; synthetic fixture prepared/CI-guarded but not runtime-proven; live Zig networking unproven |
+| Three.js | lightweight Web client + protocol test bench | synthetic fixture actually executed/proven; browser ↔ canonical Zig live path unproven |
+| Unity | `LEGACY` only | no longer an active development target |
+| FoveaCore | specialized FPS/RPG path | foundation under construction |
+| Unreal Engine | external alternative | no validated Ultimate Odycer template |
 
 ## Maturity scale
 
-| State | Meaning |
-|---|---|
-| `PROVEN` | reproducible evidence against named server/client revisions |
-| `IMPLEMENTED` | implemented but not fully proven |
-| `PARTIAL` | incomplete implementation |
-| `MOCK` | simulated/fake data or service |
-| `SCAFFOLD` | structure/presentation shell only |
-| `DECLARED` | documentation or declarative data only |
-| `LEGACY` | old architecture retained only for history or targeted recovery |
-| `BLOCKED` | required evidence/dependency unavailable |
-| `WAITING` | work identified but a prerequisite is not closed |
-| `FAKE-GREEN` | a green test that does not exercise the real system it appears to prove |
+`PROVEN` means reproducible evidence against named revisions. `IMPLEMENTED` is code without complete proof. `PARTIAL` is incomplete. `MOCK` is simulated. `SCAFFOLD` is structure only. `DECLARED` is documentation/metadata. `PREPARED_CI_GUARDED` means implementation exists and structural gates pass but runtime proof has not executed. `LEGACY` is historical reuse-only. `BLOCKED` means required evidence is inaccessible. `WAITING` means a prerequisite is open. `FAKE-GREEN` is a green test used to claim more than it exercises.
 
-## Current client/server matrix
+## Current P0 client/server matrix
 
-| Repository / component | Local presentation | Synthetic fixture | Canonical Zig live | Negative security | Global state |
+| Component | Presentation | Intent contract | Abstract/synthetic transport | Canonical Zig live | Status |
 |---|---:|---:|---:|---:|---|
-| `ultod-client-threejs-2-5d-mmorpg-template` | yes | yes | `WAITING` for exact baseline + E2E proof | `WAITING` | `IMPLEMENTED/PARTIAL` |
-| `ultod-client-godot-classic-3d-mmorpg-template` | yes | `WAITING` | `BLOCKED/WAITING` | `WAITING` | `SCAFFOLD/PARTIAL` |
-| `ultod-client-godot-vr-mmorpg-template` | yes | `WAITING` | `BLOCKED`; old VR contract = `LEGACY` | `WAITING` | `SCAFFOLD/PARTIAL` |
-| private canonical Zig server | not public | partially documented evidence | target source of truth | audit pending | `BLOCKED` for direct public proof until exact SHA is recovered |
+| Three.js 2.5D | yes | yes | **synthetic fixture + NetworkClient executed and validated** | `NOT_PROVEN` | `IMPLEMENTED/PARTIAL` |
+| Godot Classic | yes | yes, socket-free | abstract adapter + deterministic fixture `PREPARED_CI_GUARDED`; runtime `NOT_YET_EXECUTED` | `NOT_PROVEN` | `PARTIAL` |
+| Godot VR | yes | yes, socket-free | same prepared fixture with XR off; historical network `LEGACY_QUARANTINED`; runtime `NOT_YET_EXECUTED` | `NOT_PROVEN` | `PARTIAL` |
+| private Zig server | n/a public | target authority source | current exact transport/protocol baseline not pinned | target source of truth | `BLOCKED` for proof promotion |
+| private WebAdmin | yes | n/a | separate admin surface; fail-closed P0 audit | exact Zig contract proof pending | `PARTIAL / evidence-tracked` |
 
-P0 program tracked in `zedarvates/ultimate-odycer-feedback`:
+### Godot synthetic proof preparation
 
-- `#5` — freeze the canonical Zig revision, framing, version negotiation, and compatibility matrix;
-- `#6` — prove the real Zig ↔ Three.js authoritative round trip;
-- `#7` — replay the same canonical fixture from Godot Classic and Godot VR;
-- `#8` — paranoid protocol security, fuzzing, anti-replay, and anti-duplication;
-- `#9` — crash-safe persistence, snapshot, and restore;
-- `#10` — deterministic social simulation and AI LOD after the P0 foundations;
-- `#11` — private commercial ↔ public open-source license boundary.
+Both Godot P0 branches now contain:
 
-No component receives `PROVEN` status without exact revisions and reproducible evidence. A synthetic fixture alone does not prove compatibility with the canonical server.
+- bounded base intent validation;
+- an abstract socket-free transport lifecycle;
+- a deterministic socket-free synthetic authority;
+- a GDScript scenario covering offline/auth/failure/authority-field/movement/drop/resume/close behavior;
+- a Python runner requiring exact Godot 4.7.2 and writing a `.evidence/` JSON receipt.
 
-## Planned or under-construction templates
+Their hosted CI validates only structure, proof-denial markers and Python syntax. It does **not** execute Godot, so the runtime state remains `NOT_YET_EXECUTED` and may not be promoted to `SYNTHETIC_FIXTURE_ONLY` until the runner actually succeeds.
 
-| Repository | Display name | Experience | Status |
-|---|---|---|---|
-| `ultod-client-godot-classic-3d-mmorpg-template` | Godot Classic 3D MMORPG | Classic 3D MMORPG | `partial / P0 interoperability waiting` |
-| `ultod-client-godot-vr-mmorpg-template` | Godot VR MMORPG | Virtual-reality MMORPG | `partial / Zig alignment blocked` |
-| `ultod-client-threejs-2-5d-mmorpg-template` | Three.js 2.5D MMORPG | Isometric Web MMORPG | `implemented presentation / canonical E2E waiting` |
-| `ultod-client-foveacore-fps-rpg-template` | FoveaCore FPS-RPG Online | Online FPS/RPG | `under_construction` |
-| `ultod-client-godot-open-city-crime-rpg-template` | Prêt à tout faire pour de l'argent | Open-city multiplayer RPG | `planned` |
+For VR, that prepared runner uses `--xr-mode off`; OpenXR/headset proof remains separate and false.
 
-A documentation-only repository or presentation shell is not a compatible MMO client until the authoritative network path is proven.
+### Godot 4.7.2 / VR
 
-## License boundary
+The engine validators can produce independent receipts:
 
-Public templates may contain only original code explicitly released under their public license and compatible third-party dependencies. The private canonical server, proprietary gameplay implementation, production configuration, private assets/lore, and commercial components remain proprietary/commercial, all rights reserved unless an explicit license says otherwise. Access to a private repository does not authorize copying implementation into a public repository. Any private → public extraction requires file-level provenance/license review; independently written adapters against approved public contracts and synthetic fixtures are preferred.
+- Classic: import + headless bootstrap under Godot 4.7.2-stable;
+- VR: same with `--xr-mode off`, explicitly keeping OpenXR/headset/network proof false.
+
+Until the exact commands execute successfully, project metadata remains historically 4.3 and 4.7.2 remains `NOT_PROVEN`.
+
+### Three.js
+
+Three.js has a genuinely executed synthetic transport gate. Its proof level remains `SYNTHETIC_FIXTURE_ONLY`; it does not prove a round trip with `zig-server-v2`.
+
+### Server transport
+
+`server-network-contract.md` is now an **unpinned implementation snapshot**. A historical snapshot described raw binary TCP, but the current transport/protocol is not verified until tied to an exact current Zig SHA/tree/toolchain. A browser must therefore never assume a player WebSocket endpoint; any bridge/gateway or official endpoint requires separate evidence.
+
+## P0 program
+
+Public tracker `ultimate-odycer-feedback`:
+
+- `#5` exact Zig baseline and protocol/versioning;
+- `#6` real Zig ↔ Three.js proof;
+- `#7` same proof in Godot Classic/VR;
+- `#8` fuzzing, anti-replay, anti-duplication;
+- `#9` crash-safe persistence/snapshot/restore;
+- `#10` deterministic social simulation + AI LOD;
+- `#11` public/open-source ↔ private/commercial license boundary.
+
+## Agent rules
+
+Before changing client/network code:
+
+1. do not use document freshness as proof;
+2. read proof levels and compatibility manifest in the target repository;
+3. distinguish prepared/static-gated fixtures from executed runtime evidence;
+4. keep synthetic data explicitly synthetic;
+5. never copy the historical VR network without provenance/license/security review;
+6. never invent a player WebSocket for Three.js;
+7. never promote Godot 4.7.2, synthetic runtime, OpenXR, headset, or Zig without the matching executable receipt;
+8. preserve public-license vs private proprietary/commercial boundaries.
+
+## Templates
+
+| Repository | Experience | Current state |
+|---|---|---|
+| `ultod-client-godot-classic-3d-mmorpg-template` | Classic 3D MMORPG | `PARTIAL / synthetic fixture PREPARED_CI_GUARDED / runtime pending` |
+| `ultod-client-godot-vr-mmorpg-template` | VR MMORPG | `PARTIAL / synthetic fixture PREPARED_CI_GUARDED / legacy network quarantined` |
+| `ultod-client-threejs-2-5d-mmorpg-template` | 2.5D Web MMORPG | `IMPLEMENTED presentation / SYNTHETIC_FIXTURE_ONLY` |
+| `ultod-client-foveacore-fps-rpg-template` | FPS/RPG | `under_construction` |
+| `ultod-client-threejs-nethercore-arpg-template` | Web ARPG | separate presentation; no inherited compatibility claim |
 
 ## World shapes
 
-| Topology | Choose it for | Starting cost |
+| Topology | Use it for | Starting cost |
 |---|---|---|
-| `flat_map` | cities, regions, arenas, dungeons, urban games | lowest |
-| `planet` | continuous exploration of one planet | high |
-| `mega_planet` | a very large planet | very high |
-| `solar_system` | travel between multiple bodies | highest |
+| `flat_map` | cities, regions, arenas, dungeons | low |
+| `planet` | continuous planetary exploration | high |
+| `mega_planet` | very large planet | very high |
+| `solar_system` | multiple bodies and travel | highest |
 
-## Drawn inputs and conversion
-
-| Input | Processing | Output | Integration |
-|---|---|---|---|
-| Paper, PNG, JPEG, or SVG with legend | Human/LLM analysis preserving uncertainty | `uo.map-intent/v1` | `reference_only` then `conversion_required` |
-| GeoJSON or QGIS layers | Scale, projection, and attribution checks | versioned world proposal | `conversion_required` |
-| Blender blockout or GLB | Units, collision, LOD, and license review | 3D candidate | `conversion_required` |
-| CityConfig Lite | City Editor Lite | bounded city proposal | `direct` to the Lite contract, not runtime |
-| HouseBlueprint Lite | Architecture Editor Lite | building proposal | `direct` to the Lite contract, not runtime |
-| XenoGenome Lite | Creature Editor Lite | creature proposal | `direct` to the Lite contract, server stats unchanged |
-
-The listed Lite editors are `executable_public` for their public contracts and
-tests. Their previews remain `[Scaffolding / Proxy]` and prove neither Godot,
-Zig, VR, nor server publication.
-
-## Recommendation rules
-
-1. Choose the gameplay loop before the world size.
-2. Use Godot unless a constraint requires another engine.
-3. Use Three.js as the lightweight Web client and fast protocol test bench when it shortens validation.
-4. Start with `flat_map` for an urban game, arena, or dungeon.
-5. Choose `planet` only when spherical continuity is essential to the first prototype.
-6. Treat `mega_planet` and `solar_system` as advanced stages requiring proof of streaming, partitioning, persistence, and capacity.
-7. An LLM recommends; the user decides and records the decision in the brief.
-
-## Intrinsic choices, not automatic ones
-
-A GTA-like project will usually lead to a flat map, but this is not a law. A
-space game can begin on a station represented by a flat map before adding a
-solar system. The guide explains the trade-off instead of selecting the most
-spectacular architecture by default.
+World-shape choices do not weaken network, persistence, or security proof gates.

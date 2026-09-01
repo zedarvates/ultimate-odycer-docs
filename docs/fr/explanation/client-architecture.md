@@ -1,89 +1,110 @@
 # Architecture client
 
-Statut : `decision` pour les starters de présentation publics. Les dépôts
-Godot VR, Godot Classic 3D, Three.js 2.5D, FoveaCore et NetherCore ARPG fournissent des shells
-de présentation originaux minimaux pour exploration locale, tandis que les
-sockets serveur live restent non validés.
+Statut : `decision` pour les frontières d'autorité et `evidence-tracked` pour la maturité des starters publics. Les sockets vers le serveur Zig canonique restent **non prouvées** tant qu'une baseline serveur exacte et une preuve E2E réelle ne sont pas enregistrées.
 
-## Coques clientes visées
+## État actuel des clients
 
-| Profil | Dépôt public | Contenu actuel |
+| Profil | Dépôt public | État vérifiable actuel |
 |---|---|---|
-| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | shell de présentation OpenXR minimal (Godot 4.3+) |
-| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | shell de présentation 3D bureau minimal (Godot 4.3+) |
-| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | application web isométrique minimale (Vite + TypeScript) |
-| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | shell de présentation FPS dual-mode minimal (Godot 4.3+) |
-| NetherCore ARPG (Three.js) | [ultod-client-threejs-nethercore-arpg-template](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template) | application web ARPG / Hack 'n' Slash sombre minimale (Vite + TypeScript) |
+| Godot VR MMORPG | `ultod-client-godot-vr-mmorpg-template` | shell OpenXR ; métadonnées historiques Godot 4.3 ; cible 4.7.2 non prouvée ; ancien réseau `LEGACY_QUARANTINED` ; couches intention/transport sans socket + transport synthétique déterministe **préparé et gardé par CI**, fixture runtime pas encore exécutée |
+| Godot Classic 3D | `ultod-client-godot-classic-3d-mmorpg-template` | shell 3D ; métadonnées historiques Godot 4.3 ; cible 4.7.2 non prouvée ; couches intention/transport sans socket + transport synthétique déterministe **préparé et gardé par CI**, fixture runtime pas encore exécutée |
+| Three.js 2.5D | `ultod-client-threejs-2-5d-mmorpg-template` | application Vite/TypeScript ; `NetworkClient` fail-closed ; fixture synthétique transport exécutée et validée ; niveau `SYNTHETIC_FIXTURE_ONLY`, compatibilité Zig réelle `NOT_PROVEN` |
+| FoveaCore FPS-RPG | `ultod-client-foveacore-fps-rpg-template` | fondation spécialisée en construction ; ne pas inférer la compatibilité Zig |
+| NetherCore ARPG (Three.js) | `ultod-client-threejs-nethercore-arpg-template` | présentation ARPG Web ; aucune compatibilité héritée du client 2.5D |
 
-Le code client Ultimate Odycer existant ne doit pas être importé sans audit
-d'extraction publique fichier par fichier.
+Unity est **LEGACY** et n'est plus une cible de développement active Ultimate Odycer.
 
-## Structure de projet cible
+Le code client ou serveur propriétaire Ultimate Odycer ne doit pas être importé dans les starters publics sans revue de provenance et de licence fichier par fichier.
 
-Un futur starter original DEVRAIT ressembler à ceci, sans copier de scènes
-ou d'assets propriétaires :
+## Structure réseau publique actuelle
+
+Les starters Godot P0 séparent désormais :
 
 ```text
-client-starter/
-  fichiers de projet du moteur choisi
-  scenes/
-    bootstrap           moteur, plateforme et contrôles qualité
-    login               aucun secret dans la scène
-    realm-handoff       rejoint un espace assigné par le serveur
-    player              présentation locale d'une entité autoritaire
-    npc                 présentation et invites d'interaction seulement
-    zone                géométrie streamée et objets d'intérêt
-    ui                  HUD, menus, panneaux VR
-  input/
-    abstractions desktop ou OpenXR
-  net/
-    client de protocole, une fois un contrat public existant
-  content/
-    instantanés du registre JSON épinglés
+input / OpenXR / desktop
+        |
+        v
+net/intent_contract.gd
+  validation client bornée
+  session / move / interact / talk
+        |
+        v
+net/transport_adapter.gd
+  cycle abstrait
+  disconnected / connecting / authenticating / online
+        |
+        v
+net/synthetic_transport.gd
+  autorité de test déterministe sans socket
+  PREPARED / CI-GUARDED
+  exécution runtime encore en attente
+        |
+        v
+futur adaptateur de transport réel
+  BLOQUÉ jusqu'à baseline Zig exacte + preuve E2E réelle
 ```
 
-Des dossiers manquants dans les dépôts publics signifient que le starter
-n'est pas publié, pas qu'un projet caché est impliqué.
+La couche publique refuse les champs d'autorité client tels que dégâts, monnaie, inventaire, permissions, téléportation arbitraire ou position serveur. Cette défense côté client ne remplace jamais la validation Zig.
+
+La fixture Godot préparée couvre explicitement : échec offline, gate d'authentification, rejet des entrées malformées/champs d'autorité, mouvement assaini, coupure explicite, reconnexion/reprise et fermeture. Son résultat maximal autorisé reste `SYNTHETIC_FIXTURE_ONLY`. La CI documentaire hébergée contrôle sa structure et ses frontières de preuve mais **n'exécute pas Godot**.
+
+Pour VR, le lanceur synthétique préparé utilise `--xr-mode off` ; runtime OpenXR, casque/contrôleurs, réseau pose/grab/release et interopérabilité Zig restent des gates indépendants non prouvés.
 
 ## Présentation versus autorité
 
 ```text
-entrée OpenXR / desktop
+entrée OpenXR / desktop / Web
         |
         v
 pose locale, locomotion confort, prédiction
-        |  jetée si le serveur refuse
+        |  jetée/réconciliée si le serveur refuse
         v
-intention : bouger, interagir, parler, utiliser, crafter
+intention client bornée
         v
-serveur autoritaire
+serveur autoritaire ou autorité de test explicitement synthétique
         v
-diff d'état, indices d'animation, expression PNJ
+diff d'état / événement accepté ou refusé
         v
-streaming de scènes, LOD, audio, haptique
+présentation, interpolation, LOD, audio, haptique
 ```
 
-La physique et les collisions locales peuvent garder un casque confortable.
-Elles ne doivent pas donner de loot, appliquer des dégâts, changer
-l'inventaire ou accepter un speed hack. Les réglages de confort VR sont
-côté client ; les règles du monde ne le sont pas.
+Le client ne décide jamais des dégâts, de l'or, de l'inventaire, des récompenses, des permissions ou de l'état persistant du monde.
+
+## Niveaux de preuve à ne pas confondre
+
+- `DOCUMENTED` / `DECLARED` : documentation ou métadonnées seulement ;
+- `PREPARED_CI_GUARDED` : implémentation présente et gates statiques/structurels verts, mais scénario runtime non exécuté ;
+- `SYNTHETIC_FIXTURE_ONLY` : fixture contrôlée réellement exécutée, sans serveur Zig canonique ;
+- `ENGINE_LOAD_PROVEN` : le projet charge avec le moteur nommé ; ne prouve pas le réseau ;
+- `OPENXR_INIT_PROVEN` : runtime OpenXR nommé initialisé ; ne prouve pas casque/réseau ;
+- `HEADSET_RUNTIME_PROVEN` : scénario casque/contrôleurs nommé ; ne prouve pas le serveur ;
+- `REAL_SERVER_E2E` : client/serveur exacts, révisions nommées, scénario reproductible ;
+- `FAKE-GREEN` : test vert utilisé pour revendiquer plus que ce qu'il exerce.
 
 ## Chemin de connexion
 
-Tant qu'une version de protocole publique n'est pas approuvée, un client
-peut seulement :
+La documentation publique possède deux niveaux à distinguer :
 
-1. documenter la séquence visée de login et de handoff ;
-2. consommer des modèles JSON épinglés pour labels et fixtures synthétiques ;
-3. mener des expériences de présentation locales, hors réseau ;
-4. refuser points de production, identifiants et dumps de protocole.
+1. `network-intent-v1` est un contrat public synthétique et transport-indépendant ;
+2. `server-network-contract.md` est un **snapshot d'implémentation non épinglé**, ni protocole courant vérifié ni preuve de compatibilité client.
 
-Une fixture de boucle locale synthétique est la première preuve réseau
-autorisée. Une exécution desktop isolée ne prouvé pas l'interopérabilité VR.
+Le snapshot historique décrivait du TCP binaire brut pour login/jeu. Tant que ces détails ne sont pas rattachés à un SHA/tree/toolchain Zig courant exact, les agents doivent considérer le transport courant comme non vérifié. Un navigateur ne doit donc jamais inventer ou supposer un WebSocket joueur ; un pont/passerelle ou endpoint officiel séparé exige sa propre preuve nommée.
+
+## Règle pour les agents
+
+Avant de modifier un client :
+
+1. lire cette page ;
+2. lire `../reference/network-contract.md` ;
+3. lire `../reference/server-network-contract.md` en conservant son statut non épinglé/non validé ;
+4. lire la matrice moteurs/templates ;
+5. lire proof-levels et compatibility manifests du dépôt concerné ;
+6. distinguer fixture préparée/gardée par CI et reçu runtime réellement exécuté ;
+7. ne jamais promouvoir `zig_compatibility`, Godot 4.7.2, OpenXR, casque ou runtime synthétique sans reçu exécutable correspondant.
 
 ## Pages liées
 
 - [Vue d'ensemble de l'écosystème](ecosystem-overview.md)
-- [Contrat réseau](../reference/network-contract.md)
-- [Utiliser les modèles JSON](../how-to/use-json-templates.md)
-- [Démarrer un projet](../tutorials/start-an-ultimate-odycer-project.md)
+- [Contrat réseau public](../reference/network-contract.md)
+- [Snapshot réseau serveur non épinglé](../reference/server-network-contract.md)
+- [Matrice moteurs, templates et mondes](../reference/engine-template-world-matrix.md)

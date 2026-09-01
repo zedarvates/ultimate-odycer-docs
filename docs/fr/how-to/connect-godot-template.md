@@ -1,74 +1,66 @@
 # Connecter un template Godot au serveur local
 
-Godot est le chemin client recommandé. Cette page ne transforme pas une
-fondation documentaire en client jouable.
+Statut : **guide de preuve bornée**. Les starters Godot publics contiennent des projets Godot réels et une fondation réseau transport-indépendante, mais **aucune compatibilité live avec le Zig canonique n'est encore prouvée**.
 
-> Les templates Godot publics sont actuellement `under_construction`. Continuez
-> seulement si le dépôt choisi contient réellement un projet Godot et annonce
-> une compatibilité avec votre version du serveur.
+## Avant de commencer
 
-## 1. Vérifier les identifiants de compatibilité
+- Godot Classic et VR ciblent 4.7.2, mais cette version reste `NOT_PROVEN` tant que les reçus exécutables n'existent pas.
+- Les deux branches P0 fournissent désormais `tools/run_p0_local_proof.py`, orchestrateur fail-closed en une commande pour la preuve moteur + fixture synthétique avec le même binaire Godot exact.
+- Le réseau VR historique reste `LEGACY_QUARANTINED`.
+- Le contrat public d'intention ne contient aucun socket, endpoint, opcode ou framing Zig privé.
+- Une date récente ou une documentation détaillée ne remplace jamais une baseline serveur exacte.
 
-Comparez :
+## 1. Exécuter localement la preuve moteur et synthétique
 
-- la version dans `VERSION` de l'archive serveur ;
-- la compatibilité déclarée dans le template ;
-- la version du schéma PostgreSQL ;
-- la version de la documentation embarquée ;
-- les éventuels modules Tools Suite sélectionnés.
+Avec **Godot 4.7.2-stable**, exécutez depuis le checkout de la PR concernée :
 
-Un nom proche ou une date récente ne remplace pas une correspondance explicite.
+```text
+python tools/run_p0_local_proof.py --godot <chemin-vers-godot-4.7.2>
+```
 
-## 2. Ouvrir une copie du template
+L'orchestrateur utilise le même exécutable pour les deux gates et s'arrête au premier échec. Les reçus sont écrits sous `.evidence/` et doivent rester non commités.
 
-Conservez le template téléchargé intact et travaillez dans une copie dédiée à
-votre jeu. Ouvrez cette copie avec la version de Godot indiquée par le dépôt.
+Pour VR, toute cette preuve s'exécute XR désactivé. Même un succès complet laisse OpenXR, casque/contrôleurs et interopérabilité Zig non prouvés.
 
-Si le dépôt ne contient pas `project.godot`, arrêtez-vous : il s'agit encore
-d'une fondation documentaire.
+## 2. Lire les contrats dans l'ordre
 
-## 3. Configurer les adresses locales
+1. architecture client ;
+2. `network-contract.md` (`network-intent-v1`, synthétique et transport-indépendant) ;
+3. `server-network-contract.md` en conservant son statut **snapshot non épinglé / compatibilité non validée** ;
+4. proof levels + compatibility manifest du dépôt Godot.
 
-Utilisez uniquement le mécanisme documenté par le template. Les valeurs doivent
-viser `localhost` pour :
+## 3. Ne pas inventer le transport
 
-- le service de login ;
-- le serveur de jeu ;
-- le WebAdmin, s'il est installé.
+Le futur adaptateur réel doit être dérivé d'une baseline `zig-server-v2` nommée. Tant que le SHA/tree/toolchain exact n'est pas capturé, n'ajoutez pas d'endpoint, d'opcode ou de framing supposé dans le starter public.
 
-Ne modifiez pas le routeur et ne remplacez pas une adresse locale par une
-adresse d'écoute générale pour réussir ce tutoriel.
+L'adaptateur/fixture actuel reste sans socket et peut uniquement prouver le comportement client borné sous entrées synthétiques contrôlées.
 
-## 4. Lancer le chemin minimal
+## 4. Frontière de la preuve synthétique
 
-Dans l'ordre :
+La fixture préparée couvre :
 
-1. PostgreSQL sain ;
-2. service de login ;
-3. serveur de jeu ;
-4. projet Godot ;
-5. création ou utilisation d'un compte de test local ;
-6. entrée du personnage dans le monde.
+- état offline fail-closed ;
+- connexion/authentification simulées ;
+- intention de mouvement bornée ;
+- événement autoritaire synthétique ;
+- entrée malformée/non supportée ;
+- rejet des champs d'autorité client ;
+- déconnexion/reconnexion/reprise ;
+- fermeture propre.
 
-Le client ne doit jamais décider seul de l'or, des points de vie, de la vitesse
-ou d'une autre statistique autoritaire.
+Une exécution réussie reste `SYNTHETIC_FIXTURE_ONLY`.
 
-## 5. Prouver une action minimale
+## 5. Preuve live future
 
-La preuve attendue comprend :
+`REAL_SERVER_E2E` exigera :
 
-- authentification acceptée ;
-- monde chargé ;
-- avatar de test visible ;
-- une action minimale autorisée, par exemple un déplacement ;
-- aucune erreur fatale dans les journaux client et serveur.
+- révision client exacte ;
+- SHA/tree/toolchain Zig exacts ;
+- transport réellement présent à cette révision Zig vérifié ;
+- auth + handoff + spawn ;
+- mouvement autoritaire ;
+- reconnexion ;
+- tests négatifs/adversariaux ;
+- logs/artefacts nommés.
 
-Un écran de menu, une scène statique ou un mock réseau ne suffit pas.
-
-## 6. Redémarrer
-
-Arrêtez proprement le client et les services, puis relancez-les. Vérifiez que la
-configuration et les données de test attendues persistent dans PostgreSQL.
-
-Passez ensuite à la
-[liste d'acceptation](../reference/local-setup-acceptance-checklist.md).
+Un menu, une scène statique, un mock, une fixture synthétique ou un run Godot headless ne suffit pas pour la compatibilité live.

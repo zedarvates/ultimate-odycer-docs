@@ -1,73 +1,66 @@
 # Connect a Godot template to the local server
 
-Godot is the recommended client path. This page does not turn a documentation
-foundation into a playable client.
+Status: **bounded proof guide**. The public Godot starters contain real Godot projects and transport-independent networking foundations, but **live compatibility with the canonical Zig server is not proven**.
 
-> Public Godot templates are currently `under_construction`. Continue only if
-> the selected repository contains a real Godot project and declares
-> compatibility with your server version.
+## Before starting
 
-## 1. Check compatibility identifiers
+- Godot Classic and VR target 4.7.2, but that target remains `NOT_PROVEN` until executable receipts exist.
+- Both P0 branches now provide `tools/run_p0_local_proof.py`, a fail-closed one-command orchestrator for engine + synthetic proof using one exact Godot binary.
+- Historical VR networking is `LEGACY_QUARANTINED`.
+- The public intent contract contains no private Zig socket, endpoint, opcode, or framing.
+- A recent date or detailed document is never a substitute for an exact server baseline.
 
-Compare:
+## 1. Prove the engine and synthetic fixture locally
 
-- the server archive's `VERSION`;
-- compatibility declared by the template;
-- PostgreSQL schema version;
-- embedded documentation version;
-- any selected Tools Suite modules.
+With **Godot 4.7.2-stable** available, run from the target PR checkout:
 
-A similar name or recent date is not an explicit compatibility match.
+```text
+python tools/run_p0_local_proof.py --godot <path-to-godot-4.7.2>
+```
 
-## 2. Open a copy of the template
+The orchestrator uses the same executable for both gates and stops at the first failure. It writes local receipts below `.evidence/`, which must remain uncommitted.
 
-Keep the downloaded template intact and work in a copy dedicated to your game.
-Open that copy with the Godot version stated by the repository.
+For VR, all proof in this command is XR-off. Even a complete success leaves OpenXR runtime, headset/controllers and Zig interoperability unproven.
 
-If the repository has no `project.godot`, stop: it remains a documentation
-foundation.
+## 2. Read contracts in order
 
-## 3. Configure local addresses
+1. client architecture;
+2. `network-contract.md` (`network-intent-v1`, synthetic and transport-independent);
+3. `server-network-contract.md` while preserving its **unpinned / compatibility-not-validated** status;
+4. the target Godot repository proof-level and compatibility-manifest files.
 
-Use only the mechanism documented by the template. Values must target
-`localhost` for:
+## 3. Do not invent the transport
 
-- login service;
-- game server;
-- WebAdmin, when installed.
+The future real adapter must be derived from a named `zig-server-v2` baseline. Until exact SHA/tree/toolchain evidence is captured, do not add assumed endpoints, opcodes, or framing to the public starter.
 
-Do not change the router or replace a local address with a general listener to
-complete this tutorial.
+The current adapter/fixture is socket-free and may only prove bounded client behavior under controlled synthetic inputs.
 
-## 4. Start the minimal path
+## 4. Synthetic proof boundary
 
-In order:
+The prepared fixture covers:
 
-1. healthy PostgreSQL;
-2. login service;
-3. game server;
-4. Godot project;
-5. local test account creation or use;
-6. character entry into the world.
+- offline fail-closed behavior;
+- simulated connect/authentication;
+- bounded movement intent;
+- synthetic authoritative event;
+- malformed/unsupported input;
+- client-authority-field rejection;
+- disconnect/reconnect/resume;
+- clean close.
 
-The client must never decide authoritative gold, health, speed, or another
-gameplay statistic by itself.
+A successful execution remains `SYNTHETIC_FIXTURE_ONLY`.
 
-## 5. Prove one minimal action
+## 5. Future live proof
 
-Expected evidence includes:
+`REAL_SERVER_E2E` requires:
 
-- accepted authentication;
-- loaded world;
-- visible test avatar;
-- one authorized minimal action, such as movement;
-- no fatal error in client or server logs.
+- exact client revision;
+- exact Zig SHA/tree/toolchain;
+- verified transport actually present at that Zig revision;
+- auth + handoff + spawn;
+- authoritative movement;
+- reconnect;
+- negative/adversarial tests;
+- named logs/artifacts.
 
-A menu screen, static scene, or network mock is insufficient.
-
-## 6. Restart
-
-Stop the client and services cleanly, then start them again. Verify that the
-expected configuration and test data persist in PostgreSQL.
-
-Continue with the [acceptance checklist](../reference/local-setup-acceptance-checklist.md).
+A menu, static scene, mock, synthetic fixture or headless Godot run is insufficient for live compatibility.

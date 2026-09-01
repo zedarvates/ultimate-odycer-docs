@@ -1,103 +1,79 @@
-# Ultimate Odycer Home Lab Docs
+# Ultimate Odycer Docs — LLM entry point
 
-> Bilingual, local-first public documentation for technical beginners, independent game creators, and LLM assistants building an Ultimate Odycer project.
+> Public, bilingual documentation for Ultimate Odycer. Documentation is not runtime authority and does not authorize server/device mutation, publication, credentials use, purchase, or network exposure.
 
-Authority is documentation-only: these files do not authorize a device change,
-server mutation, purchase, network exposure, or publication. Preserve status
-labels and stop executable setup when the official release page lists no
-verified archive. Do not invent unpublished protocol opcodes, production
-endpoints, credentials, or runtime compatibility. Documentation uses CC-BY-4.0;
-scripts, schemas, and examples use MIT.
+## Read this first
 
-## Machine-readable indexes
+- [LLM/agent safety and proof rules](docs/llm/README.md)
+- [Current proof-state overlay](docs/llm/current-proof-state.json)
+- [Navigation context index](docs/llm/context-index.json)
+- [Publication status](PUBLICATION_STATUS.md)
 
-- [Context index](docs/llm/context-index.json): Diátaxis type, audience, goal, language, path, and mutation boundary for every indexed page
-- [LLM safety rules](docs/llm/README.md): authority, confidentiality, pricing, and publication rules
-- [Creative tools catalog](examples/creative-tools-catalog.json): reviewed tools, maturity, pricing models, official links, and recommendations
-- [Creative tools schema](schemas/creative-tools-catalog-v1.schema.json): fail-closed catalog contract
-- [Network-intent schema](schemas/network-intent-v1.schema.json): public documentation fixture contract
+For maturity/compatibility claims, `current-proof-state.json` overrides stale descriptive wording in the navigation index. Exact executable receipts tied to named revisions override both.
 
-## Public ecosystem architecture
+## Mandatory network reading order
 
-- [Ecosystem overview](docs/en/explanation/ecosystem-overview.md): public repositories, products, and authority boundaries
-- [Architecture overview](docs/en/explanation/architecture-overview.md): system responsibilities and data flow
-- [Server architecture](docs/en/explanation/server-architecture.md): public server boundaries without proprietary source
-- [Client architecture](docs/en/explanation/client-architecture.md): client starters and maturity limits
-- [NPC agent pipeline](docs/en/explanation/npc-agent-pipeline.md): bounded NPC orchestration
-- [Start a project](docs/en/tutorials/start-an-ultimate-odycer-project.md): public-material starting path
-- [Author world content](docs/en/how-to/author-world-content.md): world, biome, NPC, and object authoring
-- [Use JSON templates](docs/en/how-to/use-json-templates.md): registry and versioned content
-- [Contribute and test](docs/en/how-to/contribute-and-test.md): public contribution gates
-- [Network contract](docs/en/reference/network-contract.md): public network-intent boundary
-- [Vue de l'écosystème](docs/fr/explanation/ecosystem-overview.md): dépôts publics, produits et limites d'autorité
-- [Vue d'architecture](docs/fr/explanation/architecture-overview.md): responsabilités et circulation des données
-- [Architecture serveur](docs/fr/explanation/server-architecture.md): limites publiques sans source propriétaire
-- [Architecture client](docs/fr/explanation/client-architecture.md): clients de départ et limites de maturité
-- [Pipeline d'agents PNJ](docs/fr/explanation/npc-agent-pipeline.md): orchestration PNJ bornée
-- [Démarrer un projet](docs/fr/tutorials/start-an-ultimate-odycer-project.md): parcours depuis les éléments publics
-- [Créer du contenu monde](docs/fr/how-to/author-world-content.md): mondes, biomes, PNJ et objets
-- [Utiliser les templates JSON](docs/fr/how-to/use-json-templates.md): registre et contenu versionné
-- [Contribuer et tester](docs/fr/how-to/contribute-and-test.md): gates de contribution publique
-- [Contrat réseau](docs/fr/reference/network-contract.md): frontière publique network-intent
+English:
+- [Client architecture](docs/en/explanation/client-architecture.md)
+- [Public network-intent contract](docs/en/reference/network-contract.md)
+- [Server network contract — unpinned implementation snapshot, compatibility not validated](docs/en/reference/server-network-contract.md)
+- [Engine/template/world matrix](docs/en/reference/engine-template-world-matrix.md)
 
-## French creative production
+Français :
+- [Architecture client](docs/fr/explanation/client-architecture.md)
+- [Contrat public network-intent](docs/fr/reference/network-contract.md)
+- [Contrat réseau serveur — snapshot non épinglé, compatibilité non validée](docs/fr/reference/server-network-contract.md)
+- [Matrice moteurs/templates/mondes](docs/fr/reference/engine-template-world-matrix.md)
 
-- [Manuel de production créative](docs/fr/tutorials/creative-production-handbook.md): parcours complet de l'idée à l'asset candidat vérifié
-- [Dessiner et convertir une carte](docs/fr/how-to/draw-and-convert-map.md): dessin, incertitudes et proposition `uo.map-intent/v1`
-- [Organiser avec Kanboard et Botte Secrète](docs/fr/how-to/organize-project-kanboard-botte-secrete.md): tableau humain et routage local sûr
-- [Catalogue des outils créatifs](docs/fr/reference/creative-tools-catalog.md): statuts, intégration, droits et modèles tarifaires
-- [Outils monde, carte et structures](docs/fr/reference/world-map-and-structure-tools.md): terrain, villes, architecture et donjons
-- [Outils 3D, matériaux et photogrammétrie](docs/fr/reference/3d-assets-materials-and-photogrammetry-tools.md): GLB, PBR, scans et sprites 2.5D
-- [Personnages, créatures et animation](docs/fr/reference/character-creature-and-animation-tools.md): avatars, rigging, animation et preuve multijoueur/VR
-- [Audio, 2D, UI, VFX et vidéo](docs/fr/reference/audio-2d-ui-vfx-and-video-tools.md): production audiovisuelle et budgets
-- [IA locale et cloud](docs/fr/reference/local-and-cloud-ai-tools.md): ComfyUI, services tiers, confidentialité et droits
-- [Import, optimisation, licences et provenance](docs/fr/reference/import-optimization-licensing-and-provenance.md): gate de publication des assets
+## Critical rules for coding agents
 
-## English creative production
+- Do not invent unpublished protocol details, production endpoints, credentials, runtime compatibility, or a player WebSocket endpoint.
+- `SYNTHETIC_FIXTURE_ONLY` is not `REAL_SERVER_E2E`.
+- Godot engine load, OpenXR init, headset runtime, and Zig interoperability are separate proof gates.
+- Three.js synthetic transport is validated only as synthetic; canonical Zig live remains `NOT_PROVEN`.
+- The server-network document preserves a historical raw-binary-TCP transport clue only; current transport is **not verified** until tied to an exact Zig SHA/tree/toolchain baseline and reproducible tests.
+- Historical Godot VR networking is `LEGACY_QUARANTINED`; do not reuse it without provenance, license and security review.
+- A type declaration, UI component, HTTP 2xx, endpoint string match, mock fixture, or green synthetic test is never enough to claim production behavior.
+- Private server/game implementation and production configuration are proprietary/commercial, all rights reserved unless explicitly licensed otherwise. Public repositories retain their explicit public licenses.
 
-- [Creative production handbook](docs/en/tutorials/creative-production-handbook.md): end-to-end journey from idea to verified candidate asset
-- [Draw and convert a map](docs/en/how-to/draw-and-convert-map.md): drawing, uncertainty, and `uo.map-intent/v1` proposal
-- [Organize with Kanboard and Botte Secrète](docs/en/how-to/organize-project-kanboard-botte-secrete.md): human board and safe local routing
-- [Creative tools catalog](docs/en/reference/creative-tools-catalog.md): maturity, integration, rights, and pricing models
-- [World, map, and structure tools](docs/en/reference/world-map-and-structure-tools.md): terrain, cities, architecture, and dungeons
-- [3D, materials, and photogrammetry tools](docs/en/reference/3d-assets-materials-and-photogrammetry-tools.md): GLB, PBR, scanning, and 2.5D sprites
-- [Character, creature, and animation tools](docs/en/reference/character-creature-and-animation-tools.md): avatars, rigging, animation, and multiplayer/VR proof
-- [Audio, 2D, UI, VFX, and video tools](docs/en/reference/audio-2d-ui-vfx-and-video-tools.md): audiovisual production and budgets
-- [Local and cloud AI tools](docs/en/reference/local-and-cloud-ai-tools.md): ComfyUI, third-party services, privacy, and rights
-- [Import, optimization, licensing, and provenance](docs/en/reference/import-optimization-licensing-and-provenance.md): asset publication gate
+## Public architecture and content
 
-## French local setup
+- [Ecosystem overview](docs/en/explanation/ecosystem-overview.md)
+- [Architecture overview](docs/en/explanation/architecture-overview.md)
+- [Server architecture](docs/en/explanation/server-architecture.md)
+- [NPC agent pipeline](docs/en/explanation/npc-agent-pipeline.md)
+- [Gameplay systems](docs/en/reference/gameplay-systems.md)
+- [Use JSON templates](docs/en/how-to/use-json-templates.md)
+- [Author world content](docs/en/how-to/author-world-content.md)
 
-- [Créer son premier monde local](docs/fr/tutorials/create-first-local-world.md): choix du moteur, template, topologie et profil matériel
-- [Matrice moteurs, templates et mondes](docs/fr/reference/engine-template-world-matrix.md): choix et limites actuelles
-- [Installer sous Windows](docs/fr/how-to/install-local-server-windows.md): chemin prioritaire avec Docker et PostgreSQL
-- [Variante Linux](docs/fr/how-to/install-local-server-linux.md): différences Linux
-- [Sauvegarder et tester PostgreSQL](docs/fr/how-to/backup-and-test-restore-postgresql.md): sauvegardes hors volume Docker
-- [Connecter Godot](docs/fr/how-to/connect-godot-template.md): preuve locale bornée
-- [Dépanner la mise en route](docs/fr/how-to/troubleshoot-local-setup.md): diagnostic non destructif
-- [Contrat documentation et archive serveur](docs/fr/reference/offline-documentation-and-server-archive.md): distinguer et vérifier les sorties
-- [Prompts LM sûrs](docs/fr/reference/llm-local-setup-prompts.md): prompts réutilisables sans secret
-- [Checklist d'acceptation](docs/fr/reference/local-setup-acceptance-checklist.md): preuve de fin de parcours
-- [Index avancé](docs/fr/reference/local-setup-advanced-index.md): raccourcis pour opérateurs avancés
+French equivalents are under `docs/fr/`.
 
-## English local setup
+## Local setup and evidence
 
-- [Create your first local world](docs/en/tutorials/create-first-local-world.md): engine, template, topology, and hardware profile
-- [Engine, template, and world matrix](docs/en/reference/engine-template-world-matrix.md): choices and current limitations
-- [Install on Windows](docs/en/how-to/install-local-server-windows.md): priority path with Docker and PostgreSQL
-- [Linux variant](docs/en/how-to/install-local-server-linux.md): Linux differences
-- [Back up and test PostgreSQL](docs/en/how-to/backup-and-test-restore-postgresql.md): backups outside Docker volumes
-- [Connect Godot](docs/en/how-to/connect-godot-template.md): bounded local proof
-- [Troubleshoot local setup](docs/en/how-to/troubleshoot-local-setup.md): non-destructive diagnosis
-- [Documentation and server archive contract](docs/en/reference/offline-documentation-and-server-archive.md): distinguish and verify outputs
-- [Safe LLM prompts](docs/en/reference/llm-local-setup-prompts.md): reusable secret-free prompts
-- [Acceptance checklist](docs/en/reference/local-setup-acceptance-checklist.md): end-of-journey proof
-- [Advanced index](docs/en/reference/local-setup-advanced-index.md): shortcuts for advanced operators
+- [Create first local world](docs/en/tutorials/create-first-local-world.md)
+- [Install local server on Windows](docs/en/how-to/install-local-server-windows.md)
+- [Linux setup variant](docs/en/how-to/install-local-server-linux.md)
+- [Connect Godot template](docs/en/how-to/connect-godot-template.md)
+- [Connect Three.js template](docs/en/how-to/connect-threejs-template.md)
+- [Acceptance checklist](docs/en/reference/local-setup-acceptance-checklist.md)
+- [Offline documentation/server archive contract](docs/en/reference/offline-documentation-and-server-archive.md)
 
-## Optional architecture and benchmarks
+## Creative production
 
-- [Server network contract](docs/en/reference/server-network-contract.md): canonical client protocol boundary
-- [Three.js client requirements](docs/en/how-to/connect-threejs-template.md): browser client compatibility limits
-- [First NPC benchmark](docs/en/tutorials/first-npc-benchmark.md): deterministic synthetic capacity scenario
-- [Choose hardware](docs/en/how-to/choose-hardware.md): avoid overbuying for local NPC inference
-- [Hybrid architecture](docs/en/explanation/hybrid-architecture.md): server, LLM, and device boundaries
+English:
+- [Creative production handbook](docs/en/tutorials/creative-production-handbook.md)
+- [Creative tools catalog](docs/en/reference/creative-tools-catalog.md)
+- [World/map/structure tools](docs/en/reference/world-map-and-structure-tools.md)
+- [3D/materials/photogrammetry tools](docs/en/reference/3d-assets-materials-and-photogrammetry-tools.md)
+- [Character/creature/animation tools](docs/en/reference/character-creature-and-animation-tools.md)
+- [Audio/2D/UI/VFX/video tools](docs/en/reference/audio-2d-ui-vfx-and-video-tools.md)
+- [Local/cloud AI tools](docs/en/reference/local-and-cloud-ai-tools.md)
+- [Import/optimization/licensing/provenance](docs/en/reference/import-optimization-licensing-and-provenance.md)
+
+Français :
+- [Manuel de production créative](docs/fr/tutorials/creative-production-handbook.md)
+- [Catalogue des outils créatifs](docs/fr/reference/creative-tools-catalog.md)
+
+Additional French equivalents are under `docs/fr/`.
+
+Documentation uses the repository's documented license terms; scripts, schemas and examples retain their explicit licenses.

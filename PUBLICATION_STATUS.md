@@ -2,68 +2,51 @@
 
 Status: **public documentation repository**.
 
-The reviewed documentation source is published at
-[zedarvates/ultimate-odycer-docs](https://github.com/zedarvates/ultimate-odycer-docs).
-This status applies only to this documentation repository. It does not publish
-or license the proprietary server, hosted infrastructure, firmware backups,
-production data, commercial components, credentials, or any running service.
+This status applies only to `zedarvates/ultimate-odycer-docs`. It does not publish or license the proprietary canonical Zig server, hosted infrastructure, production configuration/data, private assets/lore, credentials, or commercial implementation.
 
-## Local validation snapshot
+## Current proof snapshot
 
-- bilingual structure and internal links: passed;
-- public-boundary pattern checks: passed;
-- metric schema and estimated example checks: passed;
-- `CC-BY-4.0` documentation and `MIT` tools mapping: applied and validated;
-- deterministic calculator tests: 3 passed;
-- SHA-256 source manifest: generated and verified;
-- fresh-copy validation: passed;
-- Gitleaks 8.30.0 directory scan: passed after archive-checksum verification and
-  a successful synthetic-canary detection test.
+- Documentation authority remains `documentation_only`.
+- `docs/llm/current-proof-state.json` is the current machine-readable maturity overlay for agents.
+- Three.js 2.5D: presentation + fail-closed `NetworkClient` + synthetic transport gate validated; proof remains `SYNTHETIC_FIXTURE_ONLY`; canonical Zig live = `NOT_PROVEN`.
+- Godot Classic: project + public intent contract + abstract socket-free transport adapter exist on P0; Godot 4.7.2 executable receipt = `NOT_PROVEN`; Zig live = `NOT_PROVEN`.
+- Godot VR: same foundation; historical networking = `LEGACY_QUARANTINED`; Godot 4.7.2, OpenXR runtime, headset runtime and Zig live are separate unproven gates.
+- Unity: `LEGACY`, no longer an active development target.
+- Private WebAdmin: corrective P0 audit is fail-closed; sensitive mutations remain quarantined pending exact Zig auth/RBAC/re-auth/idempotence/transaction/audit evidence.
+- Canonical Zig server baseline: exact current SHA/tree/toolchain still must be captured by the P0 provenance gate before compatibility claims are promoted.
 
-## Local setup documentation snapshot
+## Network documentation status
 
-- bilingual beginner journey, Windows path, Linux variant, PostgreSQL backup,
-  restore check, Godot connection, troubleshooting, advanced index, and LLM
-  prompts: source validation passed;
-- machine-readable engine, template, platform, topology, component, and
-  estimated hardware-profile catalog: contract validation passed;
-- deterministic offline HTML generation: passed with local runtime assets,
-  internal-link checks, root schema/example inclusion, and a SHA-256 build
-  manifest;
-- current public server release: `unavailable`;
-- five Lite editor slices (Creature, City, Architecture, Dungeon, Avatar):
-  `executable_public` for bounded public contracts and tests; their previews
-  remain `[Scaffolding / Proxy]`;
-- full Tools Suite editors, Asset Factory pipelines, and optional creation
-  modules: `under_construction`, local prototypes, or
-  `[Scaffolding / Proxy]` as individually documented.
+`network-intent-v1` is public synthetic, transport-independent documentation/fixture material.
 
-## Creative production documentation snapshot
+`server-network-contract.md` currently describes implementation decisions including raw binary TCP and detailed message semantics. It is classified **decision-documented / compatibility-not-validated** until those claims are tied to an exact canonical Zig revision and reproducible evidence. It must not be treated as a client compatibility certificate.
 
-- bilingual handbook, map conversion workflow, Kanboard/Botte Secrète guide,
-  and domain reference pages: included in source validation;
-- machine-readable creative tool catalog and JSON Schema: fail-closed validation
-  enabled;
-- tool selection policy: local/free/open-source first, pricing model plus
-  official link, no exact price copied into the repository;
-- Sorceress Games: documented as a recommended independent companion service
-  and a welcome interoperability/partnership direction, not as an Ultimate
-  Odycer component;
-- Three.js 2.5D sprite and SFX generation pipeline: planned, not shipped.
+A browser client must not assume a player WebSocket endpoint exists. Live Three.js interoperability requires a proven gateway/bridge or separately proven official endpoint.
 
-This snapshot does not prove a Kanboard instance, a Botte Secrète connector, a
-full Tools Suite release, a Web deployment, embedding in a server ZIP, any
-purchase, or certification of commercial rights. Those are separate gates.
+## Validation snapshot
 
-Future changes must pass automated validation, secret scanning, manifest
-regeneration, and fresh-copy verification before publication.
+The repository validation covers, as applicable:
 
-Passing repository validation proves only the structure, generated offline
-documentation, and examples in these docs. It does not certify a public or
-production server, a playable Godot client, PostgreSQL runtime behavior, a Tools
-Suite module, an ESP32 firmware, an LLM model, or the performance of any
-hardware.
+- bilingual structure and internal links;
+- public-boundary checks;
+- schemas/examples and deterministic tests;
+- SHA-256 source manifest;
+- fresh-copy/static-doc generation checks;
+- documented license mapping and secret-scanning gates.
 
-Ecosystem architecture pages document public boundaries and contracts. They do not
-publish proprietary Zig server source, live endpoints, or certified client/server
-compatibility.
+A green documentation workflow proves only those documentation/repository checks. It does **not** prove a production server, playable MMO client, Godot/OpenXR/headset runtime, Zig interoperability, PostgreSQL runtime behavior, Tools Suite production readiness, or hardware performance.
+
+## Public release boundary
+
+- Public server archive: `unavailable` unless an official release gate explicitly publishes one.
+- Public client starters: evidence-tracked and incomplete; see the engine/template matrix and client proof files.
+- Lite editors: only bounded public contracts/tests explicitly marked executable may be called `executable_public`; previews remain scaffolding/proxy where documented.
+- Full Tools Suite, Asset Factory and optional creation modules remain individually classified; no blanket production-ready claim is implied.
+
+## Licensing boundary
+
+Documentation and scripts/schemas/examples follow their explicit repository licenses. Public client repositories retain their explicit public licenses.
+
+The private server, proprietary gameplay, production configuration, private assets/lore and commercial components remain proprietary/commercial, **all rights reserved unless an explicit component license states otherwise**. Private repository access is not a license grant and does not authorize private → public copying.
+
+Future publication changes must pass repository validation, manifest regeneration, boundary/license review, and any applicable secret/provenance checks before merge/publication.
