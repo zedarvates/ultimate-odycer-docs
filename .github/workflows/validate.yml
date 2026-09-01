@@ -5,56 +5,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: Restore canonical workflow and regenerate manifest
-        if: github.event_name == 'pull_request'
-        run: |
-          cat > .github/workflows/validate.yml <<'EOF'
-          name: Validate public documentation
-
-          on:
-            pull_request:
-            workflow_dispatch:
-
-          permissions:
-            contents: read
-
-          jobs:
-            validate:
-              runs-on: ubuntu-latest
-              steps:
-                - uses: actions/checkout@v4
-                - uses: actions/setup-python@v5
-                  with:
-                    python-version: "3.13"
-                - run: python scripts/validate_docs.py
-                - run: python -m unittest discover -s tests -v
-                - run: python scripts/fresh_copy_check.py
-          EOF
-          python scripts/generate_manifest.py
-          python scripts/validate_docs.py
-          python -m unittest discover -s tests -v
-          python scripts/fresh_copy_check.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/workflows/validate.yml MANIFEST.sha256
-          git diff --cached --check
-          git commit -m "docs: regenerate manifest for P0 proof-state sync"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
-      - name: Validate manual dispatch
-        if: github.event_name != 'pull_request'
-        run: |
-          python scripts/validate_docs.py
-          python -m unittest discover -s tests -v
-          python scripts/fresh_copy_check.py
+      - run: python scripts/validate_docs.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/fresh_copy_check.py
