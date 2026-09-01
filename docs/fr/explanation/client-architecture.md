@@ -1,89 +1,100 @@
 # Architecture client
 
-Statut : `decision` pour les starters de présentation publics. Les dépôts
-Godot VR, Godot Classic 3D, Three.js 2.5D, FoveaCore et NetherCore ARPG fournissent des shells
-de présentation originaux minimaux pour exploration locale, tandis que les
-sockets serveur live restent non validés.
+Statut : `decision` pour les frontières d'autorité et `evidence-tracked` pour la maturité des starters publics. Les sockets vers le serveur Zig canonique restent **non prouvées** tant qu'une baseline serveur exacte et une preuve E2E réelle ne sont pas enregistrées.
 
-## Coques clientes visées
+## État actuel des clients
 
-| Profil | Dépôt public | Contenu actuel |
+| Profil | Dépôt public | État vérifiable actuel |
 |---|---|---|
-| Godot VR MMORPG | [ultod-client-godot-vr-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-vr-mmorpg-template) | shell de présentation OpenXR minimal (Godot 4.3+) |
-| Godot Classic 3D | [ultod-client-godot-classic-3d-mmorpg-template](https://github.com/zedarvates/ultod-client-godot-classic-3d-mmorpg-template) | shell de présentation 3D bureau minimal (Godot 4.3+) |
-| Three.js 2.5D | [ultod-client-threejs-2-5d-mmorpg-template](https://github.com/zedarvates/ultod-client-threejs-2-5d-mmorpg-template) | application web isométrique minimale (Vite + TypeScript) |
-| FoveaCore FPS-RPG | [ultod-client-foveacore-fps-rpg-template](https://github.com/zedarvates/ultod-client-foveacore-fps-rpg-template) | shell de présentation FPS dual-mode minimal (Godot 4.3+) |
-| NetherCore ARPG (Three.js) | [ultod-client-threejs-nethercore-arpg-template](https://github.com/zedarvates/ultod-client-threejs-nethercore-arpg-template) | application web ARPG / Hack 'n' Slash sombre minimale (Vite + TypeScript) |
+| Godot VR MMORPG | `ultod-client-godot-vr-mmorpg-template` | shell OpenXR ; métadonnées projet historiques Godot 4.3 ; cible 4.7.2 non encore prouvée ; ancien réseau `LEGACY_QUARANTINED` ; contrat d'intention + adaptateur de transport abstrait sans socket présents sur PR P0 |
+| Godot Classic 3D | `ultod-client-godot-classic-3d-mmorpg-template` | shell 3D ; métadonnées projet historiques Godot 4.3 ; cible 4.7.2 non encore prouvée ; contrat d'intention + adaptateur de transport abstrait sans socket présents sur PR P0 |
+| Three.js 2.5D | `ultod-client-threejs-2-5d-mmorpg-template` | application Vite/TypeScript ; `NetworkClient` fail-closed ; fixture synthétique et tests transport validés ; niveau de preuve `SYNTHETIC_FIXTURE_ONLY`, compatibilité Zig réelle `NOT_PROVEN` |
+| FoveaCore FPS-RPG | `ultod-client-foveacore-fps-rpg-template` | fondation spécialisée en construction ; ne pas inférer la compatibilité Zig |
+| NetherCore ARPG (Three.js) | `ultod-client-threejs-nethercore-arpg-template` | présentation ARPG Web ; ne pas inférer la compatibilité Zig depuis le client Three.js 2.5D |
 
-Le code client Ultimate Odycer existant ne doit pas être importé sans audit
-d'extraction publique fichier par fichier.
+Unity est **LEGACY** et n'est plus une cible de développement active Ultimate Odycer.
 
-## Structure de projet cible
+Le code client ou serveur propriétaire Ultimate Odycer ne doit pas être importé dans ces dépôts publics sans revue de provenance et de licence fichier par fichier.
 
-Un futur starter original DEVRAIT ressembler à ceci, sans copier de scènes
-ou d'assets propriétaires :
+## Structure réseau publique actuelle
+
+Les starters Godot P0 séparent désormais explicitement :
 
 ```text
-client-starter/
-  fichiers de projet du moteur choisi
-  scenes/
-    bootstrap           moteur, plateforme et contrôles qualité
-    login               aucun secret dans la scène
-    realm-handoff       rejoint un espace assigné par le serveur
-    player              présentation locale d'une entité autoritaire
-    npc                 présentation et invites d'interaction seulement
-    zone                géométrie streamée et objets d'intérêt
-    ui                  HUD, menus, panneaux VR
-  input/
-    abstractions desktop ou OpenXR
-  net/
-    client de protocole, une fois un contrat public existant
-  content/
-    instantanés du registre JSON épinglés
+input / OpenXR / desktop
+        |
+        v
+net/intent_contract.gd
+  validation client bornée
+  familles : session / move / interact / talk
+        |
+        v
+net/transport_adapter.gd
+  cycle abstrait : disconnected / connecting / authenticating / online
+  aucun socket, endpoint, opcode ou framing Zig privé
+        |
+        v
+futur adaptateur de transport réel
+  BLOQUÉ jusqu'à baseline Zig exacte + preuve E2E
 ```
 
-Des dossiers manquants dans les dépôts publics signifient que le starter
-n'est pas publié, pas qu'un projet caché est impliqué.
+Cette couche publique refuse notamment les champs d'autorité client tels que dégâts, monnaie, inventaire, permissions, téléportation arbitraire ou position serveur. Cette défense côté client ne remplace jamais la validation Zig.
+
+Three.js dispose déjà d'un transport synthétique testable. Cela ne signifie pas qu'un navigateur peut parler directement au serveur de jeu Zig actuel.
 
 ## Présentation versus autorité
 
 ```text
-entrée OpenXR / desktop
+entrée OpenXR / desktop / Web
         |
         v
 pose locale, locomotion confort, prédiction
-        |  jetée si le serveur refuse
+        |  jetée/réconciliée si le serveur refuse
         v
-intention : bouger, interagir, parler, utiliser, crafter
+intention client bornée
         v
 serveur autoritaire
         v
-diff d'état, indices d'animation, expression PNJ
+diff d'état / événement accepté ou refusé
         v
-streaming de scènes, LOD, audio, haptique
+présentation, interpolation, LOD, audio, haptique
 ```
 
-La physique et les collisions locales peuvent garder un casque confortable.
-Elles ne doivent pas donner de loot, appliquer des dégâts, changer
-l'inventaire ou accepter un speed hack. Les réglages de confort VR sont
-côté client ; les règles du monde ne le sont pas.
+Le client ne décide jamais des dégâts, de l'or, de l'inventaire, des récompenses, des permissions ou de l'état persistant du monde.
+
+## Niveaux de preuve à ne pas confondre
+
+- `DOCUMENTED` / `DECLARED` : documentation ou métadonnées seulement ;
+- `SYNTHETIC_FIXTURE_ONLY` : fixture locale contrôlée, sans serveur Zig canonique ;
+- `ENGINE_LOAD_PROVEN` : le projet charge avec le moteur nommé ; ne prouve pas le réseau ;
+- `OPENXR_INIT_PROVEN` : runtime OpenXR nommé initialisé ; ne prouve pas le casque ni le réseau ;
+- `HEADSET_RUNTIME_PROVEN` : scénario casque/contrôleurs nommé ; ne prouve pas le serveur ;
+- `REAL_SERVER_E2E` : client et serveur exacts, révisions nommées, scénario reproductible ;
+- `FAKE-GREEN` : un test vert utilisé pour revendiquer plus que ce qu'il exerce réellement.
 
 ## Chemin de connexion
 
-Tant qu'une version de protocole publique n'est pas approuvée, un client
-peut seulement :
+La documentation publique possède deux niveaux qu'un agent doit distinguer :
 
-1. documenter la séquence visée de login et de handoff ;
-2. consommer des modèles JSON épinglés pour labels et fixtures synthétiques ;
-3. mener des expériences de présentation locales, hors réseau ;
-4. refuser points de production, identifiants et dumps de protocole.
+1. `network-intent-v1` est un contrat public synthétique et transport-indépendant ;
+2. `server-network-contract.md` décrit un état de transport serveur issu de décisions d'implémentation, mais **ne constitue pas une preuve de compatibilité client** et doit être revalidé contre la baseline Zig exacte avant toute promotion.
 
-Une fixture de boucle locale synthétique est la première preuve réseau
-autorisée. Une exécution desktop isolée ne prouvé pas l'interopérabilité VR.
+En particulier, le client Web Three.js ne doit pas supposer qu'un endpoint WebSocket joueur existe. Le serveur décrit actuellement un transport jeu TCP binaire ; un client navigateur exige donc un pont/passerelle ou un endpoint officiel séparé, tous deux encore à prouver.
+
+## Règle pour les agents
+
+Avant de modifier un client :
+
+1. lire cette page ;
+2. lire `../reference/network-contract.md` ;
+3. lire `../reference/server-network-contract.md` en conservant son statut non validé ;
+4. lire la matrice moteurs/templates ;
+5. lire les proof-levels et compatibility manifests du dépôt client concerné ;
+6. ne jamais promouvoir `zig_compatibility`, Godot 4.7.2, OpenXR ou casque à `PROVEN` sans le reçu exécutable correspondant.
 
 ## Pages liées
 
 - [Vue d'ensemble de l'écosystème](ecosystem-overview.md)
-- [Contrat réseau](../reference/network-contract.md)
-- [Utiliser les modèles JSON](../how-to/use-json-templates.md)
-- [Démarrer un projet](../tutorials/start-an-ultimate-odycer-project.md)
+- [Contrat réseau public](../reference/network-contract.md)
+- [Contrat réseau serveur documenté](../reference/server-network-contract.md)
+- [Matrice moteurs, templates et mondes](../reference/engine-template-world-matrix.md)
