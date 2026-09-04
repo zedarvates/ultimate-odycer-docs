@@ -115,6 +115,26 @@ class PublicDocumentationTests(unittest.TestCase):
             with self.subTest(language=language):
                 self.assertTrue(all(marker in text for marker in required))
 
+    def test_docker_engine_failure_guidance_is_bilingual_and_safe(self) -> None:
+        required = {
+            "https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/",
+            "docker desktop diagnose",
+            "dockerInference",
+            "engine.sock",
+            "Reset to factory defaults",
+        }
+        for language in ("fr", "en"):
+            troubleshooting = (
+                ROOT / "docs" / language / "how-to" / "troubleshoot-local-setup.md"
+            ).read_text(encoding="utf-8")
+            prompts = (
+                ROOT / "docs" / language / "reference" / "llm-local-setup-prompts.md"
+            ).read_text(encoding="utf-8")
+            with self.subTest(language=language):
+                self.assertTrue(all(marker in troubleshooting for marker in required))
+                self.assertIn("docker desktop diagnose", prompts)
+                self.assertIn("dockerInference", prompts)
+
     def test_synthetic_network_intent_is_accepted(self) -> None:
         example = load_example()
         self.assertEqual(example['schema_version'], 'network-intent-v1')
