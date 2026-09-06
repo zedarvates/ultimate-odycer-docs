@@ -11,6 +11,7 @@ scripts, schemas, and examples use MIT.
 
 ## Machine-readable indexes
 
+- [Publication status](PUBLICATION_STATUS.md): documentation publication only, not a server release or deployment
 - [Context index](docs/llm/context-index.json): Diátaxis type, audience, goal, language, path, and mutation boundary for every indexed page
 - [LLM safety rules](docs/llm/README.md): authority, confidentiality, pricing, and publication rules
 - [Creative tools catalog](examples/creative-tools-catalog.json): reviewed tools, maturity, pricing models, official links, and recommendations

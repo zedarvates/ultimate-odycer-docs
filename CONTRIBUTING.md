@@ -16,7 +16,16 @@ Before proposing a change:
 rtk python scripts/validate_docs.py
 rtk python -m unittest discover -s tests -v
 rtk python scripts/fresh_copy_check.py
+rtk python -m pip install -r requirements-docs.txt
+rtk python -m unittest discover -s tests/integration -v
 ```
+
+The integration test builds the real offline HTML in an isolated temporary
+directory under `build/`, verifies its manifest and HTML/LLM navigation, and
+checks that the publication-status document is bundled. It requires MkDocs;
+it does not start a game server, Docker, or a database. GitHub runs this gate
+on pull requests and pushes to `main`. Its temporary output is a test bundle,
+not a published release.
 
 Do not invent unpublished protocol opcodes, production endpoints, or
 compatibility claims. Mark missing evidence `unavailable`.
