@@ -11,7 +11,7 @@ import subprocess
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlsplit, urlunsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +19,7 @@ BUILD_ROOT = (ROOT / "build").resolve()
 BUILD_MANIFEST = "docs-build-manifest.json"
 TOKEN_PATTERN = re.compile(r"[0-9A-Za-z][0-9A-Za-z._+-]{0,63}")
 COMMIT_PATTERN = re.compile(r"[0-9a-f]{7,40}")
+INDEX_LINK_PATTERN = re.compile(r"\]\(([^\s)]+)\)")
 
 
 class BuildFailure(RuntimeError):
@@ -93,6 +94,34 @@ def rewrite_contract_links(site: Path) -> None:
             path.write_text(rewritten, encoding="utf-8", newline="\n")
 
 
+def offline_document_target(value: str) -> str:
+    """Map repository docs paths to MkDocs file URLs; retain query/fragment."""
+    target = urlsplit(value)
+    if target.scheme or target.netloc or not target.path.startswith("docs/"):
+        return value
+    path = target.path.removeprefix("docs/")
+    if path.endswith(".md"):
+        path = path[:-3] + ".html"
+        if path == "README.html" or path.endswith("/README.html"):
+            path = path.removesuffix("README.html") + "index.html"
+    return urlunsplit(("", "", path, target.query, target.fragment))
+
+
+def rewrite_machine_indexes(site: Path, llms_source: Path) -> None:
+    """Adapt generated copies only; the repository indexes stay canonical."""
+    text = llms_source.read_text(encoding="utf-8")
+    text = INDEX_LINK_PATTERN.sub(
+        lambda match: "](" + offline_document_target(match[1]) + ")", text
+    )
+    (site / "llms.txt").write_text(text, encoding="utf-8", newline="\n")
+    index = site / "llm/context-index.json"
+    data = json.loads(index.read_text(encoding="utf-8"))
+    for document in data["documents"]:
+        document["path"] = offline_document_target(document["path"])
+    data["path_base"] = "site-root"
+    index.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
 class _RuntimeAssetParser(HTMLParser):
     def __init__(self, relative: str) -> None:
         super().__init__(convert_charrefs=True)
@@ -150,11 +179,28 @@ def external_runtime_assets(site: Path) -> list[str]:
 def internal_link_errors(site: Path) -> list[str]:
     errors: list[str] = []
     resolved_site = site.resolve()
+    sources: list[tuple[Path, list[str]]] = []
     for path in sorted(site.rglob("*.html")):
-        relative = path.relative_to(site).as_posix()
         parser = _LocalLinkParser()
         parser.feed(path.read_text(encoding="utf-8"))
-        for raw_target in parser.targets:
+        sources.append((path, parser.targets))
+    llms = site / "llms.txt"
+    if llms.is_file():
+        sources.append((llms, INDEX_LINK_PATTERN.findall(llms.read_text(encoding="utf-8"))))
+    index = site / "llm/context-index.json"
+    if index.is_file():
+        try:
+            data = json.loads(index.read_text(encoding="utf-8"))
+            targets = [document["path"] for document in data["documents"]]
+            if not all(isinstance(target, str) and target for target in targets):
+                raise ValueError("document paths must be non-empty strings")
+            # Index paths are relative to the site root, not the llm/ directory.
+            sources.append((site / "context-index.json", targets))
+        except (ValueError, KeyError, TypeError) as error:
+            errors.append(f"llm/context-index.json: invalid offline index: {error}")
+    for path, targets in sources:
+        relative = path.relative_to(site).as_posix()
+        for raw_target in targets:
             target = urlsplit(raw_target)
             if target.scheme in {"http", "https", "mailto", "tel", "data"}:
                 continue
@@ -283,7 +329,7 @@ def build_site(
     for source in contract_root_files():
         shutil.copy2(source, output / source.name)
     rewrite_contract_links(output)
-    shutil.copy2(ROOT / "llms.txt", output / "llms.txt")
+    rewrite_machine_indexes(output, ROOT / "llms.txt")
     manifest = write_build_manifest(
         output,
         documentation_version=documentation_version,

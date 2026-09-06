@@ -45,6 +45,28 @@ fr/
 Opening one page is insufficient. A file missing from, added to, or changed
 against the manifest invalidates the bundle.
 
+## Finding pages with an LLM
+
+In the extracted bundle, give the LLM the `llms.txt` beside `index.html`.
+Its links lead to bundled HTML pages without requiring a Markdown repository
+checkout. The `llm/context-index.json` index declares `path_base: site-root`:
+resolve its paths from the folder containing `index.html`, not from `llm/`.
+In a server archive, this root is `docs/`.
+
+Repository indexes retain their Markdown paths; the generator adapts only
+the exported copies. It also checks that LLM index targets exist. These
+links do not grant permission to execute commands.
+
+Continuation prompt:
+
+```text
+Read llms.txt in this extracted bundle. Use the index to find the English
+first-local-world tutorial, then the prompts and troubleshooting guide.
+Resolve paths from the documentation root. Report missing files without
+inventing paths. Suggest just one next step, preserve availability limits,
+and do not modify my machine.
+```
+
 ## Future server archive contract
 
 After extraction, a conforming archive contains at least:

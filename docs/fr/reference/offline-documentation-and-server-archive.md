@@ -45,6 +45,28 @@ fr/
 Une page qui s'ouvre ne suffit pas. Un fichier absent, ajouté ou modifié par
 rapport au manifeste invalide le paquet.
 
+## Retrouver les pages avec un LM
+
+Dans le paquet extrait, donnez au LM le fichier `llms.txt` situé à côté de
+`index.html`. Ses liens conduisent aux pages HTML livrées, sans exiger une
+copie du dépôt Markdown. L'index `llm/context-index.json` indique
+`path_base: site-root` : ses chemins partent du dossier contenant `index.html`,
+et non du sous-dossier `llm/`. Dans une archive serveur, cette racine est `docs/`.
+
+Les index du dépôt conservent leurs chemins Markdown ; le générateur adapte
+uniquement les copies exportées. Il contrôle aussi l'existence des cibles
+des index LLM. Ces liens ne donnent aucune permission d'exécuter des commandes.
+
+Prompt de reprise :
+
+```text
+Lis le llms.txt de ce paquet extrait. Utilise l'index pour retrouver le
+tutoriel français de premier monde local, puis les prompts et le dépannage.
+Résous les chemins depuis la racine documentaire. Signale les fichiers
+manquants sans inventer de chemin. Propose une seule prochaine étape,
+en conservant les limites de disponibilité et sans modifier ma machine.
+```
+
 ## Contrat de la future archive serveur
 
 Après extraction, une archive conforme contient notamment :
