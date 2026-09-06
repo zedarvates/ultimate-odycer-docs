@@ -60,6 +60,13 @@ volume persistant et sauvegarde. Interdis down avec suppression de volumes,
 prune, DROP de la base active et affichage du mot de passe. Propose une seule
 vérification à la fois avec résultat attendu.
 
+Si Docker Desktop est visible mais que le moteur ne répond pas, vérifie
+séparément `wsl --list --verbose`, `docker desktop diagnose` et le journal
+backend. Une erreur `dockerInference` ou `engine.sock` inaccessible doit être
+classée blocked. Ne déplace ou supprime aucun socket/reparse point, n'exécute
+pas Reset to factory defaults et ne supprime aucune distribution WSL sans
+sauvegarde vérifiée et validation humaine.
+
 Commande et erreur : {ERREUR_SANS_SECRET}
 ```
 

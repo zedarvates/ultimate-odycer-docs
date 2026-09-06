@@ -29,6 +29,32 @@ docker compose version
 La première commande en erreur identifie le prérequis à réparer. N'essayez pas
 de modifier PostgreSQL avant que ces trois contrôles réussissent.
 
+### Docker Desktop est ouvert, mais le moteur ne démarre pas.
+
+La présence des processus Docker Desktop ne prouve pas que le moteur Linux est
+prêt. Contrôlez séparément WSL et le diagnostic Docker :
+
+```powershell
+wsl --list --verbose
+docker desktop diagnose
+```
+
+Consultez ensuite le journal
+`%LOCALAPPDATA%\Docker\log\host\com.docker.backend.exe.log`. Une erreur qui
+mentionne `dockerInference` ou `engine.sock` avec « file cannot be accessed »
+signale un échec du moteur avant le démarrage des conteneurs. Classez ce
+résultat `blocked`; ne tentez pas de réparer PostgreSQL tant que le moteur reste
+indisponible.
+
+Suivez le
+[guide officiel de diagnostic Docker Desktop](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/).
+Avant `Reset to factory defaults`, `Clean / Purge data`, réinstallation ou
+suppression d'une distribution WSL, appliquez la
+[procédure officielle de sauvegarde et restauration](https://docs.docker.com/desktop/settings-and-maintenance/backup-and-restore/).
+Ces actions peuvent supprimer images, conteneurs et volumes. Ne supprimez ou ne
+déplacez pas automatiquement un socket/reparse point : conservez l'erreur,
+confirmez que le moteur est arrêté et demandez une validation humaine.
+
 ### PostgreSQL ne devient pas sain.
 
 ```powershell

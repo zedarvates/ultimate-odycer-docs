@@ -57,6 +57,13 @@ persistent volume from a backup. Forbid shutdown with volume removal, prune,
 DROP of the active database, and password display. Propose one check at a time
 with its expected result.
 
+If Docker Desktop is visible but the engine does not respond, check
+`wsl --list --verbose`, `docker desktop diagnose`, and the backend log
+separately. Classify an inaccessible `dockerInference` or `engine.sock` error
+as blocked. Do not move or delete a socket/reparse point, run Reset to factory
+defaults, or remove a WSL distribution without a verified backup and human
+approval.
+
 Command and error: {SECRET_FREE_ERROR}
 ```
 
