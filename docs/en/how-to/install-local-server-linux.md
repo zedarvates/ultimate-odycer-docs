@@ -47,7 +47,9 @@ docker compose -f deploy/docker-compose.yml up -d postgres
 docker compose -f deploy/docker-compose.yml ps
 ```
 
-The service must become healthy and use `odycer_pgdata`.
+The service must become healthy and use the volume with logical key
+`odycer_pgdata`. Its actual name may have a Compose project prefix; check
+the mount using the [backup guide](backup-and-test-restore-postgresql.md).
 
 ## Executables
 

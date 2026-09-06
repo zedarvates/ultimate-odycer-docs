@@ -30,13 +30,29 @@ docker volume ls
 docker compose -f .\deploy\docker-compose.yml ps
 ```
 
-Le volume attendu est `odycer_pgdata` et PostgreSQL doit être sain.
+La clé logique du volume est `odycer_pgdata` et PostgreSQL doit être sain.
+Le nom affiché par Docker peut être préfixé par le nom du projet Compose,
+par exemple `<projet>_odycer_pgdata`. Ne créez pas un second volume pour faire
+correspondre son nom au tutoriel. Vérifiez le montage du service et les labels
+`com.docker.compose.project` et `com.docker.compose.volume` du volume réel.
+Voir la [référence Docker sur les volumes Compose](https://docs.docker.com/reference/compose-file/volumes/).
 
 N'exécutez pas les commandes qui suppriment les volumes, notamment une descente
 Compose avec l'option de suppression des volumes ou un nettoyage global des
 volumes.
 
 ## 2. Créer une sauvegarde sur l'hôte
+
+Si les scripts vérifiés de votre release proposent `-WhatIf`, commencez par :
+
+```powershell
+pwsh -File .\deploy\backup-postgres.ps1 -WhatIf
+pwsh -File .\deploy\test-restore-postgres.ps1 -WhatIf
+```
+
+Vérifiez le dossier de sortie et le nom de la base de contrôle annoncés.
+Cette simulation ne crée aucun dump, ne restaure rien et ne prouve pas que
+PostgreSQL fonctionne. Ne supposez pas que tout script tiers respecte ce mode.
 
 Avec une release compatible :
 
@@ -64,6 +80,23 @@ Get-FileHash -Algorithm SHA256 .\backups\<fichier>.dump
 La valeur doit correspondre au fichier `.sha256` créé avec le dump.
 
 ## 4. Tester sans détruire la base active
+
+Avant la commande de restauration, vérifiez dans le script dont l'empreinte
+a été contrôlée quels noms de base il crée et supprime. Le contrat actuel utilise
+`ultimate_odycer_restore_check`, un nom fixe : une base existante de ce nom
+peut être supprimée au début du test. Ne lancez pas deux tests en parallèle.
+
+Pour ce contrat, ce contrôle lit uniquement la présence de cette base :
+
+```powershell
+docker compose -f .\deploy\docker-compose.yml exec -T postgres psql -v ON_ERROR_STOP=1 -U odycer -d postgres -Atc "SELECT datname FROM pg_database WHERE datname = 'ultimate_odycer_restore_check';"
+```
+
+Continuez uniquement si la commande réussit sans afficher de nom de base.
+Si elle affiche `ultimate_odycer_restore_check`, échoue ou si la cible reste
+incertaine, arrêtez-vous. Faites identifier et préserver la base existante ;
+ne la supprimez pas automatiquement pour débloquer le tutoriel. L'absence de
+résultat après une erreur ne constitue pas une réussite.
 
 ```powershell
 pwsh -File .\deploy\test-restore-postgres.ps1 -BackupFile .\backups\<fichier>.dump
