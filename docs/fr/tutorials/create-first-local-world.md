@@ -79,6 +79,9 @@ entière.
 Vous pouvez ensuite [dessiner votre carte et préparer sa conversion](../how-to/draw-and-convert-map.md).
 Pour produire terrains, bâtiments, personnages, audio, UI et autres éléments,
 suivez le [manuel de production créative](creative-production-handbook.md).
+Pour un fil conducteur concret, réalisez
+[l'exercice du quartier des Trois Passages](creative-production-handbook.md#exercice-suivi-le-quartier-des-trois-passages) :
+un dessin, un atelier, un personnage et une livraison, avec un prompt par étape.
 Un dessin et un `uo.map-intent/v1` restent des propositions : ils ne prouvent
 ni un import moteur ni une publication serveur.
 
