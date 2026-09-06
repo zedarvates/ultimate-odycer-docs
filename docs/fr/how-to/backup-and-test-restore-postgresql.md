@@ -18,6 +18,13 @@ depuis une source différente.
 
 ## 1. Vérifier le volume
 
+Sous Windows, utilisez le terminal PowerShell 7 et le dossier de la release
+vérifiés dans le [guide d'installation](install-local-server-windows.md).
+`pwsh` doit être disponible pour les scripts ci-dessous. Si vous avez ouvert
+un nouveau terminal, les variables de mot de passe de la session précédente
+n'y sont pas automatiquement présentes : reprenez la saisie masquée prévue
+par la release, sans afficher le secret ni le demander au LM.
+
 ```powershell
 docker volume ls
 docker compose -f .\deploy\docker-compose.yml ps
