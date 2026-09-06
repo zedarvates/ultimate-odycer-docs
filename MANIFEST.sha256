@@ -38,7 +38,7 @@ d8b567d48c0cc69d75be0bd178904d156dc2b95da89e446f274d934febf324e4  docs/en/how-to
 fcbbdcb6ac206eb4240b3a62e4c3f71782d6d521f7da9bab143f44eaab8e602c  docs/en/reference/audio-2d-ui-vfx-and-video-tools.md
 3a941541616d4de3ce92c2f4e52ba254a113ce4fece40fee91c576992243d5e8  docs/en/reference/character-creature-and-animation-tools.md
 10ba78064ae7ca7bf84f432d4cf304eaa71fd884e9099621505ee645e985c186  docs/en/reference/creative-tools-catalog.md
-2e7a2f986aa9c2b4bd0785b5c5a6f9bc45eeace10853bd96d2357fb75ee6d6a9  docs/en/reference/engine-template-world-matrix.md
+7c79acd5fc6559c8685231ab9f2388fe14cf71a1d512a765f827d827b1b0a389  docs/en/reference/engine-template-world-matrix.md
 7625f92ab1a7480d7ae763316d701a6eda8f10058b9cd42ca329c36f42751113  docs/en/reference/gameplay-systems.md
 c1fdd7c66f6ecf3ffaa8ff91d83916b7010e0fd2edd3bcd5fcb0056281a7bdc6  docs/en/reference/import-optimization-licensing-and-provenance.md
 279e98cde31b01aca44d1e8b55159fdc9815f976700221048c2bc986b9cdcb93  docs/en/reference/llm-local-setup-prompts.md
@@ -80,7 +80,7 @@ a5f89f85eedc0f675c74bc9b73c4d57347ea41a2d4419b1fa165c94d9c889d47  docs/fr/how-to
 996f1a353ead26a2d8c24caf6be0c34a56a54b355c1562d45f0c3d83bcfbc874  docs/fr/reference/audio-2d-ui-vfx-and-video-tools.md
 447a07872dff093307b6027c299d7eed3805a5aaa4bc4f75ec63b7dd5c2b2e4e  docs/fr/reference/character-creature-and-animation-tools.md
 edfe2c8b89a8dc5cdbe3015d6c098239f636e7502ec9172bd2cc53d9be742b26  docs/fr/reference/creative-tools-catalog.md
-bd05014e449f7d22712e51ced5a6c0a915a8abfdf0679e878b2d6eeddf70c89e  docs/fr/reference/engine-template-world-matrix.md
+42f61fe3f21cacc66ce59b84a53edca6100d553ed332462de761961ec613be06  docs/fr/reference/engine-template-world-matrix.md
 2bdb4ffcafcf72cf5bb33d0e12ac7ff63501f76d7cccdf445c3b8f57404208c5  docs/fr/reference/gameplay-systems.md
 9c3e009eec0fa1c39e6691de53e228b6d032295b4c68ed7711c58cc34d9a4862  docs/fr/reference/import-optimization-licensing-and-provenance.md
 63682beb903e64bc7688910e61d403fb6b8cfd19f2da2283f9722f0951a1d8dd  docs/fr/reference/llm-local-setup-prompts.md
