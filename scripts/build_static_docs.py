@@ -76,7 +76,7 @@ def contract_data_directories() -> tuple[Path, Path]:
 
 
 def contract_root_files() -> tuple[Path, ...]:
-    return (ROOT / "CONTRIBUTING.md",)
+    return (ROOT / "CONTRIBUTING.md", ROOT / "PUBLICATION_STATUS.md")
 
 
 def rewrite_contract_links(site: Path) -> None:
@@ -84,6 +84,7 @@ def rewrite_contract_links(site: Path) -> None:
         'href="../../../schemas/': 'href="../../schemas/',
         'href="../../../examples/': 'href="../../examples/',
         'href="../../../CONTRIBUTING.md"': 'href="../../CONTRIBUTING.md"',
+        'href="../../PUBLICATION_STATUS.md"': 'href="../PUBLICATION_STATUS.md"',
     }
     for path in sorted(site.rglob("*.html")):
         text = path.read_text(encoding="utf-8")
