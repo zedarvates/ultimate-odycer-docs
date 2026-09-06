@@ -17,6 +17,12 @@ is `unavailable` for that release. Do not download a copy from another source.
 
 ## 1. Check the volume
 
+On Windows, use the PowerShell 7 terminal and release folder verified in the
+[installation guide](install-local-server-windows.md). `pwsh` must be available
+for the scripts below. A newly opened terminal does not automatically inherit
+password variables from a previous session: repeat the release's masked-input
+procedure without displaying the secret or asking the LLM for it.
+
 ```powershell
 docker volume ls
 docker compose -f .\deploy\docker-compose.yml ps

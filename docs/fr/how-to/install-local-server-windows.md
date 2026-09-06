@@ -9,6 +9,38 @@ serveur sans ouvrir automatiquement la machine sur Internet.
 > situation ne change pas, effectuez seulement les contrôles de la machine puis
 > arrêtez-vous avant le téléchargement.
 
+## Avant de commencer : ouvrir le bon PowerShell
+
+Utilisez une version stable encore prise en charge de **PowerShell 7**, pas
+« Windows PowerShell » 5.1. L'option `Read-Host -MaskInput` utilisée plus bas
+existe depuis PowerShell 7.1. Installer PowerShell 7 ne remplace pas 5.1 :
+les deux peuvent coexister. Suivez au besoin la
+[procédure officielle Microsoft](https://learn.microsoft.com/powershell/scripting/install/install-powershell-on-windows).
+
+Ouvrez PowerShell 7 depuis le menu Démarrer, ou choisissez ce profil dans
+Windows Terminal. Le nom « Terminal » ne garantit pas quel interpréteur est
+ouvert. Ces vérifications ne demandent aucun mot de passe et ne changent rien :
+
+```powershell
+$PSVersionTable.PSVersion
+(Get-Command Read-Host).Parameters.ContainsKey('MaskInput')
+Get-Command Get-FileHash
+```
+
+Résultat attendu : une version 7.1 ou supérieure, `True`, puis la commande
+`Get-FileHash`. Si la version est 5.1 ou si une commande manque, arrêtez-vous
+et ouvrez le bon terminal avant de poursuivre. Ne supprimez pas `-MaskInput`
+pour contourner l'erreur et ne collez jamais un mot de passe dans la commande.
+La [référence Microsoft de Read-Host](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/read-host)
+précise que le masquage protège l'affichage, pas la valeur stockée en mémoire.
+
+Après extraction de la release, ouvrez ce terminal dans le dossier contenant
+`VERSION`. Vérifiez votre emplacement avec `Get-Location` et
+`Test-Path .\VERSION` (résultat attendu : `True`). Les chemins commençant par
+`.\` partent de ce dossier. Les contrôles de lecture ne nécessitent pas de
+terminal administrateur ; une installation éventuelle peut demander une
+élévation distincte, à valider par l'utilisateur.
+
 ## 1. Choisir le profil de la machine
 
 | Profil `estimated` | CPU | RAM | SSD libre | Réserve à conserver |
@@ -36,9 +68,12 @@ docker version
 docker compose version
 ```
 
-Résultat attendu : les trois commandes renvoient une version sans démarrer de
-conteneur. Si WSL ou Docker manque, suivez la documentation officielle puis
-redémarrez cette étape.
+Résultat attendu : les trois commandes réussissent sans démarrer de conteneur.
+`docker version` doit afficher les parties **Client et Server**, sans erreur
+de connexion. Une version du client seule ne prouve pas que le moteur Docker
+fonctionne. Si WSL ou Docker manque, suivez la documentation officielle puis
+reprenez cette étape. En cas d'erreur moteur, utilisez le
+[guide de dépannage](troubleshoot-local-setup.md) avant tout lancement.
 
 Sur un poste partagé, fixez une limite raisonnable de processeur et de mémoire
 dans Docker Desktop afin que Windows reste utilisable. Ne présentez pas cette
@@ -80,6 +115,11 @@ Vérifiez ensuite le
 ## 5. Démarrer PostgreSQL
 
 Saisissez le mot de passe sans l'afficher dans la commande :
+
+Gardez le même terminal PowerShell 7 pour les opérations qui utilisent cette
+variable. Elle appartient à cette session et à ses processus enfants : elle
+n'est ni une sauvegarde du mot de passe ni un secret chiffré. Ne l'affichez pas
+et ne transmettez pas un inventaire des variables d'environnement à un LM.
 
 ```powershell
 $env:ODYCER_DB_PASSWORD = Read-Host "Mot de passe PostgreSQL" -MaskInput

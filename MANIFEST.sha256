@@ -20,7 +20,7 @@ bd1d62e3d4cbf95431aa39033420558facf32c849185a08be71d88cac2afb781  docs/en/explan
 2e61ad6637954dd842e0bbfe8897f161d484e7ccfa01e62446b6908c4f389a74  docs/en/explanation/npc-agent-pipeline.md
 8fc84da80e1388736f6c9d49138cbc8d25df66c76c4519921883f77fbd0ae3c5  docs/en/explanation/server-architecture.md
 0dbc6d445414e62e146c480e3f6b766ec21435f88341ea112e9ea754521169d2  docs/en/how-to/author-world-content.md
-cdcd4d577edb30f4fc4af1574e045f0a4a5c99dd7b8f76d2c6922687f75c0c44  docs/en/how-to/backup-and-test-restore-postgresql.md
+014ba892a1c677895a8c7a43f2cad64f48e5c5d48706cddd1b8efdefb60bafb4  docs/en/how-to/backup-and-test-restore-postgresql.md
 d34cd30ca520d5e9081956ec7f57441f0554de8ed207d4d17e31de67b2226fb0  docs/en/how-to/buy-refurbished-business-pc.md
 49802bc85578124c3574f41c46dde8a284203a619a6661f3ce6f9c65450495b9  docs/en/how-to/choose-hardware.md
 46aaab1a0649d34c80d98736e4533d2ea2954c2f643ee35c791c8b0461ad5fa5  docs/en/how-to/connect-godot-template.md
@@ -28,7 +28,7 @@ d34cd30ca520d5e9081956ec7f57441f0554de8ed207d4d17e31de67b2226fb0  docs/en/how-to
 15cc9481ad02b00328b5bb371eba5597d16e1997214a37e8d53828e497d6205a  docs/en/how-to/contribute-and-test.md
 a9497b4de25721dbdb42b1afe2d30dc6bf3718a7ad5701e8e2eaf3ae46dbcff6  docs/en/how-to/draw-and-convert-map.md
 cbecc6927879fe7ce269123b21a1dadcee969846ab4754b1e956ec8005ad0839  docs/en/how-to/install-local-server-linux.md
-d8b567d48c0cc69d75be0bd178904d156dc2b95da89e446f274d934febf324e4  docs/en/how-to/install-local-server-windows.md
+403c5206559c4670701948ec7c73e8a31540680573d07689ce27e2386d85813c  docs/en/how-to/install-local-server-windows.md
 19984e58d7cc53574a831cb0d1c205ceff17190fbf170a5a003e1dd449dc44db  docs/en/how-to/measure-npc-capacity.md
 112059f600d774d0d05b0d495a7cd88dd88909d4f8594fb9fefe327e9fda3440  docs/en/how-to/operate-a-home-lab.md
 59e9635ac30d3715a307bfc7f220cb398d7cddb057879b5018483664eacbad12  docs/en/how-to/organize-project-kanboard-botte-secrete.md
@@ -62,7 +62,7 @@ ddea1875c906e7a69ccfedd5cc255ad548a4c84377bf6b27ec22bebd6b738e1a  docs/fr/explan
 9a50c402a6d344f7777c287801f6a567bccabe794e7d99ad2ba59e2fbedd64b3  docs/fr/explanation/npc-agent-pipeline.md
 0b4ddb6d0ec45ef3efb0f310bb8667be013b68504a6c12cd3940ea9c8be51cd7  docs/fr/explanation/server-architecture.md
 8b715a0e9520a95c9e05488aa13ca13b93352cf45e961f2cbc729da364e5da4f  docs/fr/how-to/author-world-content.md
-a477c1bb4933bed61d7d46b39fe1bf34d8e0f9ff5648c7b73e50dd29fb04e0fb  docs/fr/how-to/backup-and-test-restore-postgresql.md
+b527d5e81581f4f1b78551740d7af88930939aad2599a6fe0e3d44753dfb08d1  docs/fr/how-to/backup-and-test-restore-postgresql.md
 4f149f827bb606481d00cc8d959073672a7c8899c54a1fd08ac642564d454497  docs/fr/how-to/buy-refurbished-business-pc.md
 cb023891df7f2b3d03c4828a73798dbc07cbe8dc8705748d0fcb8e5c4f26d3a9  docs/fr/how-to/choose-hardware.md
 eef2482a602fbbdf21a2e03ada38bb1bdafabffc8bb02fdc8de926d3a23479c7  docs/fr/how-to/connect-godot-template.md
@@ -70,7 +70,7 @@ eef2482a602fbbdf21a2e03ada38bb1bdafabffc8bb02fdc8de926d3a23479c7  docs/fr/how-to
 bc8787ae2f1c325df86ca31cdc6458986e2a7fa13bf914eb8b5d3c8bf32b1322  docs/fr/how-to/contribute-and-test.md
 5955c783232cf797ae28ae18d3e96c93dc57b7df4c3a30c56d58a9b548770668  docs/fr/how-to/draw-and-convert-map.md
 22a2d329d9356985fae5b278244049770008cb1a00b14e3c2f9a3258fc2c090d  docs/fr/how-to/install-local-server-linux.md
-c2dd89ba8611f92a45bd7b22faf3c77995986d1c29b77815ac63dd9c3e64a1d3  docs/fr/how-to/install-local-server-windows.md
+f7b7e356fc501e424ff29e75841a389bd37efedf84c2382cc21621fbb3f0a93c  docs/fr/how-to/install-local-server-windows.md
 7caceccb053eec527805d26bbf582708e6b224a70f8eff1157d64bb1fd8bc270  docs/fr/how-to/measure-npc-capacity.md
 065dc525aee687f1985d39008cfbea9a5413e99623116425989e3861f608f931  docs/fr/how-to/operate-a-home-lab.md
 3831b1a35e0854681d5cab6d595f41c741bf8003d0d3d63e3f71980f532f5e29  docs/fr/how-to/organize-project-kanboard-botte-secrete.md
