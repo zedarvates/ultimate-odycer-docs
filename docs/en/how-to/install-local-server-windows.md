@@ -123,7 +123,8 @@ docker compose -f .\deploy\docker-compose.yml ps
 ```
 
 Expected result: `postgres` becomes healthy and uses the named volume
-`odycer_pgdata`. Docker is not a backup; a destructive command or disk failure
+`odycer_pgdata` (the actual name may have a Compose project prefix).
+Docker is not a backup; a destructive command or disk failure
 can still remove the volume.
 
 ## 6. Create the local configuration

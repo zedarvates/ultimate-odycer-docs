@@ -48,7 +48,9 @@ docker compose -f deploy/docker-compose.yml up -d postgres
 docker compose -f deploy/docker-compose.yml ps
 ```
 
-Le service doit devenir sain et utiliser `odycer_pgdata`.
+Le service doit devenir sain et utiliser le volume de clé logique
+`odycer_pgdata`. Son nom réel peut porter un préfixe de projet Compose ;
+vérifiez son montage dans le [guide de sauvegarde](backup-and-test-restore-postgresql.md).
 
 ## Exécutables
 

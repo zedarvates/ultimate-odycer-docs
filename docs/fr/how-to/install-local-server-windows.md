@@ -128,7 +128,8 @@ docker compose -f .\deploy\docker-compose.yml ps
 ```
 
 Résultat attendu : le service `postgres` devient sain et utilise le volume
-nommé `odycer_pgdata`. Docker n'est pas une sauvegarde ; le volume peut encore
+de clé logique `odycer_pgdata` (le nom réel peut porter un préfixe Compose).
+Docker n'est pas une sauvegarde ; le volume peut encore
 être supprimé par une mauvaise commande ou une défaillance du disque.
 
 ## 6. Créer la configuration locale

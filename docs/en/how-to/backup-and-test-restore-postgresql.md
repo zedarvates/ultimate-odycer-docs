@@ -28,12 +28,28 @@ docker volume ls
 docker compose -f .\deploy\docker-compose.yml ps
 ```
 
-The expected volume is `odycer_pgdata`, and PostgreSQL must be healthy.
+The logical volume key is `odycer_pgdata`, and PostgreSQL must be healthy.
+Docker may prefix the displayed name with the Compose project name, such as
+`<project>_odycer_pgdata`. Do not create a second volume just to match this
+guide's name. Check the service mount and the actual volume's
+`com.docker.compose.project` and `com.docker.compose.volume` labels.
+See the [Docker Compose volume reference](https://docs.docker.com/reference/compose-file/volumes/).
 
 Do not use commands that delete volumes, including a Compose shutdown with the
 volume-removal option or a global volume-pruning operation.
 
 ## 2. Create a backup on the host
+
+If your release's verified scripts support `-WhatIf`, start with:
+
+```powershell
+pwsh -File .\deploy\backup-postgres.ps1 -WhatIf
+pwsh -File .\deploy\test-restore-postgres.ps1 -WhatIf
+```
+
+Check the reported output directory and verification database name. This
+simulation creates no dump, restores nothing and does not prove PostgreSQL
+works. Do not assume every third-party script respects this mode.
 
 With a compatible release:
 
@@ -61,6 +77,23 @@ Get-FileHash -Algorithm SHA256 .\backups\<file>.dump
 The value must match the `.sha256` file created beside the dump.
 
 ## 4. Test without destroying the active database
+
+Before restoring, inspect the checksum-verified script for the database names
+it creates and drops. The current contract uses the fixed name
+`ultimate_odycer_restore_check`: an existing database with that name can be
+dropped at the start of the test. Never run two restore checks concurrently.
+
+For this contract, the following check only reads whether that database exists:
+
+```powershell
+docker compose -f .\deploy\docker-compose.yml exec -T postgres psql -v ON_ERROR_STOP=1 -U odycer -d postgres -Atc "SELECT datname FROM pg_database WHERE datname = 'ultimate_odycer_restore_check';"
+```
+
+Continue only if the command succeeds without printing a database name. If it
+prints `ultimate_odycer_restore_check`, fails, or leaves the target uncertain,
+stop. Have the existing database identified and preserved; do not delete it
+automatically to unblock the tutorial. Empty output after an error is not a
+successful check.
 
 ```powershell
 pwsh -File .\deploy\test-restore-postgres.ps1 -BackupFile .\backups\<file>.dump
