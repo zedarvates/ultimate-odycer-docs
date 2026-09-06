@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -17,6 +18,61 @@ import build_static_docs as static_docs  # noqa: E402
 
 
 class StaticDocumentationTests(unittest.TestCase):
+    def test_missing_llm_index_targets_are_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "llm").mkdir()
+            (site / "llms.txt").write_text(
+                "[Guide](docs/fr/guide.md)\n", encoding="utf-8"
+            )
+            (site / "llm/context-index.json").write_text(json.dumps({
+                "documents": [{"path": "docs/en/guide.md"}]
+            }), encoding="utf-8")
+            errors = static_docs.internal_link_errors(site)
+            self.assertTrue(any("docs/fr/guide.md" in error for error in errors))
+            self.assertTrue(any("docs/en/guide.md" in error for error in errors))
+
+    def test_machine_indexes_use_bundled_html_without_changing_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "llm").mkdir()
+            (site / "fr").mkdir()
+            (site / "fr/guide.html").write_text("Guide", encoding="utf-8")
+            (site / "llm/index.html").write_text("Rules", encoding="utf-8")
+            source = site / "source.txt"
+            source.write_text(
+                "documentation_only\n[Guide](docs/fr/guide.md#start)\n"
+                "[Rules](docs/llm/README.md)\n"
+                "[External](https://example.org/docs/guide.md)\n",
+                encoding="utf-8",
+            )
+            record = {"authority": "documentation_only", "documents": [
+                {"id": "guide-fr", "path": "docs/fr/guide.md", "mutating": False}
+            ]}
+            index = site / "llm/context-index.json"
+            index.write_text(json.dumps(record), encoding="utf-8")
+            static_docs.rewrite_machine_indexes(site, source)
+            text = (site / "llms.txt").read_text(encoding="utf-8")
+            self.assertIn("(fr/guide.html#start)", text)
+            self.assertIn("(llm/index.html)", text)
+            self.assertIn("(https://example.org/docs/guide.md)", text)
+            rewritten = json.loads(index.read_text(encoding="utf-8"))
+            self.assertEqual(rewritten["path_base"], "site-root")
+            self.assertEqual(rewritten["authority"], "documentation_only")
+            self.assertEqual(rewritten["documents"], [
+                {"id": "guide-fr", "path": "fr/guide.html", "mutating": False}
+            ])
+            self.assertEqual(static_docs.internal_link_errors(site), [])
+
+    def test_machine_index_cannot_escape_site(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "llms.txt").write_text(
+                "[Escape](../outside.txt)\n", encoding="utf-8"
+            )
+            self.assertTrue(any("escapes offline site" in error
+                                for error in static_docs.internal_link_errors(site)))
+
     def test_manifest_verifies_complete_offline_site(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             site = Path(directory)
