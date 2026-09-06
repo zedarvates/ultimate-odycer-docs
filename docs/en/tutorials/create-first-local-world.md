@@ -75,7 +75,10 @@ RPG example begins on a `flat_map`, not on an entire planet.
 
 You can then [draw your map and prepare its conversion](../how-to/draw-and-convert-map.md).
 For terrain, buildings, characters, audio, UI, and other content, follow the
-[creative production handbook](creative-production-handbook.md). A drawing and
+[creative production handbook](creative-production-handbook.md). For a concrete
+thread to follow, try the [Three Passages neighborhood exercise](creative-production-handbook.md#worked-exercise-the-three-passages-neighborhood):
+a drawing, a workshop, a character and a delivery, with one prompt per step.
+A drawing and
 a `uo.map-intent/v1` remain proposals: they prove neither engine import nor
 server publication.
 
