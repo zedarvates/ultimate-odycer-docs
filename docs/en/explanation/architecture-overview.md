@@ -57,6 +57,15 @@ Public rules:
 
 ## Pipelines
 
+### Administration interfaces and portal
+
+**Vault** is the React/Vite WebAdmin interface. **Nexus** is the public portal
+built with Astro. Their development interfaces, the Zig API and the game channel
+have separate roles. Consult the
+[port profiles](../reference/server-network-contract.md#port-profiles-distinguish-the-interface-from-the-service)
+to avoid confusing a development address with a release address. The presence
+of an interface or its sources does not prove its connection to the server.
+
 ### Network pipeline
 
 See the [network contract](../reference/network-contract.md). Intents travel

@@ -12,8 +12,9 @@ client, an engine, or a deployment.
 
 The canonical services speak **raw binary TCP**, not WebSocket or WebTransport:
 
-- Login service: TCP, configured port 2106 by default.
-- Game service: TCP, configured port 7777 by default.
+- Login service: TCP, port 2106 in the customer package profile.
+- Game service: TCP, port 7777 in the customer package profile; the internal
+  server default is 8080. Check the loaded profile.
 - WebAdmin: HTTP plus WebSocket on its own port, 8082 by default, for
   administration dashboards only. It is not the player game channel.
 
@@ -22,6 +23,34 @@ client therefore requires either a documented bridge/gateway process or a new
 official WebSocket endpoint. Until one of those exists and is documented, a
 browser-based MMORPG template is **not compatible** with the canonical server.
 This matches the fail-closed rule of the Three.js template scope.
+
+## Port profiles: distinguish the interface from the service
+
+These values describe configurations, not detected running services or proof
+of public availability. Check your version's `QUICKSTART` and configuration
+before following an example.
+
+| Component | Profile | Purpose | Port |
+|---|---|---|---:|
+| Zig server | Customer package | Game TCP | 7777 |
+| Login | Customer package | Authentication TCP | 2106 |
+| WebAdmin | Customer package | API and server-served interface | 8082 |
+| PostgreSQL | Customer package Compose | Loopback host port | 5433 |
+| Zig server | Internal default | Game TCP | 8080 |
+| Vault | React/Vite development | Development interface | 5174 |
+| Vault | Development proxy | Target Zig API | 8082 |
+| Nexus | Local Astro CI | Test portal | 4321 |
+
+`5174` is not the API port, and `4321` is not the public website address.
+`8080` does not denote a universal WebAdmin API. The historical `server.port`
+field does not replace the explicit `server.server_port`, `server.login_port`
+and `server.webadmin_port` fields of the customer profile.
+
+A React/Vite source change does not prove that the shipped WebAdmin bundle
+was rebuilt or deployed. Configuration files, environment variables and launch
+options can change the effective values. If they disagree, identify the
+configuration actually loaded; do not globally replace ports or open the
+firewall to hide a profile mismatch. The beginner tutorial remains loopback-only.
 
 ## Frame format
 
