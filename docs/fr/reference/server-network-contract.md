@@ -15,8 +15,9 @@ Décrire le format filaire ne valide **ni** un client, **ni** un moteur,
 Les services canoniques parlent **TCP binaire brut**, pas WebSocket ni
 WebTransport :
 
-- Service de login : TCP, port configuré 2106 par défaut.
-- Service de jeu : TCP, port configuré 7777 par défaut.
+- Service de login : TCP, port 2106 dans le profil du paquet client.
+- Service de jeu : TCP, port 7777 dans le profil du paquet client ; le défaut
+  interne du serveur est 8080. Vérifiez le profil chargé.
 - WebAdmin : HTTP plus WebSocket sur son propre port, 8082 par défaut,
   uniquement pour les tableaux d'administration. Ce n'est pas le canal de jeu
   des joueurs.
@@ -27,6 +28,35 @@ nouveau point de terminaison WebSocket officiel. Tant que l'un des deux
 n'existe pas et n'est pas documenté, un template MMORPG basé navigateur n'est
 **pas compatible** avec le serveur canonique. Cela correspond à la règle
 fail-closed du périmètre du template Three.js.
+
+## Profils de ports : ne pas confondre interface et service
+
+Ces valeurs décrivent des configurations, pas une détection de services actifs
+ni une preuve de disponibilité publique. Vérifiez le `QUICKSTART` et la
+configuration de votre version avant de suivre un exemple.
+
+| Composant | Profil | Usage | Port |
+|---|---|---|---:|
+| Serveur Zig | Paquet client | Jeu TCP | 7777 |
+| Login | Paquet client | Authentification TCP | 2106 |
+| WebAdmin | Paquet client | API et interface servie par le serveur | 8082 |
+| PostgreSQL | Compose du paquet client | Port hôte en boucle locale | 5433 |
+| Serveur Zig | Défaut interne | Jeu TCP | 8080 |
+| Vault | Développement React/Vite | Interface de développement | 5174 |
+| Vault | Proxy de développement | API Zig cible | 8082 |
+| Nexus | CI locale Astro | Portail de test | 4321 |
+
+`5174` n'est pas le port de l'API et `4321` n'est pas l'adresse du site public.
+`8080` ne désigne pas une API WebAdmin universelle. Le champ historique
+`server.port` ne remplace pas les champs explicites `server.server_port`,
+`server.login_port` et `server.webadmin_port` du profil client.
+
+Une modification des sources React/Vite ne prouve pas que le bundle WebAdmin
+livré a été reconstruit ou déployé. Fichiers de configuration, variables
+d'environnement et options de lancement peuvent changer les valeurs effectives.
+En cas de désaccord, identifiez la configuration réellement chargée ; ne
+remplacez pas globalement les ports et n'ouvrez pas le pare-feu pour masquer
+une erreur de profil. Le tutoriel débutant reste limité à la boucle locale.
 
 ## Format de trame
 
