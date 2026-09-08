@@ -168,6 +168,28 @@ def llm_index_errors() -> list[str]:
     return errors
 
 
+def server_release_errors(current_release: object) -> list[str]:
+    """Validate only public, verifiable server-release metadata."""
+    if current_release == "unavailable":
+        return []
+    if not isinstance(current_release, dict):
+        return ["local setup current server release must be unavailable or an object"]
+
+    artifacts = current_release.get("artifacts")
+    if not current_release.get("version") or not isinstance(artifacts, list) or not artifacts:
+        return ["available local setup release requires a version and artifacts"]
+
+    for artifact in artifacts:
+        if (
+            not isinstance(artifact, dict)
+            or not str(artifact.get("url", "")).startswith("https://")
+            or re.fullmatch(r"[0-9a-f]{64}", str(artifact.get("sha256", "")))
+            is None
+        ):
+            return ["local setup release artifact requires HTTPS and SHA-256"]
+    return []
+
+
 def local_setup_catalog_errors() -> list[str]:
     errors: list[str] = []
     catalog_path = ROOT / "examples" / "local-setup-catalog.json"
@@ -188,23 +210,7 @@ def local_setup_catalog_errors() -> list[str]:
         errors.append("local setup catalog primary platform must be Windows")
 
     current_release = catalog.get("current_server_release")
-    if current_release != "unavailable":
-        if not isinstance(current_release, dict):
-            errors.append("local setup current server release must be unavailable or an object")
-        else:
-            artifacts = current_release.get("artifacts")
-            if not current_release.get("version") or not isinstance(artifacts, list) or not artifacts:
-                errors.append("available local setup release requires a version and artifacts")
-            else:
-                for artifact in artifacts:
-                    if (
-                        not isinstance(artifact, dict)
-                        or not str(artifact.get("url", "")).startswith("https://")
-                        or re.fullmatch(r"[0-9a-f]{64}", str(artifact.get("sha256", "")))
-                        is None
-                    ):
-                        errors.append("local setup release artifact requires HTTPS and SHA-256")
-                        break
+    errors.extend(server_release_errors(current_release))
 
     def unique_ids(items: object, label: str, key: str = "id") -> set[str]:
         if not isinstance(items, list) or not items:

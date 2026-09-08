@@ -1,0 +1,102 @@
+{
+  "schema": "botte.rules-manifest/v1",
+  "rules": [
+    {
+      "id": "release.catalog-verifiable",
+      "action": "catalog-server-release",
+      "effect": "REQUIRE",
+      "scope": ["public-server-release"],
+      "statement": "The public server release must remain `unavailable` unless every advertised release provides a version and at least one HTTPS artifact with a 64-character lowercase SHA-256.",
+      "source_ref": ".botte/policy.md#The public server release must remain",
+      "owner_only": true,
+      "enforced": true,
+      "enforcement_refs": [
+        "scripts/validate_docs.py#def server_release_errors",
+        "scripts/validate_docs.py#local setup release artifact requires HTTPS and SHA-256"
+      ],
+      "probes": [
+        {
+          "id": "release.catalog-verifiable.allow-unavailable",
+          "polarity": "allow",
+          "evidence_ref": "tests/test_public_docs.py#self.assertEqual(server_release_errors(\"unavailable\"), [])"
+        },
+        {
+          "id": "release.catalog-verifiable.deny-unverified-artifact",
+          "polarity": "deny",
+          "evidence_ref": "tests/test_public_docs.py#def test_server_release_requires_version_and_verified_https_artifacts"
+        }
+      ],
+      "supersedes": [],
+      "last_verified": {
+        "at": "2026-09-07T03:30:00+00:00",
+        "content_sha256": "61a0e8d2969c37e5a6da0ca61b85dcb2c71d54e4943b5f3a1e678350dd402add",
+        "evidence_ref": "tests/test_public_docs.py#def test_server_release_requires_version_and_verified_https_artifacts"
+      }
+    },
+    {
+      "id": "offline.manifest-integrity",
+      "action": "offline-bundle-acceptance",
+      "effect": "REQUIRE",
+      "scope": ["generated-documentation"],
+      "statement": "Every offline documentation bundle must declare the exact payload file set, SHA-256 digest and byte size, and must reject missing, extra or modified files.",
+      "source_ref": ".botte/policy.md#Every offline documentation bundle must declare",
+      "owner_only": false,
+      "enforced": true,
+      "enforcement_refs": [
+        "scripts/build_static_docs.py#def verify_manifest",
+        "scripts/build_static_docs.py#offline docs digest mismatch",
+        "scripts/build_static_docs.py#offline docs size mismatch"
+      ],
+      "probes": [
+        {
+          "id": "offline.manifest-integrity.allow-complete",
+          "polarity": "allow",
+          "evidence_ref": "tests/test_static_docs.py#def test_manifest_verifies_complete_offline_site"
+        },
+        {
+          "id": "offline.manifest-integrity.deny-mutated",
+          "polarity": "deny",
+          "evidence_ref": "tests/test_static_docs.py#def test_manifest_rejects_extra_and_modified_payload_files"
+        }
+      ],
+      "supersedes": [],
+      "last_verified": {
+        "at": "2026-09-07T03:30:00+00:00",
+        "content_sha256": "d1d50e9f208c76b70749ee9fced4f7f9b620765f77879a366bedcb0e35590fb9",
+        "evidence_ref": "tests/test_static_docs.py#def test_manifest_rejects_extra_and_modified_payload_files"
+      }
+    },
+    {
+      "id": "publication.fail-closed-boundary",
+      "action": "repository-publication",
+      "effect": "DENY",
+      "scope": ["unsafe-public-content"],
+      "statement": "Publication must fail closed when repository content contains an absolute Windows user path, patch artifact, local worktree path, serial port identifier, private or loopback IPv4 address, or private-key material.",
+      "source_ref": ".botte/policy.md#Publication must fail closed",
+      "owner_only": true,
+      "enforced": true,
+      "enforcement_refs": [
+        "scripts/validate_docs.py#FORBIDDEN_PATTERNS = (",
+        "scripts/validate_docs.py#def forbidden_content_errors"
+      ],
+      "probes": [
+        {
+          "id": "publication.fail-closed-boundary.allow-clean",
+          "polarity": "allow",
+          "evidence_ref": "tests/test_public_docs.py#def test_public_repository_passes_structural_validation"
+        },
+        {
+          "id": "publication.fail-closed-boundary.deny-private-key",
+          "polarity": "deny",
+          "evidence_ref": "tests/test_public_docs.py#def test_public_boundary_scanner_rejects_private_material"
+        }
+      ],
+      "supersedes": [],
+      "last_verified": {
+        "at": "2026-09-07T03:30:00+00:00",
+        "content_sha256": "4e59004e7d7af4f5e6330828b8a891e0cc2f5776d5d06a313d7138edbe0989af",
+        "evidence_ref": "tests/test_public_docs.py#def test_public_boundary_scanner_rejects_private_material"
+      }
+    }
+  ]
+}
