@@ -47,6 +47,10 @@ Dans le template Three.js actuel, ce générateur de sprites puis SFX reste pré
 
 **Carte Kanboard produite :** « Valider un asset représentatif avec provenance ».
 
+Pour les murs et les sols, consulter la [référence sur le relief de surface](../reference/surface-relief-rendering.md) :
+choix entre géométrie et POM, correction de la vidéo Crimson Desert et preuves
+nécessaires avant adoption desktop, Web ou VR.
+
 ## Personnages et animation
 
 Séparez forme visuelle, squelette, animation et statistiques de gameplay. Les

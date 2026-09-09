@@ -754,6 +754,24 @@
       "goal": "validate formats, optimization, licenses, provenance, and publication gates",
       "path": "docs/en/reference/import-optimization-licensing-and-provenance.md",
       "mutating": false
+    },
+    {
+      "id": "surface-relief-rendering-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "technical artist or client developer",
+      "goal": "compare geometry and surface relief while preserving source corrections and unverified runtime evidence",
+      "path": "docs/fr/reference/surface-relief-rendering.md",
+      "mutating": false
+    },
+    {
+      "id": "surface-relief-rendering-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "technical artist or client developer",
+      "goal": "compare geometry and surface relief while preserving source corrections and unverified runtime evidence",
+      "path": "docs/en/reference/surface-relief-rendering.md",
+      "mutating": false
     }
   ]
 }

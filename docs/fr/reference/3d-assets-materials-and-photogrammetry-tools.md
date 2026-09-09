@@ -40,3 +40,9 @@ sprite → test client → accepted`. Il exige caméra fixe, orientations décla
 éclairage normalisé, fond transparent, ombre séparée, animations et atlas JSON.
 Ce pipeline reste prévu pour le template Three.js ; il n'est pas une capacité
 actuelle d'Asset Factory.
+
+## Relief de surface
+
+La [référence géométrie, POM et silhouettes](surface-relief-rendering.md)
+conserve la correction vidéo, les limites des moteurs et les critères de
+comparaison. Les performances locales restent `unavailable`.
