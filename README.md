@@ -15,6 +15,8 @@
 
 # Ultimate Odycer Docs
 
+[Scientific transfer roadmap / Feuille de route scientifique](ROADMAP.md)
+
 Bilingual, local-first documentation for the public Ultimate Odycer ecosystem: architecture, network authority, NPC pipelines, JSON templates, and home-lab NPC capacity.
 
 **Status:** public documentation repository.
