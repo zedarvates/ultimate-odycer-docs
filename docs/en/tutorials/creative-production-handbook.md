@@ -46,6 +46,10 @@ template, this sprite and SFX generator remains planned.
 
 **Kanboard card produced:** "Validate representative asset with provenance".
 
+For walls and ground, consult the [surface relief reference](../reference/surface-relief-rendering.md):
+geometry versus POM choices, the Crimson Desert video correction, and evidence
+required before desktop, Web, or VR adoption.
+
 ## Characters and animation
 
 Separate visual mesh, skeleton, animation, and gameplay statistics. Lite editors

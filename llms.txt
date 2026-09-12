@@ -49,6 +49,7 @@ scripts, schemas, and examples use MIT.
 - [Catalogue des outils créatifs](docs/fr/reference/creative-tools-catalog.md): statuts, intégration, droits et modèles tarifaires
 - [Outils monde, carte et structures](docs/fr/reference/world-map-and-structure-tools.md): terrain, villes, architecture et donjons
 - [Outils 3D, matériaux et photogrammétrie](docs/fr/reference/3d-assets-materials-and-photogrammetry-tools.md): GLB, PBR, scans et sprites 2.5D
+- [Relief de surface](docs/fr/reference/surface-relief-rendering.md): géométrie, POM, correction vidéo et preuves d’adoption
 - [Personnages, créatures et animation](docs/fr/reference/character-creature-and-animation-tools.md): avatars, rigging, animation et preuve multijoueur/VR
 - [Audio, 2D, UI, VFX et vidéo](docs/fr/reference/audio-2d-ui-vfx-and-video-tools.md): production audiovisuelle et budgets
 - [IA locale et cloud](docs/fr/reference/local-and-cloud-ai-tools.md): ComfyUI, services tiers, confidentialité et droits
@@ -62,6 +63,7 @@ scripts, schemas, and examples use MIT.
 - [Creative tools catalog](docs/en/reference/creative-tools-catalog.md): maturity, integration, rights, and pricing models
 - [World, map, and structure tools](docs/en/reference/world-map-and-structure-tools.md): terrain, cities, architecture, and dungeons
 - [3D, materials, and photogrammetry tools](docs/en/reference/3d-assets-materials-and-photogrammetry-tools.md): GLB, PBR, scanning, and 2.5D sprites
+- [Surface relief](docs/en/reference/surface-relief-rendering.md): geometry, POM, video correction, and adoption evidence
 - [Character, creature, and animation tools](docs/en/reference/character-creature-and-animation-tools.md): avatars, rigging, animation, and multiplayer/VR proof
 - [Audio, 2D, UI, VFX, and video tools](docs/en/reference/audio-2d-ui-vfx-and-video-tools.md): audiovisual production and budgets
 - [Local and cloud AI tools](docs/en/reference/local-and-cloud-ai-tools.md): ComfyUI, third-party services, privacy, and rights

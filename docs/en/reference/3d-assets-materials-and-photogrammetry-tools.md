@@ -45,3 +45,9 @@ declared angle directions, normalized lighting, transparent backgrounds,
 separated shadows, animations, and JSON sprite atlases. This pipeline remains
 planned for the Three.js template; it is not a current capability of Asset
 Factory.
+
+## Surface relief
+
+The [geometry, POM, and silhouettes reference](surface-relief-rendering.md)
+preserves the video correction, engine limitations, and comparison criteria.
+Local performance remains `unavailable`.
