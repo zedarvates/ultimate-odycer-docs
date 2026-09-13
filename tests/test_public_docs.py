@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
+from scripts import validate_docs
 from scripts.network_intent import NetworkIntentError, load_example, validate_intent
 from scripts.npc_capacity_estimator import CapacityError, CapacityInput, estimate_capacity
-from scripts.validate_docs import validate
+from scripts.validate_docs import server_release_errors, validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -91,6 +94,43 @@ class PublicDocumentationTests(unittest.TestCase):
             "ultod-client-godot-open-city-crime-rpg-template",
             {item["repository"] for item in catalog["templates"]},
         )
+
+    def test_server_release_requires_version_and_verified_https_artifacts(self) -> None:
+        self.assertEqual(server_release_errors("unavailable"), [])
+        self.assertEqual(
+            server_release_errors({"version": "1.0", "artifacts": []}),
+            ["available local setup release requires a version and artifacts"],
+        )
+        self.assertEqual(
+            server_release_errors({
+                "version": "1.0",
+                "artifacts": [{"url": "http://invalid/archive.zip", "sha256": "bad"}],
+            }),
+            ["local setup release artifact requires HTTPS and SHA-256"],
+        )
+        self.assertEqual(
+            server_release_errors({
+                "version": "1.0",
+                "artifacts": [{
+                    "url": "https://example.invalid/archive.zip",
+                    "sha256": "0" * 64,
+                }],
+            }),
+            [],
+        )
+
+    def test_public_boundary_scanner_rejects_private_material(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "leak.md").write_text(
+                "BEGIN " + "PRIVATE KEY\nsynthetic canary\n",
+                encoding="utf-8",
+            )
+            with patch.object(validate_docs, "ROOT", root):
+                self.assertEqual(
+                    validate_docs.forbidden_content_errors(),
+                    ["private key material in leak.md"],
+                )
 
     def test_local_setup_has_required_bilingual_pairs(self) -> None:
         for relative in LOCAL_SETUP_DOCUMENTS:

@@ -103,6 +103,44 @@ class StaticDocumentationTests(unittest.TestCase):
             self.assertEqual(static_docs.internal_link_errors(site), [])
             self.assertEqual(static_docs.verify_manifest(site), [])
 
+    def test_manifest_rejects_extra_and_modified_payload_files(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "assets").mkdir()
+            (site / "index.html").write_text(
+                '<!doctype html><link rel="stylesheet" href="assets/site.css">',
+                encoding="utf-8",
+            )
+            stylesheet = site / "assets" / "site.css"
+            stylesheet.write_text("body { color: #eee; }\n", encoding="utf-8")
+            (site / "llms.txt").write_text("documentation only\n", encoding="utf-8")
+            static_docs.write_build_manifest(
+                site,
+                documentation_version="docs-2026.08",
+                server_compatibility="unavailable",
+                source_commit="56eab71",
+            )
+
+            unexpected = site / "unexpected.txt"
+            unexpected.write_text("unexpected\n", encoding="utf-8")
+            self.assertTrue(any(
+                "offline docs file set differs" in error
+                for error in static_docs.verify_manifest(site)
+            ))
+            unexpected.unlink()
+
+            stylesheet.write_text("body { color: #000; }\n", encoding="utf-8")
+            self.assertIn(
+                "offline docs digest mismatch: assets/site.css",
+                static_docs.verify_manifest(site),
+            )
+
+            stylesheet.write_text("body { color: #000; } extra\n", encoding="utf-8")
+            self.assertIn(
+                "offline docs size mismatch: assets/site.css",
+                static_docs.verify_manifest(site),
+            )
+
     def test_repository_contract_data_is_part_of_a_real_build(self) -> None:
         source_directories = {
             path.name for path in static_docs.contract_data_directories()
