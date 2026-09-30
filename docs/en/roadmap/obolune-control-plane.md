@@ -1,47 +1,40 @@
-# Obolune — Game & Template Control Plane
+# Obolune — AI-Native Game Studio, Publisher & Showcase
 
-Status: roadmap. Obolune is a catalog/control plane, not the authority for runtime game data.
+Status: roadmap.
 
-## Roles
-- GitHub repositories: immutable/versioned source of truth for code, templates and documentation.
-- UltOd JSON Template Registry: canonical declarative template/schema registry.
-- Game repositories: project-specific source, assets and runtime adapters.
-- Obolune: discovery, composition, lifecycle, compatibility/evidence views, documentation portal and SYSTAI entry point.
+## Definition
+Obolune is the public studio/publisher/platform identity and showcase for games and worlds created by a very small human team amplified by a structured AI workforce.
 
-## Obolune objects
-1. Game — identity, Game DNA, Story DNA, status, owners, targets and releases.
-2. Game Project Manifest — exact dependency graph for a game build.
-3. Template — projection of canonical registry entries, never a silent copy.
-4. Game Starter/Template Pack — compatible pinned set of client/server/content contracts.
-5. Tool/Editor — capability-registry projection.
-6. Asset Pack — provenance/licence plus compatible entity/schema targets.
-7. Build/Release — evidence graph, compatibility, artifacts and rollback refs.
-8. Documentation — generated human/agent views from canonical contracts.
-9. Migration — version-to-version upgrade path and validation requirements.
+Obolune is NOT the JSON/template registry, source-code host, canonical technical documentation store or runtime authority.
 
-## Proposed UX
-Explore -> describe game to SYSTAI -> select/derive Game DNA -> choose starter/template pack -> resolve exact versions -> create project lock -> generate wiki/docs -> scaffold adapters -> validate -> build/playtest -> publish release evidence.
+## Hard boundary
+- GitHub remains the canonical home for open templates, schemas, technical docs and source repositories.
+- UltOd JSON Template Registry remains the canonical declarative template/schema registry.
+- Game repositories remain canonical for project code/assets/adapters.
+- Obolune may display curated/generated summaries and link to canonical GitHub sources, but MUST NOT silently fork or become authoritative for those artifacts.
 
-## Registry rules
-- Never claim compatibility from presence.
-- Pin exact versions in manifests/lockfiles.
-- Published strict templates stay immutable.
-- Obolune caches/searches projections; canonical refs point back to registry/repositories.
-- Deprecation never deletes historical versions.
-- Every generated game records the exact template/tool/model versions used.
+## Public Obolune
+Primary navigation stays product/world oriented: Games; Worlds; News/Releases; Community; Create with SYSTAI; About Obolune.
+Developer/Open Ecosystem material is secondary and links back to GitHub.
 
-## Useful views
-- Games library
-- Template/schema explorer
-- Starter game templates
-- Compatibility matrix
-- Dependency graph
-- Migration center
-- Editor/tool catalog
-- Asset provenance/license center
-- Build and release evidence
-- SYSTAI creator workspace
-- Public docs and machine-readable agent catalog
+## Studio model
+1–2 humans retain product, creative and business authority. SYSTAI coordinates a bounded AI organization for design, narrative, code, art/asset jobs, QA, security, DevOps, research, analytics, support and release preparation.
 
-## Future commercial boundary
-Marketplace/distribution can be added as an adapter. Entitlements, pricing and payment are separate from the technical registry so the ecosystem remains usable without one marketplace provider.
+Agents do not form an unrestricted chat swarm. Work is expressed as structured jobs with owner, inputs, capability, budget, consequence class, expected evidence, output and next state. Botte Secrète routes capabilities/evidence; Parcimonia selects the cheapest adequate compute tier.
+
+## Products and capabilities
+Ultimate Odycer, Le Lié and future games/worlds are Obolune products/IPs. Odycer technology, StoryCore, Asset Foundry, NeuroCore/ONE, SYSTAI, Botte Secrète and Parcimonia are production capabilities behind the studio and may expose creator/developer services where appropriate.
+
+## Creator surface
+Create with SYSTAI is a creator experience, not a template browser:
+conversation -> intent -> Game DNA -> project plan -> proven foundations -> editors/services -> validation/playtest -> build -> human approval -> release.
+
+Exact JSON/template/schema selection remains an implementation detail and points to GitHub when technical inspection is requested.
+
+## AI Studio Organization
+Suggested departments: Creative/game design; Narrative/worldbuilding; Engineering; Art/assets; QA/synthetic playtest; Security/trust; DevOps/release; Research/R&D; Community/support assistance; Analytics/live-ops proposals.
+
+Every department uses the same consequence/evidence discipline. High-consequence publication, commerce, account/admin and production mutations remain approval-gated.
+
+## Success criterion
+A visitor understands games and worlds first. A creator understands what can be created. A developer can follow canonical GitHub links. Obolune must never feel like a JSON registry with a marketing skin.
