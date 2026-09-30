@@ -1,40 +1,27 @@
 # Obolune — AI-Native Game Studio, Publisher & Showcase
 
-Status: roadmap.
+Status: DECIDED direction / staged implementation.
 
 ## Definition
-Obolune is the public studio/publisher/platform identity and showcase for games and worlds created by a very small human team amplified by a structured AI workforce.
-
-Obolune is NOT the JSON/template registry, source-code host, canonical technical documentation store or runtime authority.
+DECIDED: Obolune is the public studio/publisher/showcase/platform-facing identity for multiple styles of games/worlds. It is not limited to MMORPGs and is not the technical registry.
 
 ## Hard boundary
-- GitHub remains the canonical home for open templates, schemas, technical docs and source repositories.
-- UltOd JSON Template Registry remains the canonical declarative template/schema registry.
-- Game repositories remain canonical for project code/assets/adapters.
-- Obolune may display curated/generated summaries and link to canonical GitHub sources, but MUST NOT silently fork or become authoritative for those artifacts.
+ESTABLISHED: GitHub repositories remain canonical for their code/templates/docs; UltOd JSON Template Registry remains canonical for its declarative templates/schemas. Obolune may present curated/generated views and canonical links but must not silently fork authority.
 
-## Public Obolune
-Primary navigation stays product/world oriented: Games; Worlds; News/Releases; Community; Create with SYSTAI; About Obolune.
-Developer/Open Ecosystem material is secondary and links back to GitHub.
+## Public experience
+DECIDED direction: games/worlds first; creator-facing SYSTAI experience; developer/open-ecosystem material secondary and linked to canonical sources.
 
 ## Studio model
-1–2 humans retain product, creative and business authority. SYSTAI coordinates a bounded AI organization for design, narrative, code, art/asset jobs, QA, security, DevOps, research, analytics, support and release preparation.
+DECIDED goal: a very small human team amplified by structured AI-assisted work while humans retain product, creative and business authority.
+EXPERIMENTAL implementation: SYSTAI Work Graph, Capability Graph extensions, Parcimonia routing, execution adapters, evidence/checkpoint/release machinery.
 
-Agents do not form an unrestricted chat swarm. Work is expressed as structured jobs with owner, inputs, capability, budget, consequence class, expected evidence, output and next state. Botte Secrète routes capabilities/evidence; Parcimonia selects the cheapest adequate compute tier.
+Botte Secrète has established execution/reliability/evidence-oriented work in its proven scope; global capability routing is experimental. Parcimonia is an experimental cost/compute optimization direction, not established production routing.
 
-## Products and capabilities
-Ultimate Odycer, Le Lié and future games/worlds are Obolune products/IPs. Odycer technology, StoryCore, Asset Foundry, NeuroCore/ONE, SYSTAI, Botte Secrète and Parcimonia are production capabilities behind the studio and may expose creator/developer services where appropriate.
+## Products
+Ultimate Odycer, Le Lié and future games may be Obolune products. Their genres and identities remain project-specific. Historical Ultimate Odycer MMORPG/planetary-life/science concepts do not define Obolune's multi-game core.
 
 ## Creator surface
-Create with SYSTAI is a creator experience, not a template browser:
-conversation -> intent -> Game DNA -> project plan -> proven foundations -> editors/services -> validation/playtest -> build -> human approval -> release.
-
-Exact JSON/template/schema selection remains an implementation detail and points to GitHub when technical inspection is requested.
-
-## AI Studio Organization
-Suggested departments: Creative/game design; Narrative/worldbuilding; Engineering; Art/assets; QA/synthetic playtest; Security/trust; DevOps/release; Research/R&D; Community/support assistance; Analytics/live-ops proposals.
-
-Every department uses the same consequence/evidence discipline. High-consequence publication, commerce, account/admin and production mutations remain approval-gated.
+DECIDED direction: creators may use manual, local, cloud, subscription, collaborator or hybrid workflows. Exact implementation contracts remain staged/experimental. GitHub remains canonical for open templates/schemas.
 
 ## Success criterion
-A visitor understands games and worlds first. A creator understands what can be created. A developer can follow canonical GitHub links. Obolune must never feel like a JSON registry with a marketing skin.
+Visitors understand products/worlds first; creators understand available creation paths; developers can reach canonical technical sources. Product identity, creator platform, studio operations and registries remain distinct.
