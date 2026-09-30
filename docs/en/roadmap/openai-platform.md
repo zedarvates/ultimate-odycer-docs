@@ -6,7 +6,7 @@ Status: planning / experimental. No production dependency is implied.
 OpenAI is an acceleration and distribution layer, never an irreversible dependency. Every capability must have an explicit provider boundary and, where practical, a deterministic/local fallback.
 
 ## Target architecture
-ChatGPT / future agent surfaces -> Odycer Agent Gateway -> game services, creator services and commerce.
+Creator/player -> SYSTAI -> Odycer Agent Gateway -> game services, creator services and commerce.\nChatGPT / Dots / local LLMs are replaceable reasoning providers behind SYSTAI.
 The gateway routes work through Botte Secrète / Parcimonia according to cost, latency, confidence, privacy and consequence:
 deterministic -> cache/kNN -> nano/micro-NN -> local LLM -> hosted model/agent.
 
@@ -45,3 +45,6 @@ P5 — marketplace/distribution only after platform terms and economics are vali
 
 ## Non-goals
 No replacement of Zig authority, no direct LLM writes to authoritative world state, no mandatory OpenAI login, no automatic purchase/publishing, no migration of cheap reflex NPC actions to expensive hosted agents.
+
+## Creator Platform dependency
+OpenAI adapters consume the Odycer-owned Creator Platform contracts in `creator-platform.md`; they must not create parallel project memory, entity schemas or editor taxonomies.
