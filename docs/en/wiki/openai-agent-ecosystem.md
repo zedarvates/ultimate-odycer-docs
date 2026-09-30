@@ -1,7 +1,7 @@
 # OpenAI / Agent Ecosystem Integration — Wiki
 
 ## Principle
-Ultimate Odycer owns world truth, identity mapping, entitlements and game rules. External agents request capabilities; they do not become the authority.
+Ultimate Odycer owns world truth, identity mapping, entitlements and game rules. SYSTAI is the creator-facing orchestrator; ChatGPT/Dots/local models are replaceable reasoning providers behind it. External agents request capabilities; they do not become the authority.
 
 ## Routing
 Use the cheapest adequate tier:
@@ -28,3 +28,6 @@ Candidate services: private server assistance, character/build consultation, cre
 
 ## Evidence policy
 Label every integration as planned, mocked, locally tested, hosted-tested or production-proven. Never turn an announcement or prototype into a runtime claim.
+
+## Creator boundary
+OpenAI adapters consume Odycer-owned Game DNA, canonical entity/tool contracts, budgets, provenance and evidence. They never introduce a parallel project memory or editor taxonomy.
