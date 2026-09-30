@@ -1,33 +1,21 @@
 # OpenAI / Agent Ecosystem Integration — Wiki
 
+Status: EXPERIMENTAL integration notes.
+
 ## Principle
-Ultimate Odycer owns world truth, identity mapping, entitlements and game rules. SYSTAI is the creator-facing orchestrator; ChatGPT/Dots/local models are replaceable reasoning providers behind it. External agents request capabilities; they do not become the authority.
+Domain systems retain their own authority. DECIDED direction: SYSTAI may become the creator/studio project interface. ChatGPT/Work/future Dots/local models are candidate providers/executors, not SYSTAI itself.
 
 ## Routing
-Use the cheapest adequate tier:
-1. deterministic rule/cache
-2. kNN / lookup
-3. nano or micro-NN
-4. local LLM
-5. hosted LLM
-6. long-running hosted agent
+PROPOSED/EXPERIMENTAL: evaluate deterministic/cache, lookup/kNN, nano/micro-NN, local LLM, hosted LLM and long-running agent tiers. Routing policy is not production-established merely because schemas/benchmarks exist.
 
-Escalation depends on confidence, consequence, latency and budget. High-consequence actions require stronger evidence and approval.
-
-## NPC split
-ONE/NeuroCore handles reflexes and frequent actions. A Game Master/World Director handles sparse planning, narrative coordination and exceptional reasoning. NPCs receive bounded intents, never unrestricted tool access.
+## NPC experiments
+ONE/NeuroCore and high-level Game Master/World Director roles must be described according to separately proven scopes. A proposed split between frequent/local behavior and sparse/high-level planning is an experiment, not a current universal NPC architecture.
 
 ## Security
-Capability-scoped auth; deny by default; read-only first; idempotency keys; rate/cost ceilings; event provenance; audit logs; schema validation; explicit human approval for commerce, publication and administrative mutations.
+Provider/platform controls form an upper bound. SYSTAI/job/machine policies may narrow permissions but never widen them. High-consequence actions remain approval-gated.
 
 ## Portability
-Protocol adapters live outside domain logic. Every OpenAI-specific object is translated into an Odycer-owned canonical contract. This allows future local, OpenAI or other providers without rewriting the game.
-
-## Commercial surfaces
-Candidate services: private server assistance, character/build consultation, creator workflows, asset generation pipelines and optional marketplace distribution. Pricing and platform availability are treated as external variables, not architecture assumptions.
+Provider-specific objects should be translated at adapter boundaries where implemented. Do not claim portability before an adapter is actually tested.
 
 ## Evidence policy
-Label every integration as planned, mocked, locally tested, hosted-tested or production-proven. Never turn an announcement or prototype into a runtime claim.
-
-## Creator boundary
-OpenAI adapters consume Odycer-owned Game DNA, canonical entity/tool contracts, budgets, provenance and evidence. They never introduce a parallel project memory or editor taxonomy.
+Use ESTABLISHED/HISTORICAL/DECIDED/PROPOSED/EXPERIMENTAL/CORRECTED labels when ambiguity matters. Planned, mocked, locally tested, hosted-tested and production-proven are distinct states.
