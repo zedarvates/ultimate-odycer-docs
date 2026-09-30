@@ -1,50 +1,24 @@
-# Ultimate Odycer — OpenAI Platform Roadmap
+# OpenAI Platform Integration — Experimental Roadmap
 
-Status: planning / experimental. No production dependency is implied.
+Status: EXPERIMENTAL / planning. No production dependency or current provider availability is implied.
+
+## Scope
+Optional OpenAI-facing adapters for selected Obolune/Ultimate Odycer ecosystem use cases. This does not define the multi-game core and does not make OpenAI mandatory.
 
 ## Architectural rule
-OpenAI is an acceleration and distribution layer, never an irreversible dependency. Every capability must have an explicit provider boundary and, where practical, a deterministic/local fallback.
+DECIDED: provider-specific integrations remain replaceable and may not become irreversible domain authority. Official provider availability, permissions and safety controls are respected.
 
-## Target architecture
-Creator/player -> SYSTAI -> Odycer Agent Gateway -> game services, creator services and commerce.\nChatGPT / Dots / local LLMs are replaceable reasoning providers behind SYSTAI.
-The gateway routes work through Botte Secrète / Parcimonia according to cost, latency, confidence, privacy and consequence:
-deterministic -> cache/kNN -> nano/micro-NN -> local LLM -> hosted model/agent.
+## Target experiment
+Creator/player -> SYSTAI project interface (staged) -> provider-neutral handoff/capability contracts -> specialized game/creator services.
+ChatGPT, Work, future Dots where officially available, local models and other authorized executors are candidate providers/adapters.
+
+Capability/cost routing through Botte Secrète/Parcimonia is EXPERIMENTAL, not established production behavior.
 
 ## Workstreams
-### OAI-01 Agent Gateway
-Stable capability IDs, provider adapters, budgets, audit trail, consequence/evidence envelope and fallback policy.
+OAI-01 provider-neutral gateway contracts; OAI-02 event bridge; OAI-03 bounded web agent surface; OAI-04 ChatGPT integration fixture; OAI-05 Game Master/World Director shadow experiment; OAI-06 optional identity experiment; OAI-07 optional commerce adapters; OAI-08 creator-service bridge.
 
-### OAI-02 Event bridge
-Prototype game/server events such as server.alert, world.event.started, guild.raid.created and npc.story_event. Keep transport implementation replaceable; do not couple world state to one vendor protocol.
-
-### OAI-03 Web agent surface
-Expose a bounded, permissioned tool surface for the Three.js/web client. Start read-only; mutation requires explicit capability scopes.
-
-### OAI-04 ChatGPT integration
-Prototype a minimal Ultimate Odycer app/plugin surface: character summary, inventory/build consultation, guild/server status and creator assistance. No gameplay-critical dependency.
-
-### OAI-05 Game Master / World Director agent
-Experimental high-level orchestration only. Fast NPC actions remain in ONE/NeuroCore/local tiers. Agent output is proposal/event intent, not direct authoritative world mutation.
-
-### OAI-06 Identity
-Evaluate Sign in with ChatGPT behind an identity abstraction. Ultimate Odycer account identity remains provider-neutral.
-
-### OAI-07 Commerce
-Create a provider-neutral catalogue for private servers, creator services and digital assets. Commerce adapters are optional; entitlements remain authoritative inside Odycer.
-
-### OAI-08 Creator bridge
-Connect StoryCore, Asset Factory, AIMesher and ComfyUI through bounded jobs with provenance, cost budgets and human approval for publication.
-
-## Phases
-P0 — contracts and threat model.
-P1 — read-only event + web prototypes.
-P2 — minimal ChatGPT surface.
-P3 — Game Master shadow mode.
-P4 — identity/commerce experiments.
-P5 — marketplace/distribution only after platform terms and economics are validated.
+## OAI-05 clarification
+PROPOSED/EXPERIMENTAL: a high-level Game Master/World Director may be benchmarked for sparse planning/narrative coordination. This does not establish that ONE/NeuroCore currently owns all fast NPC actions, nor that the hosted-agent architecture is adopted.
 
 ## Non-goals
-No replacement of Zig authority, no direct LLM writes to authoritative world state, no mandatory OpenAI login, no automatic purchase/publishing, no migration of cheap reflex NPC actions to expensive hosted agents.
-
-## Creator Platform dependency
-OpenAI adapters consume the Odycer-owned Creator Platform contracts in `creator-platform.md`; they must not create parallel project memory, entity schemas or editor taxonomies.
+No replacement of domain authority; no direct LLM authoritative world writes; no mandatory OpenAI login; no automatic purchase/publishing; no bypass of unavailable provider features; no assumption that prototypes are integrated.
