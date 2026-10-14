@@ -23,7 +23,7 @@ $config = Get-Content -LiteralPath (Join-Path $root 'deploy\config.example.json'
 $values = @{
     db_host='127.0.0.1'; db_port=$PostgresPort; db_name='postgres'; db_user='postgres'; db_password=$password;
     db_ssl_mode='disable'; jwt_secret=[Convert]::ToBase64String($random); license_key='FREE-ALPHA';
-    server_ip='127.0.0.1'; game_advertise_host='127.0.0.1'; server_port=$GamePort;
+    server_ip='127.0.0.1'; game_advertise_host='localhost'; server_port=$GamePort;
     login_ip='127.0.0.1'; login_port=$LoginPort; webadmin_ip='127.0.0.1'; webadmin_port=$IntegratedAdminPort;
     auto_open_webadmin_browser=$false; redis_host='127.0.0.1'; redis_port=16379
 }
