@@ -36,3 +36,10 @@ material is not covered unless it carries an explicit notice.
 These licenses do not grant trademark rights or rights to the Ultimate Odycer
 name, proprietary Zig server, hosted infrastructure, production services,
 commercial components, private APIs, client data, or billing systems.
+
+## Windows tutorial helper exception
+
+The four `.ps1` files in `docs/assets/windows-startup-20261014/` are scripts
+licensed under MIT, overriding the default documentation-directory mapping.
+The tutorial text follows CC-BY-4.0. Screenshots include third-party Windows and
+Microsoft Edge interfaces and trademarks; their owners retain their respective rights.

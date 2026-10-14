@@ -772,6 +772,24 @@
       "goal": "compare geometry and surface relief while preserving source corrections and unverified runtime evidence",
       "path": "docs/en/reference/surface-relief-rendering.md",
       "mutating": false
+    },
+    {
+      "id": "windows-startup-illustrated-fr",
+      "language": "fr",
+      "type": "tutorial",
+      "audience": "local server beginner",
+      "goal": "understand the observed native Windows qualification and prepare a matching local setup",
+      "path": "docs/fr/tutorials/start-local-server-windows-illustrated.md",
+      "mutating": false
+    },
+    {
+      "id": "windows-startup-illustrated-en",
+      "language": "en",
+      "type": "tutorial",
+      "audience": "local server beginner",
+      "goal": "understand the observed native Windows qualification and prepare a matching local setup",
+      "path": "docs/en/tutorials/start-local-server-windows-illustrated.md",
+      "mutating": false
     }
   ]
 }

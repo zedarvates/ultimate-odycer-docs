@@ -17,3 +17,11 @@ download.
 This static site is generated from the same Markdown source used by the public
 documentation repository. Its build manifest records the documentation version,
 server compatibility, source commit, and SHA-256 digest of every bundled file.
+
+## Illustrated Windows startup
+
+- [Français — démarrage Windows avec captures réelles](fr/tutorials/start-local-server-windows-illustrated.md)
+- [English — illustrated local Windows startup](en/tutorials/start-local-server-windows-illustrated.md)
+
+`observed`: Windows Server 2022 and PostgreSQL 16.15 in an isolated fixture.
+The public server release remains `unavailable`.

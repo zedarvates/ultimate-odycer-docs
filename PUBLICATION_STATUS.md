@@ -67,3 +67,18 @@ hardware.
 Ecosystem architecture pages document public boundaries and contracts. They do not
 publish proprietary Zig server source, live endpoints, or certified client/server
 compatibility.
+
+## Illustrated Windows qualification — 2026-10-14
+
+`observed`: Windows Server 2022 Evaluation 20348.169, native PostgreSQL 16.15 with
+SCRAM and durable writes, three native services, game/login TLS, WebAdmin login
+and service display, character reload after service restarts, and clean shutdown.
+Eight unedited screenshots come from two sessions of this profile. The final
+session validates shutdown; no uninterrupted session is claimed.
+
+The certificate and first-admin helpers were executed in the guest. The
+Configure/Start reader wrappers received syntax validation. The API harness's
+generic browser flag remains separate from the manual login/status observation.
+Windows 11, full Windows reboot/reconnect, uninstall, SCM, public code signing,
+commercial authority and Internet staging remain unqualified by this tutorial.
+The tested server archive remains private and the public release `unavailable`.

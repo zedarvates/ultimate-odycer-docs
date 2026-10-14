@@ -1,5 +1,8 @@
 # Installer le serveur local sous Windows
 
+Voir aussi le [tutoriel illustré avec PostgreSQL natif](../tutorials/start-local-server-windows-illustrated.md),
+observé sur Windows Server 2022. Ce profil reste distinct du parcours Docker ci-dessous.
+
 Ce guide est le chemin principal. Il prépare Docker, PostgreSQL et l'archive
 serveur sans ouvrir automatiquement la machine sur Internet.
 
