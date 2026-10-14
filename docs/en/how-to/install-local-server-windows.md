@@ -1,5 +1,8 @@
 # Install the local server on Windows
 
+See also the [illustrated native PostgreSQL tutorial](../tutorials/start-local-server-windows-illustrated.md),
+observed on Windows Server 2022. That profile is distinct from the Docker path below.
+
 This is the primary installation path. It prepares Docker, PostgreSQL, and the
 server archive without automatically exposing the machine to the Internet.
 

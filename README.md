@@ -119,3 +119,12 @@ inclusion in a downloadable ZIP.
 ## License
 
 The documentation in this repository is available under its documented license terms. The content does not cover proprietary server code, hosted services, production data, or commercial Ultimate Odycer components.
+
+## Illustrated Windows startup / Démarrage Windows illustré
+
+- [Français — huit captures réelles, PostgreSQL natif et WebAdmin](docs/fr/tutorials/start-local-server-windows-illustrated.md)
+- [English — observed local Windows startup](docs/en/tutorials/start-local-server-windows-illustrated.md)
+- [Offline illustrated guide and PowerShell helpers](docs/assets/windows-startup-20261014/tutoriel-odycer-windows.zip)
+
+Observed on Windows Server 2022 and PostgreSQL 16.15 with a private qualification
+archive. The public server release remains `unavailable`; this publishes documentation only.

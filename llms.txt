@@ -104,3 +104,11 @@ scripts, schemas, and examples use MIT.
 - [First NPC benchmark](docs/en/tutorials/first-npc-benchmark.md): deterministic synthetic capacity scenario
 - [Choose hardware](docs/en/how-to/choose-hardware.md): avoid overbuying for local NPC inference
 - [Hybrid architecture](docs/en/explanation/hybrid-architecture.md): server, LLM, and device boundaries
+
+## Illustrated Windows qualification
+
+- [French Windows startup tutorial](docs/fr/tutorials/start-local-server-windows-illustrated.md)
+- [English Windows startup tutorial](docs/en/tutorials/start-local-server-windows-illustrated.md)
+
+Documentation only. Eight real images from an isolated private qualification;
+the public server release is unavailable. Do not infer Windows 11 or Internet readiness.
