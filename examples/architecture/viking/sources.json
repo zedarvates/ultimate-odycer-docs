@@ -1,0 +1,151 @@
+{
+  "format": "uo-architecture-research/v1",
+  "purpose": "Experimental research exchange; not a native or active RAG schema",
+  "accessed_date": "2026-11-01",
+  "sources": [
+    {
+      "id": "haithabu-exhibition",
+      "author": "Stiftung Schleswig-Holsteinische Landesmuseen",
+      "title": "Dauerausstellung — Die rekonstruierte Wikinger-Siedlung",
+      "url": "https://haithabu.de/de/dauerausstellung",
+      "exact_locator": "Maisons 1–7, notices Errichtung / Größe / Konstruktion",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "haithabu-toplak",
+      "author": "Wikinger Museum Haithabu ; entretien avec Dr Matthias Toplak",
+      "title": "Die Wikinger Häuser im Freigelände – ein archäologisches Langzeitexperiment",
+      "url": "https://haithabu.de/de/die-wikinger-haeuser-im-freigelaende--ein-archaeologisches-langzeitexperiment",
+      "exact_locator": "Woher stammt das Wissen für die Rekonstruktion? / Wie sind die Wikinger Häuser Haithabu gebaut?",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "ribe-townhouses",
+      "author": "Ribe VikingeCenter",
+      "title": "The town houses",
+      "url": "https://www.ribevikingecenter.dk/en/explore/ripa-townhouses",
+      "exact_locator": "The Inn ; The Ribe House",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "ribe-farm",
+      "author": "Ribe VikingeCenter",
+      "title": "The Hviding Farm buildings",
+      "url": "https://www.ribevikingecenter.dk/en/explore/viking-farm-buildings",
+      "exact_locator": "The Longhouse ; The Farm Smithy",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "fyrkat-shipmuseum",
+      "author": "Vikingeskibsmuseet / Viking Ship Museum",
+      "title": "Ringborgen Fyrkat",
+      "url": "https://www.vikingeskibsmuseet.dk/fagligt/e-laering/viden-om-vikingetiden/vikingetidens-geografi/runesten-og-billedsten/spor-efter-vikingerne/ringborgen-fyrkat",
+      "exact_locator": "Rekonstruktion",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "trelleborg-longhouse",
+      "author": "Vikingeborgen Trelleborg / National Museum of Denmark",
+      "title": "Rent the long house",
+      "url": "https://trelleborgvikingeborg.dk/en/events/activities/rent-the-long-house",
+      "exact_locator": "About the house / Denmark’s oldest reconstructed longhouse ; Sleep, eat, train",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "borg-uit",
+      "author": "UiT The Arctic University of Norway, University Library / Architecture Guide",
+      "title": "Lofotr (5 of 7)",
+      "url": "https://arkitekturguide.uit.no/files/show/5399",
+      "exact_locator": "Paragraphs 1–3 ; plan and cross-section attributed to Byggekunst 7/1996",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "borg-museumnord",
+      "author": "Museum Nord / Lofotr",
+      "title": "The Chieftain’s House",
+      "url": "https://www.museumnord.no/en/exhibition/craftsmen/",
+      "exact_locator": "Opening two paragraphs",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "iceland-turf",
+      "author": "National Museum of Iceland, submission published by UNESCO World Heritage Centre",
+      "title": "The Turf House Tradition",
+      "url": "https://whc.unesco.org/fr/listesindicatives/5589/",
+      "exact_locator": "GENERAL DESCRIPTION OF THE SERIES AS A WHOLE, paragraphs long-house / gabled-farm",
+      "read_status": "direct_html",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "trelleborg-plan1224",
+      "author": "Slagelse Kommune",
+      "title": "Forslag til Lokalplan 1224 — Vikingeborgen Trelleborg",
+      "url": "https://en.natmus.dk/fileadmin/user_upload/Editor/natmus/Trelleborg/Vikinge_age_ring_fortresses/Trelleborg_districtplan_1224.pdf",
+      "exact_locator": "Printed pages 23–25, historical explanatory reconstruction section ; modern permit maxima excluded",
+      "read_status": "direct_pdf_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "borgring-antiquity2017",
+      "author": "Helen Goodchild, Nanna Holm, Søren M. Sindbæk",
+      "title": "Borgring: the discovery of a Viking Age ring fortress",
+      "url": "https://www.cambridge.org/core/journals/antiquity/article/borgring-the-discovery-of-a-viking-age-ring-fortress/53F7E590702E0511A0B487D6C15E2686",
+      "exact_locator": "Antiquity 91(353), 2017 ; sections on rampart and north gate",
+      "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "borgring-dja2021",
+      "author": "Jonas Christensen et al.",
+      "title": "Borgring. Uncovering the strategy for a Viking age ring fortress in Denmark",
+      "url": "https://tidsskrift.dk/dja/article/download/121920/176010",
+      "exact_locator": "Danish Journal of Archaeology 10 (2021), DOI 10.7146/dja.v10i0.121920 ; printed pages 2–5, 9, 16–17",
+      "read_status": "direct_pdf",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "aggersborg-museum",
+      "author": "Vesthimmerlands Museum",
+      "title": "The Ring Fortress",
+      "url": "https://aggersborg.com/en/the-ring-fortress/",
+      "exact_locator": "Fortress rampart ; gates ; longhouse grouping",
+      "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "aggersborg-shipmuseum",
+      "author": "Vikingeskibsmuseet / Viking Ship Museum",
+      "title": "Aggersborg og Lindholm Høje",
+      "url": "https://www.vikingeskibsmuseet.dk/fagligt/undervisning/vikingeviden/vikingetidens-geografi/vikingetiden-i-skandinavien/aggersborg-og-lindholm-hoeje",
+      "exact_locator": "Aggersborg ; dimensions of the fortress and ditch",
+      "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "danevirke-museum",
+      "author": "Danevirke Museum",
+      "title": "Das Danewerk",
+      "url": "https://danevirkemuseum.de/de/das-danewerk/",
+      "exact_locator": "Fieldstone wall phase ; Waldemarsmauer",
+      "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "ravning-slks",
+      "author": "Slots- og Kulturstyrelsen",
+      "title": "Ravning Enge, bro og hulveje",
+      "url": "https://slks.dk/doil/stederne/ravning-enge-bro-og-hulveje",
+      "exact_locator": "Bridge description ; dimensions and preserved structural timbers",
+      "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    }
+  ]
+}

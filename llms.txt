@@ -112,3 +112,10 @@ scripts, schemas, and examples use MIT.
 
 Documentation only. Eight real images from an isolated private qualification;
 the public server release is unavailable. Do not infer Windows 11 or Internet readiness.
+
+## Sourced Viking architecture
+
+- [Architecture viking](docs/fr/reference/viking-architecture.md): dimensions archéologiques, reconstitutions, incertitudes et provenance
+- [Viking architecture](docs/en/reference/viking-architecture.md): qualified measurements and reconstruction boundaries
+- [Research facts](examples/architecture/viking/facts.jsonl): experimental uo-architecture-research/v1 exchange, not an active RAG index
+- [Source register](examples/architecture/viking/sources.json): primary source URLs, locators and read status
