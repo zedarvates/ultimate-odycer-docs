@@ -98,7 +98,7 @@
       "author": "Helen Goodchild, Nanna Holm, Søren M. Sindbæk",
       "title": "Borgring: the discovery of a Viking Age ring fortress",
       "url": "https://www.cambridge.org/core/journals/antiquity/article/borgring-the-discovery-of-a-viking-age-ring-fortress/53F7E590702E0511A0B487D6C15E2686",
-      "exact_locator": "Antiquity 91(353), 2017 ; sections on rampart and north gate",
+      "exact_locator": "Antiquity 91(358), 2017 ; sections on rampart and north gate",
       "read_status": "direct_html_by_research_agent",
       "accessed_date": "2026-11-01"
     },
@@ -145,6 +145,24 @@
       "url": "https://slks.dk/doil/stederne/ravning-enge-bro-og-hulveje",
       "exact_locator": "Bridge description ; dimensions and preserved structural timbers",
       "read_status": "direct_html_by_research_agent",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "fyrkat-slks-signage2011",
+      "author": "Kulturarvsstyrelsen, Nationalmuseet, Mariagerfjord Kommune",
+      "title": "Fyrkat — Borgens huse / The fortress houses",
+      "url": "https://slks.dk/fileadmin/user_upload/0_SLKS/Dokumenter/Fortidsminder_Diger/DOIL/KUAS_8190015_Skilte_Fyrkat_september2011_Low.pdf",
+      "exact_locator": "PDF page 7 of 9 (zero-based index 6), panel Borgens huse / The fortress houses",
+      "read_status": "direct_pdf",
+      "accessed_date": "2026-11-01"
+    },
+    {
+      "id": "schmidt-viking-buildings1990",
+      "author": "Holger Schmidt",
+      "title": "Viking Age Buildings",
+      "url": "https://tidsskrift.dk/jda/article/download/127450/173733/269092",
+      "exact_locator": "Journal of Danish Archaeology 9 (1990), printed page 197, figure 5, section and plan 1:200, H.S. 1981–82 ; DOI 10.1080/0108464X.1990.10590043",
+      "read_status": "direct_pdf_and_rendered_figure",
       "accessed_date": "2026-11-01"
     }
   ]

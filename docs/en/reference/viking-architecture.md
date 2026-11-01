@@ -29,6 +29,14 @@ Keep Borg/Lofotr records separate: [UiT](https://arkitekturguide.uit.no/files/sh
 
 The [National Museum of Iceland submission published on UNESCO’s Tentative List](https://whc.unesco.org/fr/listesindicatives/5589/) describes internal timber roof supports, turf walls and roof, and a long-side entrance. The juxtaposed-gable `burstabær` form developed around **1800**, so its silhouette must not be backdated to a Viking preset. Tentative listing is not World Heritage inscription. This research set establishes no dimensioned Stöng longhouse plan.
 
+## Further reconstruction: curved volumes and interiors
+
+The [September 2011 SLKS heritage sign](https://slks.dk/fileadmin/user_upload/0_SLKS/Dokumenter/Fortidsminder_Diger/DOIL/KUAS_8190015_Skilte_Fyrkat_september2011_Low.pdf), **PDF p.7**, describes Holger Schmidt’s 1980s Fyrkat reconstruction: **28.5 m** long, **7.5 m** wide at the centre and **5 m** at the gables, three rooms, four entrances, central hearth and wall benches. The earlier **7.4 m** museum notice remains a separate record; widths are not averaged.
+
+[Schmidt’s *Viking Age Buildings* (1990), fig.5, p.197, scale 1:200](https://tidsskrift.dk/jda/article/download/127450/173733/269092) provides a reconstruction plan and section. Its side porches are offset toward opposite partition walls; this relationship does not establish their coordinates. The parametric model uses a **chosen parabolic curve**, without digitising that plan. Wall height **2.2 m**, roof pitch **45°**, hips, timber sections, **1.1 × 1.9 m** openings and partition positions are **modelling assumptions**, not measurements from the figure. Printed scale alone does not establish greater precision.
+
+For the Hedeby 874+ prototype, the [House 7 notice](https://haithabu.de/de/dauerausstellung) supports three compartments, hearth, side benches and a second outside entrance. Their detailed geometry and timber sections or spacing remain assumptions. Interior and removable-roof views expose these choices; they certify neither structural performance nor game collisions.
+
 ## Defences and bridges
 
 | Reference | Published information and limits |

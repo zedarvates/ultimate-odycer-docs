@@ -35,6 +35,14 @@ Pour les grandes halles, distinguer le [longhouse reconstruit de Fyrkat](https:/
 
 En Islande, la [description déposée par le National Museum of Iceland sur la liste indicative UNESCO](https://whc.unesco.org/fr/listesindicatives/5589/) documente la longue maison à ossature intérieure, entrée latérale, murs et toiture de tourbe. La ferme à pignons juxtaposés `burstabær` se développe vers **1800** : sa silhouette ne doit pas être rétroprojetée dans un modèle viking. Cette liste indicative n’est pas une inscription au patrimoine mondial. Aucun plan coté de Stöng n’est établi dans ce lot.
 
+## Approfondissement : volumes courbes et intérieurs
+
+Le [panneau patrimonial SLKS de septembre 2011](https://slks.dk/fileadmin/user_upload/0_SLKS/Dokumenter/Fortidsminder_Diger/DOIL/KUAS_8190015_Skilte_Fyrkat_september2011_Low.pdf), **p.7 du PDF**, décrit la reconstruction de Fyrkat réalisée par Holger Schmidt dans les années 1980 : **28,5 m** de long, **7,5 m** au centre et **5 m** aux pignons, trois pièces, quatre entrées, foyer central et banquettes. La notice précédente à **7,4 m** reste une autre référence ; les largeurs ne sont pas moyennées.
+
+Le [plan et la coupe de Schmidt, *Viking Age Buildings* (1990), fig.5, p.197, échelle 1:200](https://tidsskrift.dk/jda/article/download/127450/173733/269092) fournissent une référence graphique de reconstruction. Les porches latéraux y sont décalés vers des cloisons opposées ; cette relation n’établit pas leurs coordonnées. Le modèle paramétrique retient une **courbe parabolique choisie**, sans numérisation de ce plan. Hauteur de mur **2,2 m**, pente **45°**, croupes, sections de bois, ouvertures **1,1 × 1,9 m** et emplacement des cloisons sont des **hypothèses de modélisation**, pas des cotes relevées sur la figure. Aucune précision supérieure n’est déduite de sa seule échelle imprimée.
+
+Pour le prototype Hedeby 874+, la [notice de la maison 7](https://haithabu.de/de/dauerausstellung) appuie trois compartiments, foyer, banquettes latérales et second accès extérieur. Leur géométrie détaillée et les sections ou espacements de charpente restent supposés. Les intérieurs et toitures amovibles servent à inspecter ces choix ; ils ne certifient ni la structure ni les collisions du jeu.
+
 ## Défenses : préserver la coupe et la phase
 
 | Site et source | Données retenues | Limites à conserver |
