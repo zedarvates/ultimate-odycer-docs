@@ -790,6 +790,24 @@
       "goal": "understand the observed native Windows qualification and prepare a matching local setup",
       "path": "docs/en/tutorials/start-local-server-windows-illustrated.md",
       "mutating": false
+    },
+    {
+      "id": "viking-architecture-fr",
+      "language": "fr",
+      "type": "reference",
+      "audience": "world and architecture content author",
+      "goal": "reconstruct Viking buildings from qualified archaeological and museum evidence",
+      "path": "docs/fr/reference/viking-architecture.md",
+      "mutating": false
+    },
+    {
+      "id": "viking-architecture-en",
+      "language": "en",
+      "type": "reference",
+      "audience": "world and architecture content author",
+      "goal": "reconstruct Viking buildings from qualified archaeological and museum evidence",
+      "path": "docs/en/reference/viking-architecture.md",
+      "mutating": false
     }
   ]
 }

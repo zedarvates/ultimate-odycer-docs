@@ -25,3 +25,11 @@ server compatibility, source commit, and SHA-256 digest of every bundled file.
 
 `observed`: Windows Server 2022 and PostgreSQL 16.15 in an isolated fixture.
 The public server release remains `unavailable`.
+
+## Sourced architecture / Architecture sourcée
+
+- [Français — architecture viking : dimensions et provenance](fr/reference/viking-architecture.md)
+- [English — Viking architecture: dimensions and provenance](en/reference/viking-architecture.md)
+
+Research references distinguish archaeological measurements, museum reconstructions
+and hypotheses. They do not claim deployment or active RAG ingestion.
